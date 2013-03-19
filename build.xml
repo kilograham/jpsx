@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="jpsx" default="all" basedir=".">
+        <property file="build.properties"/>
+        <property name="src" value="${basedir}/src"/>
+        <property name="bootstrap.src" value="${src}/bootstrap"/>
+        <property name="runtime.src" value="${src}/runtime"/>
+        <property name="api.src" value="${src}/api"/>
+        <property name="classes" value="${basedir}/classes"/>
+        <property name="bootstrap.classes" value="${classes}/bootstrap"/>
+        <property name="runtime.classes" value="${classes}/runtime"/>
+        <property name="api.classes" value="${classes}/api"/>
+        
+        <target name="all" depends="api_build,bootstrap_build,runtime_build"/>
+        
+        <target name="env">
+        </target>
+        
+        <target name="clean" depends="env">
+                <delete includeEmptyDirs="true" quiet="true">
+                        <fileset dir="${classes}"/>
+                </delete>
+        </target>
+        
+        <target name="dirs">
+                <mkdir dir="${classes}"/>
+                <mkdir dir="${bootstrap.classes}"/>
+                <mkdir dir="${runtime.classes}"/>
+                <mkdir dir="${api.classes}"/>
+        </target>
+        
+	<target name="package">
+		<jar jarfile="${basedir}/ship/jpsx.jar">
+                        <fileset dir="${bootstrap.classes}"/>
+                        <fileset dir="${runtime.classes}"/>
+                        <fileset dir="${api.classes}"/>
+		<manifest>
+			<attribute name="Main-Class" value="org.jpsx.bootstrap.JPSXLauncher"/>
+			<attribute name="Class-Path" value="bcel-5.1.jar log4j-1.2.13.jar"/>
+		</manifest>
+		</jar>
+	</target>
+
+        <target name="api_build" depends="env,dirs">
+                <javac source="1.5" destdir="${api.classes}" debug="on">
+                        <classpath>
+                                <pathelement path="${bcel.classpath}"/>
+				<pathelement path="${log4j.classpath}"/>
+                        </classpath>                                
+                        <src path="${api.src}"/>
+                        <!--<include name="org/jpsx/api/**"/>-->
+                </javac>
+        </target>
+        
+        <target name="bootstrap_build" depends="api_build,env,dirs">
+                <javac source="1.5" destdir="${bootstrap.classes}" debug="on">
+                        <classpath>
+                                <pathelement path="${bcel.classpath}"/>
+				<pathelement path="${log4j.classpath}"/>
+                                <pathelement path="${api.classpath}"/>
+                        </classpath>                                
+                        <src path="${bootstrap.src}"/>
+                        <!--<include name="org/jpsx/bootstrap/**"/>-->
+                </javac>
+        </target>
+
+        
+        <target name="runtime_build" depends="api_build,bootstrap_build,env,dirs">
+                <javac source="1.5" destdir="${runtime.classes}" debug="on">
+                        <classpath>
+                                <pathelement path="${bcel.classpath}"/>
+				<pathelement path="${log4j.classpath}"/>
+                                <pathelement path="${api.classes}"/>
+                                <pathelement path="${bootstrap.classes}"/>
+                        </classpath>                                
+                        <src path="${runtime.src}"/>
+                        <!--<include name="org/jpsx/runtime/**"/>-->
+                </javac>
+                <delete>
+                        <fileset dir="${runtime.classes}">
+                                <include name="org/jpsx/runtime/components/hardware/gpu/GPU$$_*.class"/>
+                        </fileset>                
+                </delete>
+        </target>
+</project>

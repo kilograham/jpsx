@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<jpsx>
+	<!--
+	
+		Defines the JPSX machine:
+
+		The JPSX requires the id of one "machine" element which defines the components to be created.
+
+		Components are defined by the "component" element, which has a classname attribute which is
+                the java class name of the componenet and an optional id attribute.
+
+                If more than one component referenced by the machine has the same id, then the latter version encountered
+		is used. This is useful for overriding existing configurations.
+		
+		Components may contain <property name="" value=""/> elements which specify componenet properties.
+		Values may reference "${varname}" where varname is defined by a <var> element or as varname=value on the 
+		command line. If a property value equates to the empty string the property is ignored.
+
+		Whilst a machine may list all components explicity, you may package them in a "components" element and include 
+		those in a machine using the "include" element. Components may also include other components.
+	-->
+
+	<machine id="default">
+		<include refid="imagecd2"/>
+	</machine>
+
+	<machine id="nostretch">
+		<include refid="imagecd2"/>
+		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">
+			<property name="showBlitTime" value="true"/>
+		</component>
+	</machine>
+
+	<machine id="nosound">
+		<include refid="imagenosound"/>
+	</machine>
+
+	<machine id="go">
+		<include refid="common-bits"/>
+		<component classname="org.jpsx.runtime.components.hardware.media.CueBinImageDrive"/>
+	</machine>	
+
+	<machine id="wipeout">
+		<var name="image" value="/rips/r_wipeout.cue"/>
+		<include refid="image"/>
+	</machine>
+
+	<machine id="bends">
+		<var name="image" value="/rips/bends.cue"/>
+		<include refid="imagecd2"/>
+	</machine>
+
+	<machine id="ff7">
+		<var name="image" value="/Users/mich/psx_games/vs.cue"/>
+		<include refid="imagecd2noconsole"/>
+		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">
+			<property name="x" value="640"/>
+			<property name="y" value="0"/>
+		</component>
+		<component id="spu" classname="org.jpsx.runtime.components.hardware.spu.SPU">
+			<property name="voiceAudio" value="true"/>
+			<property name="cdAudio" value="true"/>
+		</component>
+		<component id="cd" classname="org.jpsx.runtime.components.hardware.cd.CD"/>
+	</machine>
+	<machine id="vp">
+		<var name="image" value="/Users/mich/psx_games/vs.cue"/>
+		<include refid="imagecd2noconsole"/>
+		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">
+			<property name="x" value="640"/>
+			<property name="y" value="0"/>
+		</component>
+		<component id="spu" classname="org.jpsx.runtime.components.hardware.spu.SPU">
+			<property name="voiceAudio" value="true"/>
+			<property name="cdAudio" value="true"/>
+		</component>
+		<component id="counters" classname="org.jpsx.runtime.components.hardware.counters.Counters"/>
+	<!--		<component id="compiler" classname="org.jpsx.runtime.components.emulator.compiler.MultiStageCompiler">
+			<property name="stage2" value="false"/>
+			</component> -->
+	</machine>
+	<machine id="bandicoot">
+		<var name="image" value="/rips/bandicoot.cue"/>
+		<include refid="imagecd2noconsole"/>
+		
+		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">
+			<property name="x" value="0"/>
+			<property name="y" value="512"/>
+		</component>
+		<component id="counters" classname="org.jpsx.runtime.components.hardware.counters.Counters">
+			<!-- temp hack for counters -->
+			<property name="bandicootUS" value="true"/>
+		</component>
+	</machine>
+
+	<machine id="tombraider">
+		<var name="image" value="/rips/tombraider.cue"/>
+		<include refid="image"/>
+
+		<!-- temporary turn of second stage -->
+<!--		<component id="compiler" classname="org.jpsx.runtime.components.emulator.compiler.MultiStageCompiler">
+			<property name="stage2" value="false"/>
+		</component>
+-->
+		<component id="spu" classname="org.jpsx.runtime.components.hardware.spu.SPU"/>
+		<component id="cd" classname="org.jpsx.runtime.components.hardware.cd.CD"/>
+	</machine>
+	<machine id="gt">
+		<var name="image" value="/rips/granturismo.cue"/>
+		<include refid="image"/>
+
+		<!-- todo movie audio only -->
+		<component id="spu" classname="org.jpsx.runtime.components.hardware.spu.SPU">
+			<property name="voiceAudio" value="false"/>
+			<property name="cdAudio" value="true"/>
+		</component>
+		<component id="cd" classname="org.jpsx.runtime.components.hardware.cd.CD"/>
+	</machine>
+
+	<components id="core-bits">
+		<component classname="org.jpsx.runtime.components.core.DefaultQuartz"/>
+		<component classname="org.jpsx.runtime.components.core.MTScheduler"/>
+		<component classname="org.jpsx.runtime.components.core.R3000Impl"/>
+		<component classname="org.jpsx.runtime.components.core.AddressSpaceImpl"/>
+		<component classname="org.jpsx.runtime.components.core.SCPImpl"/>
+		<component classname="org.jpsx.runtime.components.core.IRQControllerImpl"/>
+		<component classname="org.jpsx.runtime.components.core.DMAControllerImpl"/>
+	</components>
+
+	<!-- console and disassembly -->
+	<components id="console-bits">
+		<component classname="org.jpsx.runtime.components.emulator.disassemblers.R3000InstructionDisassembler"/>
+		<component classname="org.jpsx.runtime.components.emulator.disassemblers.GTEInstructionDisassembler"/>
+		<component classname="org.jpsx.runtime.components.emulator.console.Console"/>
+	</components>
+
+	<!-- common stuff -->
+	<components id="common-bits">
+		<include refid="core-bits"/>
+		<component classname="org.jpsx.runtime.components.hardware.r3000.R3000InstructionSet"/>
+		<component classname="org.jpsx.runtime.components.hardware.gte.GTE"/>
+		<component id="counters" classname="org.jpsx.runtime.components.hardware.counters.Counters"/>
+		<component id="spu" classname="org.jpsx.runtime.components.hardware.spu.SPU"/>
+		<component id="cd" classname="org.jpsx.runtime.components.hardware.cd.CD"/>
+		<component classname="org.jpsx.runtime.components.hardware.sio.SIO0"/>
+		<component classname="org.jpsx.runtime.components.hardware.sio.AWTKeyboardController"/>
+		<component classname="org.jpsx.runtime.components.hardware.gpu.GPU"/>
+		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">
+			<property name="showBlitTime" value="true"/>
+		</component>
+		<component classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplayManager"/>
+		<component classname="org.jpsx.runtime.components.hardware.mdec.MDEC"/>
+		<component classname="org.jpsx.runtime.components.hardware.bios.ImageBIOS"/>
+		<component id="compiler" classname="org.jpsx.runtime.components.emulator.compiler.MultiStageCompiler">
+			<property name="printCode" value="${printCode}"/>
+			<property name="saveClasses" value="${saveClasses}"/>
+		</component>
+	</components>
+
+	<components id="common-and-console-bits">
+		<include refid="common-bits"/>
+		<include refid="console-bits"/>
+	</components>
+
+	<machine id="cd">
+		<include refid="common-and-console-bits"/>
+		<component classname="org.jpsx.runtime.components.hardware.media.CDMedia"/>
+	</machine>
+
+	<components id="image">
+		<include refid="common-and-console-bits"/>
+		<component id="media" classname="org.jpsx.runtime.components.hardware.media.CueBinImageDrive">
+			<property name="image" value="${image}"/>
+		</component>
+	</components>
+
+	<components id="imagecd2">
+		<include refid="image"/>
+		<component id="spu" classname="org.jpsx.runtime.components.hardware.spu.SPU"/>
+		<component id="cd" classname="org.jpsx.runtime.components.hardware.cd.CD"/>
+	</components>
+
+	<components id="imagenosound">
+		<include refid="image"/>
+		<component id="spu" classname="org.jpsx.runtime.components.hardware.spu.NullSPU"/>
+	</components>
+
+
+	<components id="imagecd2noconsole">
+		<include refid="common-bits"/>
+		<component id="media" classname="org.jpsx.runtime.components.hardware.media.CueBinImageDrive">
+			<property name="image" value="${image}"/>
+		</component>
+		<component id="spu" classname="org.jpsx.runtime.components.hardware.spu.SPU"/>
+		<component id="cd" classname="org.jpsx.runtime.components.hardware.cd.CD"/>
+	</components>
+	<!-- for messing with new cd/audio stuff -->
+	<machine id="test">
+		<include refid="imagecd2"/>
+	</machine>
+
+</jpsx>
