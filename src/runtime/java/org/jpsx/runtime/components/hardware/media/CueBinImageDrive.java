@@ -148,7 +148,7 @@ public class CueBinImageDrive extends SingletonJPSXComponent implements CDDrive 
             binFile = null;
             long length;
             log.warn("== "+binFilename);
-            binFilename="//Users//mich//psx_games//"+binFilename;
+            binFilename="//Users//jvilk//Code//jpsx//rips//"+binFilename;
             log.warn("==2 "+binFilename);
             try {
                 binFile = new RandomAccessFile(binFilename, "r");

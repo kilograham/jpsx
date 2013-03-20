@@ -117,6 +117,12 @@
 		<component id="cd" classname="org.jpsx.runtime.components.hardware.cd.CD"/>
 	</machine>
 
+    <machine id="sh">
+        <var name="image" value="/Users/jvilk/Code/jpsx/rips/Silent_Hill.cue"/>
+        <include refid="image"/>
+        <component id="spu" classname="org.jpsx.runtime.components.hardware.spu.NullSPU"/>
+    </machine>
+
 	<components id="core-bits">
 		<component classname="org.jpsx.runtime.components.core.DefaultQuartz"/>
 		<component classname="org.jpsx.runtime.components.core.MTScheduler"/>
