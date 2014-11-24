@@ -60,7 +60,7 @@ import  java.io.*;
 /**
  * This class represents a stack map entry recording the types of
  * local variables and the the of stack items at a given byte code offset.
- * See CLDC specification ง5.3.1.2
+ * See CLDC specification ยง5.3.1.2
  *
  * @version $Id: StackMapEntry.java,v 1.2 2002/03/11 16:16:35 mdahm Exp $
  * @author  <A HREF="mailto:markus.dahm@berlin.de">M. Dahm</A>

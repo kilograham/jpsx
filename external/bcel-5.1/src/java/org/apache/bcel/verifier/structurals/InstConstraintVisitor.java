@@ -666,7 +666,7 @@ public class InstConstraintVisitor extends EmptyVisitor implements org.apache.bc
 			referenceTypeIsInitialized(o, (ReferenceType) objectref);
 		}
 		// The unsigned indexbyte1 and indexbyte2 are used to construct an index into the runtime constant pool of the
-		// current class (ง3.6), where the value of the index is (indexbyte1 << 8) | indexbyte2. The runtime constant
+		// current class (ยง3.6), where the value of the index is (indexbyte1 << 8) | indexbyte2. The runtime constant
 		// pool item at the index must be a symbolic reference to a class, array, or interface type.
 		Constant c = cpg.getConstant(o.getIndex());
 		if (! (c instanceof ConstantClass)){
@@ -1615,7 +1615,7 @@ public class InstConstraintVisitor extends EmptyVisitor implements org.apache.bc
 			referenceTypeIsInitialized(o, (ReferenceType) objectref);
 		}
 		// The unsigned indexbyte1 and indexbyte2 are used to construct an index into the runtime constant pool of the
-		// current class (ง3.6), where the value of the index is (indexbyte1 << 8) | indexbyte2. The runtime constant
+		// current class (ยง3.6), where the value of the index is (indexbyte1 << 8) | indexbyte2. The runtime constant
 		// pool item at the index must be a symbolic reference to a class, array, or interface type.
 		Constant c = cpg.getConstant(o.getIndex());
 		if (! (c instanceof ConstantClass)){

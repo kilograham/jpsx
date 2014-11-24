@@ -10,6 +10,9 @@
         <property name="bootstrap.classes" value="${classes}/bootstrap"/>
         <property name="runtime.classes" value="${classes}/runtime"/>
         <property name="api.classes" value="${classes}/api"/>
+        <property name="bcel.sourcepath" value="${basedir}/external/bcel-5.1" />
+        <property name="bcel.classpath" value="${bcel.sourcepath}/bin/bcel.jar" />
+        <property name="log4j.classpath" value="${basedir}/external/log4j-1.2.13.jar" />
         
         <target name="all" depends="api_build,bootstrap_build,runtime_build"/>
         
@@ -41,7 +44,11 @@
 		</jar>
 	</target>
 
-        <target name="api_build" depends="env,dirs">
+        <target name="bcel_build">
+                <ant antfile="build.xml" dir="${bcel.sourcepath}" target="jar" inheritAll="false" />
+        </target>
+
+        <target name="api_build" depends="env,dirs,bcel_build">
                 <javac source="1.5" destdir="${api.classes}" debug="on">
                         <classpath>
                                 <pathelement path="${bcel.classpath}"/>
@@ -52,12 +59,12 @@
                 </javac>
         </target>
         
-        <target name="bootstrap_build" depends="api_build,env,dirs">
+        <target name="bootstrap_build" depends="api_build,env,dirs,bcel_build">
                 <javac source="1.5" destdir="${bootstrap.classes}" debug="on">
                         <classpath>
                                 <pathelement path="${bcel.classpath}"/>
 				<pathelement path="${log4j.classpath}"/>
-                                <pathelement path="${api.classpath}"/>
+                                <pathelement path="${api.classes}"/>
                         </classpath>                                
                         <src path="${bootstrap.src}"/>
                         <!--<include name="org/jpsx/bootstrap/**"/>-->
@@ -65,7 +72,7 @@
         </target>
 
         
-        <target name="runtime_build" depends="api_build,bootstrap_build,env,dirs">
+        <target name="runtime_build" depends="api_build,bootstrap_build,env,dirs,bcel_build">
                 <javac source="1.5" destdir="${runtime.classes}" debug="on">
                         <classpath>
                                 <pathelement path="${bcel.classpath}"/>

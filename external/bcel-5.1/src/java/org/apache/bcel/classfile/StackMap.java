@@ -64,7 +64,7 @@ import  java.io.*;
  * (J2ME). This attribute is used by the <a
  * href="http://java.sun.com/products/cldc/">KVM</a> and contained
  * within the Code attribute of a method. See CLDC specification
- * ง5.3.1.2
+ * ยง5.3.1.2
  *
  * @version $Id: StackMap.java,v 1.2 2002/03/11 16:16:35 mdahm Exp $
  * @author  <A HREF="mailto:markus.dahm@berlin.de">M. Dahm</A>

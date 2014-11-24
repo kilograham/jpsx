@@ -65,10 +65,9 @@ Available targets:
   <target name="build" depends="compile"/>
 
   <!-- Jar the library -->
-  <target name="jar" depends="examples">
+  <target name="jar" depends="compile">
     <jar jarfile="${build.dir}/${name}.jar" 
          basedir="${build.dest}"
-	 manifest="${basedir}/manifest.txt"
 	 includes="org/**,listclass.class"
     />
   </target>

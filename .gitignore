@@ -1,3 +1,8 @@
+.DS_Store
 bios.bin
-rips/*
-.idea/*
+rips
+.idea
+classes
+jpsx.log
+target
+external/bcel-5.1/bin

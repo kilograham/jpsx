@@ -121,7 +121,7 @@ public final class ObjectType extends ReferenceType {
   }
 
   /**
-   * Java Virtual Machine Specification edition 2, ง 5.4.4 Access Control
+   * Java Virtual Machine Specification edition 2, ยง 5.4.4 Access Control
    */
   public boolean accessibleTo(ObjectType accessor) {
     JavaClass jc = Repository.lookupClass(class_name);

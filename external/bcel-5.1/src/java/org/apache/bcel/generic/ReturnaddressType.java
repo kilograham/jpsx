@@ -59,7 +59,7 @@ import org.apache.bcel.generic.InstructionHandle;
 /** 
  * Returnaddress, the type JSR or JSR_W instructions push upon the stack.
  *
- * see vmspec2 ง3.3.3
+ * see vmspec2 ยง3.3.3
  * @version $Id: ReturnaddressType.java,v 1.1.1.1 2001/10/29 20:00:26 jvanzyl Exp $
  * @author  <A HREF="http://www.inf.fu-berlin.de/~ehaase">Enver Haase</A>
  */
