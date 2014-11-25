@@ -569,7 +569,9 @@ public class SPU extends SingletonJPSXComponent implements MemoryMapped, CDAudio
 
         private static DataLine.Info desiredLine = new DataLine.Info(SourceDataLine.class,
                 new AudioFormat[]{new AudioFormat(SAMPLE_RATE, 16, 1, true, false)},
-                0, BUFFER_SAMPLES * 2);
+// Guess this was ignored by the software mixer - doesn't really make much sense
+//                0, BUFFER_SAMPLES * 2);
+                BUFFER_SAMPLES * 2, AudioSystem.NOT_SPECIFIED);
         private SourceDataLine line;
         private FloatControl panControl;
         private FloatControl rateControl;
@@ -626,10 +628,19 @@ public class SPU extends SingletonJPSXComponent implements MemoryMapped, CDAudio
             try {
                 line = (SourceDataLine) AudioSystem.getLine(desiredLine);
                 line.open();
-                panControl = (FloatControl) line.getControl(FloatControl.Type.PAN);
-                rateControl = (FloatControl) line.getControl(FloatControl.Type.SAMPLE_RATE);
+                if (line.isControlSupported(FloatControl.Type.SAMPLE_RATE)) {
+                    rateControl = (FloatControl) line.getControl(FloatControl.Type.SAMPLE_RATE);
+                } else {
+                    log.warn("Rate control is NOT supported, hacking around it for now - might sound a bit weird until fixed properly");
+                }
+                if (line.isControlSupported(FloatControl.Type.PAN)) {
+                    panControl = (FloatControl) line.getControl(FloatControl.Type.PAN);
+                } else {
+                    // todo to fix this we need to make the voice stereo instead (identical channels)
+                    log.warn("Pan control is NOT supported, voices will not be stereo positioned");
+                }
             } catch (Throwable t) {
-                throw new IllegalStateException("can't get line for voice " + index);
+                throw new IllegalStateException("can't get line for voice " + index, t);
             }
             state = OFF;
         }
@@ -654,12 +665,23 @@ public class SPU extends SingletonJPSXComponent implements MemoryMapped, CDAudio
             currentSubMS = 1000;
 
             slow = pitch < 0x1000;
+            if (rateControl == null) {
+                // temp hack to get around loss of RateControl is JDK7 
+				// surprised this works, but as far as I recall, I must
+				// have done the frequency myself for anything higher than
+				// the SAMPLE_RATE, so forcing slow = false makes
+				// us do it in software, which might sound bad without filtering
+				// but is good enough for now
+                slow = false;
+            }
             sampleRate = slow ? ((SAMPLE_RATE * pitch) >> 12) : SAMPLE_RATE;
             int min = sampleRate < MIN_BUFFER_SAMPLE_RATE ? MIN_BUFFER_SAMPLE_RATE : sampleRate;
             BUFFER_MAX_REFILL_SAMPLES = (min * BUFFER_MAX_REFILL_MS) / 1000;
             BUFFER_MAX_FILL_SAMPLES = (min * BUFFER_MAX_FILL_MS) / 1000;
             //System.out.println("slow="+slow+" sample rate="+sampleRate+" max samples="+BUFFER_MAX_REFILL_SAMPLES);
-            rateControl.setValue(sampleRate);
+            if (rateControl != null) {
+                rateControl.setValue(sampleRate);
+            }
             if (!noVoices) {
                 line.start();
             }
@@ -734,15 +756,20 @@ public class SPU extends SingletonJPSXComponent implements MemoryMapped, CDAudio
 
             int l = (leftVol * mainLeftVol) >> 15;
             int r = (rightVol * mainRightVol) >> 15;
-            if (l == r) {
-                vol = l;
-                panControl.setValue(0.0f);
-            } else if (l > r) {
-                vol = l;
-                panControl.setValue(((float) r) / l - 1.0f);
+            if (panControl == null) {
+				// todo fix this, for now without pan control, just average l/r volume
+                vol = (l + r) / 2;
             } else {
-                vol = r;
-                panControl.setValue(1.0f - ((float) l) / r);
+                if (l == r) {
+                    vol = l;
+                    panControl.setValue(0.0f);
+                } else if (l > r) {
+                    vol = l;
+                    panControl.setValue(((float) r) / l - 1.0f);
+                } else {
+                    vol = r;
+                    panControl.setValue(1.0f - ((float) l) / r);
+                }
             }
         }
 
