@@ -6,15 +6,18 @@
         <property name="bootstrap.src" value="${src}/bootstrap/java"/>
         <property name="runtime.src" value="${src}/runtime/java"/>
         <property name="api.src" value="${src}/api/java"/>
+        <property name="lwjgl.src" value="${src}/lwjgl/java" />
         <property name="classes" value="${basedir}/classes"/>
         <property name="bootstrap.classes" value="${classes}/bootstrap"/>
         <property name="runtime.classes" value="${classes}/runtime"/>
         <property name="api.classes" value="${classes}/api"/>
+        <property name="lwjgl.classes" value="${classes}/lwjgl" />
         <property name="bcel.sourcepath" value="${basedir}/external/bcel-5.1" />
         <property name="bcel.classpath" value="${bcel.sourcepath}/bin/bcel.jar" />
         <property name="log4j.classpath" value="${basedir}/external/log4j-1.2.13.jar" />
+        <property name="lwjgl.classpath" value="${basedir}/external/lwjgl-2.9.1/jar/lwjgl.jar" />
 
-        <target name="all" depends="api_build,bootstrap_build,runtime_build,package"/>
+        <target name="all" depends="api_build,bootstrap_build,runtime_build,lwjgl_build,package"/>
 
         <target name="env">
         </target>
@@ -30,6 +33,7 @@
                 <mkdir dir="${bootstrap.classes}"/>
                 <mkdir dir="${runtime.classes}"/>
                 <mkdir dir="${api.classes}"/>
+                <mkdir dir="${lwjgl.classes}"/>
         </target>
 
         <target name="package">
@@ -41,6 +45,9 @@
                         <manifest>
                                 <attribute name="Main-Class" value="org.jpsx.bootstrap.JPSXLauncher"/>
                         </manifest>
+                </jar>
+                <jar destfile="${basedir}/ship/jpsx-lwjgl.jar">
+                        <fileset dir="${lwjgl.classes}" />
                 </jar>
         </target>
 
@@ -85,5 +92,17 @@
                                 <include name="org/jpsx/runtime/components/hardware/gpu/GPU$$_*.class"/>
                         </fileset>
                 </delete>
+        </target>
+
+        <target name="lwjgl_build" depends="api_build,bootstrap_build,runtime_build,env,dirs,bcel_build">
+                <javac source="1.5" target="1.5" srcdir="${lwjgl.src}" destdir="${lwjgl.classes}" debug="on">
+                        <classpath>
+                                <pathelement path="${log4j.classpath}"/>
+                                <pathelement path="${api.classes}"/>
+                                <pathelement path="${bootstrap.classes}"/>
+                                <pathelement path="${runtime.classes}"/>
+                                <pathelement path="${lwjgl.classpath}"/>
+                        </classpath>
+                </javac>
         </target>
 </project>
