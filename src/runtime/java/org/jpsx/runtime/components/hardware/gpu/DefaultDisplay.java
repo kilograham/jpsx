@@ -43,7 +43,6 @@ public class DefaultDisplay extends JPSXComponent implements Display, KeyListene
 
     private int[] ram; // video RAM
     private BufferedImage bufferedImage; // image containing video RAM
-    private Graphics graphics;
     private DisplayManager displayManager;
     private int sourceWidth, sourceHeight; // the size of the source to be stretched to be displayed
 
@@ -178,7 +177,6 @@ public class DefaultDisplay extends JPSXComponent implements Display, KeyListene
             frame.setSize(new Dimension(1024 + frame.getInsets().left + frame.getInsets().right, 512 + frame.getInsets().top + frame.getInsets().bottom));
         else
             frame.setSize(new Dimension(xres[resindex] + frame.getInsets().left + frame.getInsets().right, yres[resindex] + frame.getInsets().top + frame.getInsets().bottom));
-        graphics = frame.getGraphics();
     }
 
     protected void switchsize() {
@@ -285,7 +283,14 @@ public class DefaultDisplay extends JPSXComponent implements Display, KeyListene
                 g2.dispose();
             }
         }
-        stretchBlit(graphics);
+        Graphics graphics = frame.getGraphics();
+        if (graphics != null) {
+            try {
+                stretchBlit(graphics);
+            } finally {
+                graphics.dispose();
+            }
+        }
     }
 
     public void keyTyped(KeyEvent e) {
