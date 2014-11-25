@@ -314,8 +314,10 @@ public class CD extends JPSXComponent implements MemoryMapped {
         }
 
         public int get(int index) {
-            if (index < 0 || index > count)
-                throw new ArrayIndexOutOfBoundsException();
+            if (index < 0 || index > count) {
+                log.error("out of bounds in CD");
+                throw new ArrayIndexOutOfBoundsException(index);
+            }
             return params[index];
         }
     }
@@ -378,7 +380,6 @@ public class CD extends JPSXComponent implements MemoryMapped {
 
     private static class HeadLocation {
         private int m, s, f;
-        private int sector;
 
         public HeadLocation() {
             init(0);
@@ -388,18 +389,15 @@ public class CD extends JPSXComponent implements MemoryMapped {
             m = h.m;
             s = h.s;
             f = h.f;
-            sector = h.sector;
         }
 
         public void init(int m, int s, int f) {
             this.m = m;
             this.s = s;
             this.f = f;
-            sector = (m * 60 + s) * 75 + f - 150;
         }
 
         public void init(int sec) {
-            this.sector = sec;
             sec += 150;
             f = sec % 75;
             sec /= 75;
@@ -420,7 +418,7 @@ public class CD extends JPSXComponent implements MemoryMapped {
         }
 
         public int getSector() {
-            return sector;
+            return CDUtil.toSector(m, s, f);
         }
 
         /**
@@ -433,7 +431,6 @@ public class CD extends JPSXComponent implements MemoryMapped {
         }
 
         public void nextSequential() {
-            sector++;
             f++;
             if (f == 75) {
                 f = 0;
@@ -1068,8 +1065,15 @@ public class CD extends JPSXComponent implements MemoryMapped {
                 // 5 bytes; tn, playing1/0 ?, m, s, f
                 res = new CmdResult();
                 res.type = CmdResult.ACKNOWLEDGE;
-                res.add(CDUtil.toBCD(getTrack(currentLocation.getM(), currentLocation.getS(), currentLocation.getF())));
+                track = getTrack(currentLocation.getM(), currentLocation.getS(), currentLocation.getF());
+                res.add(CDUtil.toBCD(track));
                 res.add(state == STATE_PLAY ? 1 : 0);
+                int trackMSF = track == 0 ? 0 : media.getTrackMSF(track);
+                int trackSector = CDUtil.toSector(CDUtil.fromBCD((trackMSF>>16)&0xff), CDUtil.fromBCD(((trackMSF)>>8)&0xff), CDUtil.fromBCD(trackMSF&0xff));
+                int relativeSector = currentLocation.getSector() - trackSector;
+                res.add(relativeSector / (60*75));
+                res.add((relativeSector / 75)%60);
+                res.add(relativeSector % 75);
                 res.add(CDUtil.toBCD(currentLocation.getM()));
                 res.add(CDUtil.toBCD(currentLocation.getS()));
                 res.add(CDUtil.toBCD(currentLocation.getF()));
@@ -1668,6 +1672,5 @@ public class CD extends JPSXComponent implements MemoryMapped {
         }
         return 0;
     }
-
 }
 

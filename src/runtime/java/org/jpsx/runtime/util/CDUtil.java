@@ -69,6 +69,10 @@ public class CDUtil {
     }
 
     public static int toMSF(int m, int s, int f) {
-        return (toBCD(m << 16)) | (toBCD(s) << 8) | toBCD(f);
+        return (toBCD(m) << 16) | (toBCD(s) << 8) | toBCD(f);
+    }
+
+    public static int toSector(int m, int s, int f) {
+        return (m * 60 + s) * 75 + f - 150;
     }
 }
