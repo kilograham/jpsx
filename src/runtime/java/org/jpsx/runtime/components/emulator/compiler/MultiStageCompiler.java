@@ -300,6 +300,8 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
                     }
                 }
             }
+        } else {
+            log.warn("PC could not be calculated from stack trace, maybe you need -XX:-OmitStackTraceInFastThrow?");
         }
         return false;
     }
