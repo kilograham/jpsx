@@ -3,9 +3,9 @@
 <project name="jpsx" default="all" basedir=".">
         <property file="build.properties"/>
         <property name="src" value="${basedir}/src"/>
-        <property name="bootstrap.src" value="${src}/bootstrap"/>
-        <property name="runtime.src" value="${src}/runtime"/>
-        <property name="api.src" value="${src}/api"/>
+        <property name="bootstrap.src" value="${src}/bootstrap/java"/>
+        <property name="runtime.src" value="${src}/runtime/java"/>
+        <property name="api.src" value="${src}/api/java"/>
         <property name="classes" value="${basedir}/classes"/>
         <property name="bootstrap.classes" value="${classes}/bootstrap"/>
         <property name="runtime.classes" value="${classes}/runtime"/>
@@ -49,38 +49,35 @@
         </target>
 
         <target name="api_build" depends="env,dirs,bcel_build">
-                <javac source="1.5" destdir="${api.classes}" debug="on">
+                <javac source="1.5" srcdir="${api.src}" destdir="${api.classes}" debug="on">
                         <classpath>
                                 <pathelement path="${bcel.classpath}"/>
                                 <pathelement path="${log4j.classpath}"/>
                         </classpath>
-                        <src path="${api.src}"/>
                         <!--<include name="org/jpsx/api/**"/>-->
                 </javac>
         </target>
 
         <target name="bootstrap_build" depends="api_build,env,dirs,bcel_build">
-                <javac source="1.5" destdir="${bootstrap.classes}" debug="on">
+                <javac source="1.5" srcdir="${bootstrap.src}" destdir="${bootstrap.classes}" debug="on">
                         <classpath>
                                 <pathelement path="${bcel.classpath}"/>
                                 <pathelement path="${log4j.classpath}"/>
                                 <pathelement path="${api.classes}"/>
                         </classpath>
-                        <src path="${bootstrap.src}"/>
                         <!--<include name="org/jpsx/bootstrap/**"/>-->
                 </javac>
         </target>
 
 
         <target name="runtime_build" depends="api_build,bootstrap_build,env,dirs,bcel_build">
-                <javac source="1.5" destdir="${runtime.classes}" debug="on">
+                <javac source="1.5" srcdir="${runtime.src}" destdir="${runtime.classes}" debug="on">
                         <classpath>
                                 <pathelement path="${bcel.classpath}"/>
                                 <pathelement path="${log4j.classpath}"/>
                                 <pathelement path="${api.classes}"/>
                                 <pathelement path="${bootstrap.classes}"/>
                         </classpath>
-                        <src path="${runtime.src}"/>
                         <!--<include name="org/jpsx/runtime/**"/>-->
                 </javac>
                 <delete>
