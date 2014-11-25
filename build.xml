@@ -49,7 +49,7 @@
         </target>
 
         <target name="api_build" depends="env,dirs,bcel_build">
-                <javac source="1.5" srcdir="${api.src}" destdir="${api.classes}" debug="on">
+                <javac source="1.5" target="1.5" srcdir="${api.src}" destdir="${api.classes}" debug="on">
                         <classpath>
                                 <pathelement path="${bcel.classpath}"/>
                                 <pathelement path="${log4j.classpath}"/>
@@ -59,7 +59,7 @@
         </target>
 
         <target name="bootstrap_build" depends="api_build,env,dirs,bcel_build">
-                <javac source="1.5" srcdir="${bootstrap.src}" destdir="${bootstrap.classes}" debug="on">
+                <javac source="1.5" target="1.5" srcdir="${bootstrap.src}" destdir="${bootstrap.classes}" debug="on">
                         <classpath>
                                 <pathelement path="${bcel.classpath}"/>
                                 <pathelement path="${log4j.classpath}"/>
@@ -71,7 +71,7 @@
 
 
         <target name="runtime_build" depends="api_build,bootstrap_build,env,dirs,bcel_build">
-                <javac source="1.5" srcdir="${runtime.src}" destdir="${runtime.classes}" debug="on">
+                <javac source="1.5" target="1.5" srcdir="${runtime.src}" destdir="${runtime.classes}" debug="on">
                         <classpath>
                                 <pathelement path="${bcel.classpath}"/>
                                 <pathelement path="${log4j.classpath}"/>
