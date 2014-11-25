@@ -118,7 +118,6 @@ public class DefaultDisplay extends JPSXComponent implements Display, KeyListene
         frame.show();
         frame.setResizable(false);
         sizeframe();
-        graphics = frame.getGraphics();
         volatileImage = frame.createVolatileImage(MAX_X, MAX_Y);
         frame.addKeyListener(RuntimeConnections.KEY_LISTENERS.resolve());
         frame.addWindowListener(new Closer());
@@ -179,6 +178,7 @@ public class DefaultDisplay extends JPSXComponent implements Display, KeyListene
             frame.setSize(new Dimension(1024 + frame.getInsets().left + frame.getInsets().right, 512 + frame.getInsets().top + frame.getInsets().bottom));
         else
             frame.setSize(new Dimension(xres[resindex] + frame.getInsets().left + frame.getInsets().right, yres[resindex] + frame.getInsets().top + frame.getInsets().bottom));
+        graphics = frame.getGraphics();
     }
 
     protected void switchsize() {
@@ -327,4 +327,3 @@ public class DefaultDisplay extends JPSXComponent implements Display, KeyListene
         }
     }
 }
-
