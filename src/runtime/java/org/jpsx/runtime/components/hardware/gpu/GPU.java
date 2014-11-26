@@ -12462,7 +12462,9 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             return 0;
         } else {
             // todo; do this more efficiently!
-            if (data[offset] == 0x55555555) {
+            // NOTE: While most games use 0x55555555, Wild Arms uses 0x50005000.
+            // http://problemkaputt.de/psx-spx.htm#gpurenderlinecommands
+            if ((data[offset] & 0xf000f000 ) == 0x50005000) {
                 m_gpudState = GPUD_CMD_NONE;
                 return 1;
             }
