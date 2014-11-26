@@ -27,6 +27,8 @@ import org.jpsx.runtime.components.hardware.HardwareComponentConnections;
 import org.jpsx.runtime.util.CDUtil;
 import org.jpsx.runtime.util.MiscUtil;
 
+import java.io.*;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -131,7 +133,7 @@ public class CueBinImageDrive extends SingletonJPSXComponent implements CDDrive 
                         if (q1 >= 0) {
                             int q2 = line.indexOf("\"", q1 + 1);
                             if (q2 >= q1) {
-                                binFilename = line.substring(q1 + 1, q2);
+                                binFilename = binFilename.substring(0, binFilename.lastIndexOf(File.separator) + 1) + line.substring(q1 + 1, q2);
                             }
                         }
                     }
@@ -149,8 +151,6 @@ public class CueBinImageDrive extends SingletonJPSXComponent implements CDDrive 
             binFile = null;
             long length;
             log.warn("== "+binFilename);
-            binFilename="//Users//jvilk//Code//jpsx//rips//"+binFilename;
-            log.warn("==2 "+binFilename);
             try {
                 binFile = new RandomAccessFile(binFilename, "r");
                 length = binFile.length();
