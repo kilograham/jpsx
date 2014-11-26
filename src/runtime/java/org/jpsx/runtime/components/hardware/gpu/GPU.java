@@ -12211,7 +12211,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         m_lineInfo.color = makePixel(data[offset] & 0xff, (data[offset] >> 8) & 0xff, (data[offset] >> 16) & 0xff, 0);
 
         if (dumpGPUD) {
-            System.out.println("gpudLine");
+            System.out.println("gpudLine (" + v0.x + "," + v0.y + ") -> (" + v1.x + "," + v1.y + ")");
         }
         switch (getMaskModes()) {
             case 0:
@@ -12329,7 +12329,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             } else {
                 // Draw the next line segment.
                 polyLineCmdBuffer[2] = data[offset];
-                gpudLine(data, offset, 3);
+                gpudLine(polyLineCmdBuffer, 0, 3);
                 // Buffer entry 0 [color data] doesn't need to be rewritten.
                 polyLineCmdBuffer[1] = data[offset]; // v1 for next line segment.
             }
