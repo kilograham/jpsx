@@ -12311,7 +12311,6 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         return 0;
     }
 
-    private static int lineCount = 0;
     public static int gpudPolyLine(int[] data, int offset, int size) {
         if (m_gpudState != GPUD_CMD_EXTRA) {
             // Draw the first line segment.
@@ -12319,7 +12318,6 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             polyLineCmdBuffer[0] = data[offset]; // Color for whole polyline.
             polyLineCmdBuffer[1] = data[offset + 2]; // v1 for next line segment.
             m_gpudState = GPUD_CMD_EXTRA;
-            lineCount++;
             return 0;
         } else {
             // todo; do this more efficiently!
@@ -12328,14 +12326,12 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             if ((data[offset] & 0xf000f000 ) == 0x50005000) {
                 // End of the polyline!
                 m_gpudState = GPUD_CMD_NONE;
-                lineCount = 0;
             } else {
                 // Draw the next line segment.
                 polyLineCmdBuffer[2] = data[offset];
                 gpudLine(data, offset, 3);
                 // Buffer entry 0 [color data] doesn't need to be rewritten.
                 polyLineCmdBuffer[1] = data[offset]; // v1 for next line segment.
-                lineCount++;
             }
             return 1;
         }
