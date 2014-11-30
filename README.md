@@ -5,45 +5,49 @@ if it doesn't work at least that well for those games, it is probably your envir
 
 # History
 
-I (graham) wrote it back in 2003 basically just because it was exactly the sort of thing people were saying Java was too slow for. I had written a C/C++ emu in the late 1990s
+I (Graham) wrote it back in 2003 basically just because it was exactly the sort of thing people were saying Java was too slow for. I had written a C/C++ emu in the late 1990s
 that I never made publicly available (though some of the code found a home), so I had already done a bunch of the reverse engineering work.
 
 I have actually done very little to it over time, other than periodically trying it on new JVMs (it should work on anything JDK1.4+, though JDK5 is now probably a sensible minimum).
-I did give a talk on it at JavaOne in 2006. I have been meaning to open source it ever since, so thanks to jvilk I now have.
+I also gave a talk on it at JavaOne in 2006, and have been meaning to open source it ever since (though it had so many little things wrong with it
+ that annoyed me, which I had never gotten around to fixing, so it never happened until now). Thanks to jvilk for catching me at the right time
+ and convincing me to open source it in all its warty glory.
 
 # Philosophy
 
-Since I was writing it in Java, I thought it'd be nice to make it do it in an object oriented style. Therefore there are largely encapsulated classes representing the different
-physical hardware and indeed internal emulation components.
+Since I was writing it in Java, I thought it'd be nice to make it do it in an object oriented style. Therefore there are prett well encapsulated classes 
+representing the different physical hardware and indeed internal emulation components.
 
-That said, this was written back with the HotSpot client compiler in mind (the server compiler caused way too many compilation pauses back then for game use), so generally
-I always picked speed over pretty code.
+That said, this was written back with the HotSpot client compiler in mind (the server compiler caused way too many compilation
+ pauses back then for game use) so generally I always picked runtime speed over pretty code.
 
 There are all kinds of optimizations in there (you can read about some of it here http://docs.huihoo.com/javaone/2006/cool-stuff/ts-5547.pdf), some of which still make sense
-some of which don't, and just make things clunky/ugly.
+some of which don't and just make things clunky/ugly.
 Those which are stupid on a modern JVM will probably be removed, though equally I expect that this codebase is likely to be used on
 lower spec Java platforms in the future, where a lot of this stuff will still matter, so I don't expect to rip it all out if it doesn't actively hurt - we might fork the codebase though.
 
-## PSX a different platform, JPSX a different style of emulator
+## PSX a different platform; JPSX a different style of emulator
 
-At least at the time (I don't really follow the emu scene)... there seemed to be a lot of focus in emulators about cycle counting. This certainly makes sense in a lot of cases
-especially older platforms where you really cared where the CRT electron beam was when this cycle executed etc, or you needed to write a sound sample out at exactly this moment etc.
+At least at the time (I don't really follow the emu scene)... there seemed to be a lot of focus in emulators about cycle counting. This certainly makes
+sense in a lot of cases especially on older platforms where you really cared where the CRT electron beam was when this cycle executed etc,
+or you needed to write a sound sample out at exactly this moment etc.
 
-From looking at the PSX, it seemed to be sort of a new breed, with a more mature set of components loosely coupled (via IRQ and DMA) which otherwise carried on largely
-independently. For that reason I decided to emulate each component largely independently. Sometimes in separate threads, sometimes synced to external timing events, but coupled via Java synchronization. As such for example
-for example the R3000 emulation (well more accurately it is transcoded/recompiled into bytecode) runs as fast as it can and then blocks.
+Looking at the PSX, it seemed to be sort of a new breed, with a more mature set of components loosely coupled (via IRQ and DMA) which otherwise carried on largely
+independently. For that reason I decided to emulate each component largely independently too. Sometimes in separate threads, sometimes synced to external 
+timing events, but coupled via Java synchronization. As such, for example, the R3000 CPU emulation (well more accurately R300 code is transcoded/recompiled/reoptimized
+ into bytecode) runs as fast as it can and then blocks.
 
 This turns out to work remarkably well
-(of course JPSX has to detect busy wait loops so as not to hog (busy wait on) the native CPU, or indeed because the PSX level loop timeouts are WAY too short for native hardware),
+(of course JPSX has to detect busy wait loops so as not to hog (busy wait on) the native CPU, and because the PSX level loop timeouts are WAY too short for native hardware).
 
 That said of course there are badly written bits of PSX code with race conditions which need to be patched or worked around, some perhaps badly designed hardware
 (I spent a LONG time trying to figure out a robust interaction between the CPU thread and CD controller which it seems may never have existed), but in the spirit
-of philosophy, unless it proves impossible, I'd like JPSX to conntinue in this vain.
+of philosophy, unless it proves impossible, I'd like JPSX to continue in this vain.
 
 # More on implementation
 
 JPSX is built entirely of plug-able components. If you look at `jpsx.xml`, you'll see the default definitions that I use.
-The XML format is just a (in)convenience - that will likely be one of the first things to go now this is open sourced.
+The XML format is just a (in)convenience - that might be one of the first things to go now this is open sourced.
 This is parsed into a MachineDefintion internally (see `MachineDefinition.java`)
 
 Although any part of the emulator can be replaced, it makes less sense to do so with some parts than others; I have three main groupings:
@@ -52,69 +56,53 @@ Although any part of the emulator can be replaced, it makes less sense to do so 
 * **hardware**: implementations of emulated hardware that you might want to swap out
 * **emulator**: implementations of emulator components such as the recompiler
 
-While the emu doesn't force any particular interfaces on the implementation, obviously for different pieces of the emulator to work together they have to know how to talk to eachother. This is done by named connections (basically an interface), and these happen to live in the API tree.
+While the emu doesn't force any particular interfaces on the implementation, obviously for different pieces of the emulator to work together they have to know how to talk to each other. 
+This is done by well known (to each other) named connections (basically an interface), and these happen to live in the API tree.
 
-An example connection is Display which is used by the current software GPU (which could of course be replaced). The Display implementation provides an `int[]` basically XRGB32
-for the GPU to draw into, and the Display is only responsible for displaying the correct portion of VRAM to the user when told to.
+An example connection is `Display` which is used by the current software GPU (which could of course be replaced). The Display implementation provides an `int[]`
+ (basically RGB32) for the GPU to draw into, and the Display is only responsible for displaying the correct portion of VRAM to the user when told to.
 
-Similarly there are some abstractions for serial ports and devices, providers for CD data etc.
+Similarly there are some abstractions for serial ports and devices, CD sector providers etc.
 
-# PSX Compatibility
+# Platform Compatibility
 
-TODO move these to wiki pages
-## Games
+See the [wiki](https://github.com/jvilk/jpsx/wiki/Platform-Compatibility) for full details, but recent tests of
 
-Compatibility of games as evidenced on at least one platform
+* Oracle JDK6
+* Oracle JDK7
+* Oracle JDK8
 
-TODO we should note platform/JDK etc. where we know it works
+on recent
 
-Mostly flawless
+* OS X
+* Ubuntu
+* Windows (WHAT VERSIONS HAVE BEEN TESTED?)
 
-* Abe's Odyssey
-* Wipeout
-* Wipeout XL
-* Tekken
-* TombRaider
+Work reasonably well, with the following general exceptions
 
-OK
+* **GRAPHICS** - The default AWT based screen image display mechanism `DefaultDisplay` is broken (painfully slow) on JDK6 on OS X. Use the `LWJGL` display as a workaround (pass `lwjgl` to `osx.sh`).
+This may also be broken on certain other JDK versions and platforms (you'll see **!SLOW!** in the title bar)... there seems to have been some screw ups
+during the introduction of the OpenGL and DirectX Java2d rendering pipelines, along with the introduction of Compositing Desktops (e.g. Aero). Ironically
+this worked great on all platforms way back when, and fortunately now seems to be mostly fixed again.
+* **SOUND** - the Default `SPU` is not great at the best of times (ok for sound effects and good for CD audio), 
+but it relied on features of `JavaSound` that were removed in later JDKs (JDK7 and JDK8 for sure). This has been
+band-aided for now, so you do get sound, but JDK6 sound is better
 
-* BIOS
-    Sound kind of sucks on existing SPU (reverb)
-    Occasionally get corrupted display in CD player
-    CD player displayed minutes and seconds are wrong I think
-* Crash Bandicoot (note you must use the "bandicoot" machine which turns on a fudge for root counters which aren't in there yet)
-* MIDI sound kind of sucks
+It will not run on anything prior to JDK1.4, and JDK5 will likely be the minimum since JMM is not properly defined before that.
 
-Somewhat
+# Software Compatibility
 
-* Gran Turismo (if you turn the sound off - against there is a "gt" machine)
+See the [wiki](https://github.com/jvilk/jpsx/wiki/Software-Compatibility) for full list of games and demos that have been tested
 
-## Hardware
+# Hardware Compatibility
 
-TODO - see wiki here
+See the [wiki](https://github.com/jvilk/jpsx/wiki/Hardware-Compatibility) for current compatibility status of currently available
+emulation components
 
-# JDK/Platform Compatibility
+# Developer Documentation
 
-As mentioned, this was originally written a long time ago around JDK1.4, that said we have recently tested it on JDK6, 7, 8 and it generally runs OK.
+See the [wiki](https://github.com/jvilk/jpsx/wiki/Documentation) for general development and other documentation
 
-## AWT image handling
-
-The software GPU creates basically a Java int[] representing 32 bit RGB for the display RAM, a rectangle of which simply needs to be copied up to the screen.
-This should be mind-bogglingly simple (especially since for AWT the int[] is part of a BufferedImage). That said (whilst working fine back in the day on nearly all platforms)
-this has been frequently broken (in terms of performance) since.
-
-Look for a "Blit XX ms" in the window title bar. If this is >1ms something is horribly wrong... Right now this blit is in the main PSX thread (with CPU, GTE, GPU, MDEC and some others)
-and generally needs to be done 25/30/50/60 times per second depending on the game region so once it gets to the >20ms range which I've seen on some platforms (I'm looking at you OSX JDK 6, and JDK 5 on Vista) then
-basically it is taking 100% of the game thread.
-
-Fortunately it seems fixed again on newer JVMs, but as an alternative you can use LWJGL to do the copy up via OpenGL pipe which generally plays well
-with modern composited windowing systems. Of course someone can and hopefully will implement a fully OpenGL renderer too!
-
-TODO - see wiki here for full list SPU details etc.
-
-# Emulation state
-
-TODO - see wiki here
 # Building the Emulator
 
 TODO: complete this
@@ -122,41 +110,37 @@ TODO: complete this
 
 # Running the Emulator
 
-
-If you are unsure if you're getting acceleration try `-Dsun.java2d.trace=log`, if use see a lot of java2d.loops stuff that is unnaccelerated (note if you are successfully using quartz on OS X then you won't see any logging)
+Right now this is pretty bare bones
 
 ## Command Line
 
-I included a bat file for windows, but for OSX it should look something like:
+`osx.sh` is provided as an example script for OS X
 
-``` 
-java -Xmx128M -XX:-DontCompileHugeMethods -XX:-UseSplitVerifier -XX:-OmitStackTraceInFastThrow org.jpsx.bootstrap.JPSXLauncher $*
-```
+The following are required options for HotSpot, or things won't work properly/at all.
 
--XX:-DontCompileHugeMethods     needed on everything
--XX:-UseSplitVerifier           needed on JDK7+ (current BCEL code gen doesn't do the right thing)
--XX:-OmitStackTraceInFastThrow  needed on newer JVMs (if it supports it use it)
+-XX:-DontCompileHugeMethods     needed on everything otherwise things may be slow
+-XX:-UseSplitVerifier           needed on JDK7+ (current BCEL code gen isnt' supported by JVM otherwise)
+-XX:-OmitStackTraceInFastThrow  needed on newer JVMs which otherwise break JPSX by removing required line number information
 
-Note the `DontCompileHugeMethods` is important, since sometimes generated bytecode for a method is large (although I did add some code later to split big functions), and by default HotSpot doesn't bother to compile methods that are too large.
+_todo this comment is old, and needs investigation_ 
+Note the `DontCompileHugeMethods` is important, since sometimes generated bytecode for a method is large (although I did add some code later to split big functions), 
+and by default HotSpot doesn't bother to compile methods that are too large.
 
-Additional arguments are `<machineId>` to pick a specific machine, and any number of `property=value`. For example, `rnea image=/rips/gt.cue` will set the image property used by the CUE/BIN CD drive to a specific file (note I think right not that the CUE must specify an absolute path to the BIN file).
+Additional arguments are `<machineId>` to pick a specific machine, and any number of `property=value`. 
 
+For example, `./osx.sh image=/rips/gt.cue` will 
+set the image property used by the CUE/BIN CD drive to a specific file (note I think right not that the CUE must specify an absolute path to the BIN file).
+
+For example, `./osx.sh lwjgl` will use the machine definition called *lwjgl* that uses `LWJGLDisplay` in place of `DefaultDisplay`
 
 # Keys
 
-The default machine definition includes a "console" component... this is interactive sort of like `gdb`.
+The default machine definition includes a `Console` component... this is interactive sort of like `gdb`.
 So to get stuff to run in this mode you need to enter "g" for go. You can look at the code for Console to figure out some other commands. "b" breaks for example
 
 Look at `AWTKeyboardController` for the controller mappings
 
 The display also supports a few keys (don't forget `fn` on OS X).
 
-* **F12**: resize (on Vista the display is sometimes off by a few pixels, hitting F12 back to the same original size fixes this)
-* **F9**: toggle full VRAM display - this is kinda cool
-
-# Final Words
-
-GOOD LUCK; let me know what happens.
-
-
-I have tried Final Fantasy VII in the past which I think was OK... Tomb Raider is currently broken because one of the CdlGetLocs is not done right - I wrote a C emu in the past, and had exactly the same problem... I should fix!
+* **F12**: Resize window
+* **F9**: Toggle full VRAM display - this is kinda cool
