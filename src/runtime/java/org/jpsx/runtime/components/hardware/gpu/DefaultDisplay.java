@@ -85,7 +85,7 @@ public class DefaultDisplay extends JPSXComponent implements Display, KeyListene
         super.init();
         HardwareComponentConnections.DISPLAY.set(this);
         RuntimeConnections.KEY_LISTENERS.add(this);
-        showBlitTime = Boolean.valueOf(getProperty("showBlitTime","false"));
+        showBlitTime = Boolean.valueOf(getProperty("showBlitTime","true"));
         antiAlias = Boolean.valueOf(getProperty("antiAlias","true"));
         noStretch = Boolean.valueOf(getProperty("noStretch","false"));
     }
@@ -218,7 +218,8 @@ public class DefaultDisplay extends JPSXComponent implements Display, KeyListene
         if (showBlitTime) {
             blitTimeTotal += Timing.nanos()-timeBasis;
             if (BLIT_TIME_COUNT == ++blitTimeCount) {
-                frame.setTitle("JPSX - blitTime="+((blitTimeTotal/(BLIT_TIME_COUNT*100000))/10.0)+"ms");
+                double blitTimeMSRounded = (blitTimeTotal/(BLIT_TIME_COUNT*100000))/10.0;
+                frame.setTitle("JPSX awt - " + ((blitTimeMSRounded >= 1) ? "!SLOW! blit=" : "blit=") + blitTimeMSRounded + "ms");
                 blitTimeCount = 0;
                 blitTimeTotal = 0;
             }

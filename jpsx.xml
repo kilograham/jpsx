@@ -24,6 +24,13 @@
 		<include refid="imagecd2"/>
 	</machine>
 
+    <machine id="lwjgl">
+        <include refid="imagecd2"/>
+        <component id="display" classname="org.jpsx.runtime.components.hardware.gpu.LWJGLDisplay">
+            <property name="showBlitTime" value="true"/>
+        </component>
+    </machine>
+
 	<machine id="nostretch">
 		<include refid="imagecd2"/>
 		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">

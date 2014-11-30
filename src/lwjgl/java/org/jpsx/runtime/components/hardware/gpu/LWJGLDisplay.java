@@ -115,7 +115,7 @@ public class LWJGLDisplay extends JPSXComponent implements Display, KeyListener 
         transferBuffer.order(ByteOrder.nativeOrder());
         transferBufferIntView = transferBuffer.asIntBuffer();
 
-        showBlitTime = Boolean.valueOf(getProperty("showBlitTime","false"));
+        showBlitTime = Boolean.valueOf(getProperty("showBlitTime","true"));
         antiAlias = Boolean.valueOf(getProperty("antiAlias","true"));
         noStretch = Boolean.valueOf(getProperty("noStretch","false"));
     }
@@ -327,7 +327,8 @@ public class LWJGLDisplay extends JPSXComponent implements Display, KeyListener 
                     refreshString = " refresh="+((refreshTimeTotal/(refreshTimeCount*100000))/10.0)+"ms";
                     refreshTimeTotal = refreshTimeCount = 0;
                 }
-                frame.setTitle("JPSX lwjgl - blit="+((blitTimeTotal/(BLIT_TIME_COUNT*100000))/10.0)+"ms" + refreshString);
+                double blitTimeMSRounded = (blitTimeTotal/(BLIT_TIME_COUNT*100000))/10.0;
+                frame.setTitle("JPSX lwjgl - " + ((blitTimeMSRounded >= 1) ? "!SLOW! blit=" : "blit=") + blitTimeMSRounded + "ms" + refreshString);
                 blitTimeCount = 0;
                 blitTimeTotal = 0;
             }
