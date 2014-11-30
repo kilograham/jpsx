@@ -231,11 +231,11 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
 
     public void init() {
         super.init();
-        JPSXClassLoader.registerClassGenerator("org.jpsx.runtime.components.hardware.gpu.GPU$_T", this);
-        JPSXClassLoader.registerClassGenerator("org.jpsx.runtime.components.hardware.gpu.GPU$_L", this);
-        JPSXClassLoader.registerClassGenerator("org.jpsx.runtime.components.hardware.gpu.GPU$_S", this);
-        JPSXClassLoader.registerClassGenerator("org.jpsx.runtime.components.hardware.gpu.GPU$_Q", this);
-        JPSXClassLoader.registerClassGenerator("org.jpsx.runtime.components.hardware.gpu.GPU$_R", this);
+        JPSXClassLoader.registerClassGenerator("org.jpsx.runtime.components.hardware.gpu.GPUGenerated$_T", this);
+        JPSXClassLoader.registerClassGenerator("org.jpsx.runtime.components.hardware.gpu.GPUGenerated$_L", this);
+        JPSXClassLoader.registerClassGenerator("org.jpsx.runtime.components.hardware.gpu.GPUGenerated$_S", this);
+        JPSXClassLoader.registerClassGenerator("org.jpsx.runtime.components.hardware.gpu.GPUGenerated$_Q", this);
+        JPSXClassLoader.registerClassGenerator("org.jpsx.runtime.components.hardware.gpu.GPUGenerated$_R", this);
         CoreComponentConnections.ALL_MEMORY_MAPPED.add(this);
         CoreComponentConnections.POLL_BLOCK_LISTENERS.add(this);
         CoreComponentConnections.DMA_CHANNEL_OWNERS.add(new GPUDMAChannel());
@@ -695,5575 +695,6 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
     }
 
 
-    public static class _Q400000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q400001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q400010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q400011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q400100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q400101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q400110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q400111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q401000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q401001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q401010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q401011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q401100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q401101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q401110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q401111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q402000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q402001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q402010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q402011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q402100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q402101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q402110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q402111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q403000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q403001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q403010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q403011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q403100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q403101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q403110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q403111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q404000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q404001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q404010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q404011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q404100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q404101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q404110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q404111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q500000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q500001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q500010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q500011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q500100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q500101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q500110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q500111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q501000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q501001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q501010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q501011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q501100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q501101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q501110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q501111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q502000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q502001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q502010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q502011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q502100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q502101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q502110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q502111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q503000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q503001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q503010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q503011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q503100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q503101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q503110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q503111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q504000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q504001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q504010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q504011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q504100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q504101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q504110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q504111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q800000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q800001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q800010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q800011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q800100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q800101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q800110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q800111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q801000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q801001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q801010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q801011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q801100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q801101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q801110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q801111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q802000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q802001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q802010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q802011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q802100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q802101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q802110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q802111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q803000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q803001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q803010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q803011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q803100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q803101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q803110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q803111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q804000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q804001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q804010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q804011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q804100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q804101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q804110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q804111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q900000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q900001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q900010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q900011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q900100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q900101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q900110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q900111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q901000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q901001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q901010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q901011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q901100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q901101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q901110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q901111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q902000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q902001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q902010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q902011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q902100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q902101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q902110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q902111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q903000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q903001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q903010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q903011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q903100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q903101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q903110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q903111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q904000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q904001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q904010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q904011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q904100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q904101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q904110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q904111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q600000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q600010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q600100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q600110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q601000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q601010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q601100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q601110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q602000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q602010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q602100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q602110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q603000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q603010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q603100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q603110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q604000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q604010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q604100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q604110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q700000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q700010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q700100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q700110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q701000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q701010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q701100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q701110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q702000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q702010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q702100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q702110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q703000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q703010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q703100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q703110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q704000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q704010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q704100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q704110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q410000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q410001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q410010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q410011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q410100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q410101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q410110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q410111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q411000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q411001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q411010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q411011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q411100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q411101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q411110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q411111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q412000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q412001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q412010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q412011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q412100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q412101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q412110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q412111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q413000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q413001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q413010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q413011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q413100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q413101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q413110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q413111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q414000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q414001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q414010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q414011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q414100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q414101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q414110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q414111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q510000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q510001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q510010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q510011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q510100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q510101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q510110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q510111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q511000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q511001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q511010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q511011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q511100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q511101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q511110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q511111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q512000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q512001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q512010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q512011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q512100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q512101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q512110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q512111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q513000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q513001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q513010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q513011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q513100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q513101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q513110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q513111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q514000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q514001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q514010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q514011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q514100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q514101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q514110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q514111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q810000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q810001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q810010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q810011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q810100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q810101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q810110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q810111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q811000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q811001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q811010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q811011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q811100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q811101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q811110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q811111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q812000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q812001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q812010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q812011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q812100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q812101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q812110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q812111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q813000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q813001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q813010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q813011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q813100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q813101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q813110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q813111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q814000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q814001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q814010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q814011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q814100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q814101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q814110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q814111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q910000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q910001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q910010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q910011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q910100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q910101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q910110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q910111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q911000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q911001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q911010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q911011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q911100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q911101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q911110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q911111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q912000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q912001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q912010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q912011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q912100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q912101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q912110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q912111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q913000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q913001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q913010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q913011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q913100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q913101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q913110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q913111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q914000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q914001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q914010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q914011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q914100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q914101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q914110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q914111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q610000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q610010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q610100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q610110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q611000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q611010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q611100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q611110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q612000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q612010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q612100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q612110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q613000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q613010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q613100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q613110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q614000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q614010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q614100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q614110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q710000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q710010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q710100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q710110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q711000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q711010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q711100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q711110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q712000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q712010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q712100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q712110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q713000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q713010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q713100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q713110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q714000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q714010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q714100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q714110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q000000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q000010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q000100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q000110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q001000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q001010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q001100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q001110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q002000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q002010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q002100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q002110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q003000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q003010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q003100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q003110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q004000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q004010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q004100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q004110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q010000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q011000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q012000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q013000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _Q014000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        }
-    }
-
-    public static class _T010001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T010011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T010101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T010111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T400000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T400010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T400100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T400110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T400001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T400011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T400101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T400111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T401000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T401010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T401100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T401110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T401001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T401011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T401101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T401111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T402000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T402010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T402100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T402110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T402001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T402011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T402101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T402111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T403000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T403010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T403100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T403110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T403001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T403011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T403101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T403111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T404000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T404010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T404100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T404110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T404001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T404011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T404101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T404111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T410000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T410010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T410100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T410110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T410001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T410011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T410101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T410111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T411000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T411010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T411100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T411110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T411001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T411011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T411101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T411111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T412000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T412010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T412100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T412110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T412001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T412011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T412101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T412111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T413000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T413010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T413100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T413110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T413001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T413011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T413101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T413111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T414000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T414010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T414100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T414110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T414001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T414011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T414101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T414111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T500000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T500010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T500100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T500110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T500001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T500011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T500101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T500111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T501000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T501010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T501100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T501110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T501001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T501011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T501101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T501111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T502000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T502010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T502100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T502110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T502001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T502011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T502101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T502111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T503000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T503010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T503100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T503110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T503001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T503011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T503101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T503111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T504000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T504010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T504100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T504110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T504001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T504011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T504101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T504111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T510000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T510010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T510100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T510110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T510001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T510011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T510101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T510111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T511000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T511010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T511100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T511110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T511001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T511011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T511101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T511111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T512000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T512010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T512100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T512110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T512001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T512011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T512101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T512111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T513000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T513010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T513100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T513110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T513001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T513011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T513101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T513111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T514000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T514010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T514100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T514110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T514001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T514011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T514101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T514111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T000000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T000010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T000100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T000110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T001000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T001010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T001100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T001110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T002000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T002010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T002100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T002110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T003000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T003010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T003100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T003110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T004000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T004010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T004100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T004110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T010000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T011000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T012000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T013000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T014000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T800000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T800010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T800100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T800110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T800001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T800011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T800101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T800111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T801000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T801010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T801100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T801110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T801001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T801011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T801101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T801111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T802000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T802010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T802100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T802110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T802001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T802011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T802101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T802111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T803000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T803010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T803100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T803110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T803001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T803011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T803101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T803111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T804000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T804010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T804100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T804110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T804001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T804011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T804101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T804111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T810000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T810010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T810100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T810110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T810001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T810011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T810101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T810111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T811000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T811010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T811100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T811110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T811001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T811011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T811101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T811111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T812000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T812010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T812100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T812110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T812001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T812011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T812101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T812111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T813000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T813010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T813100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T813110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T813001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T813011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T813101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T813111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T814000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T814010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T814100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T814110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T814001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T814011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T814101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T814111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T900000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T900010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T900100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T900110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T900001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T900011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T900101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T900111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T901000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T901010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T901100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T901110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T901001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T901011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T901101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T901111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T902000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T902010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T902100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T902110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T902001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T902011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T902101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T902111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T903000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T903010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T903100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T903110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T903001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T903011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T903101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T903111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T904000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T904010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T904100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T904110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T904001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T904011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T904101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T904111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T910000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T910010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T910100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T910110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T910001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T910011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T910101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T910111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T911000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T911010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T911100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T911110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T911001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T911011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T911101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T911111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T912000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T912010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T912100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T912110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T912001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T912011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T912101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T912111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T913000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T913010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T913100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T913110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T913001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T913011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T913101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T913111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T914000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T914010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T914100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T914110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T914001 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T914011 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T914101 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T914111 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T600000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T600010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T600100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T600110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T601000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T601010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T601100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T601110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T602000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T602010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T602100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T602110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T603000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T603010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T603100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T603110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T604000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T604010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T604100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T604110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T610000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T610010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T610100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T610110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T611000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T611010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T611100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T611110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T612000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T612010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T612100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T612110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T613000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T613010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T613100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T613110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T614000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T614010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T614100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T614110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T700000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T700010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T700100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T700110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T701000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T701010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T701100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T701110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T702000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T702010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-	public static class _T702100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T702110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T703000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T703010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T703100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T703110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T704000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T704010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T704100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T704110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T710000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T710010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T710100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T710110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T711000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T711010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T711100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T711110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T712000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T712010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T712100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T712110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T713000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T713010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T713100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T713110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T714000 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T714010 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T714100 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _T714110 {
-        public static void render(PolygonRenderInfo info, Vertex v0, Vertex v1, Vertex v2) {
-        }
-    }
-
-    public static class _S000000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S000010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S000100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S000110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S001000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S001010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S001100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S001110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S002000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S002010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S002100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S002110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S003000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S003010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S003100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S003110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S004000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S004010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S004100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S004110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S400000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S400010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S400100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S400110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S400001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S400011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S400101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S400111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S401000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S401010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S401100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S401110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S401001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S401011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S401101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S401111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S402000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S402010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S402100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S402110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S402001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S402011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S402101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S402111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S403000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S403010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S403100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S403110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S403001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S403011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S403101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S403111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S404000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S404010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S404100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S404110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S404001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S404011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S404101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S404111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S500000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S500010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S500100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S500110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S500001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S500011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S500101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S500111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S501000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S501010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S501100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S501110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S501001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S501011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S501101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S501111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S502000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S502010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S502100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S502110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S502001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S502011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S502101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S502111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S503000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S503010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S503100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S503110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S503001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S503011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S503101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S503111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S504000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S504010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S504100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S504110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S504001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S504011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S504101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S504111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S800000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S800010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S800100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S800110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S800001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S800011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S800101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S800111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S801000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S801010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S801100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S801110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S801001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S801011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S801101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S801111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S802000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S802010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S802100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S802110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S802001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S802011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S802101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S802111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S803000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S803010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S803100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S803110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S803001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S803011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S803101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S803111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S804000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S804010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S804100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S804110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S804001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S804011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S804101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S804111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S900000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S900010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S900100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S900110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S900001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S900011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S900101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S900111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S901000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S901010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S901100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S901110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S901001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S901011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S901101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S901111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S902000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S902010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S902100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S902110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S902001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S902011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S902101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S902111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S903000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S903010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S903100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S903110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S903001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S903011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S903101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S903111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S904000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S904010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S904100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S904110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S904001 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S904011 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S904101 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S904111 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S600000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S600010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S600100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S600110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S601000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S601010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S601100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S601110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S602000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S602010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S602100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S602110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S603000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S603010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S603100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S603110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S604000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S604010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S604100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S604110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S700000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S700010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S700100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S700110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S701000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S701010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S701100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S701110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S702000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S702010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S702100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S702110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S703000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S703010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S703100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S703110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S704000 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S704010 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S704100 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _S704110 {
-        public static void render(PolygonRenderInfo info, int x, int y, int w, int h) {
-        }
-    }
-
-    public static class _L010000 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L010010 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L010100 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L010110 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L000000 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L000010 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L000100 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L000110 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L001000 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L001010 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L001100 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L001110 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L002000 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L002010 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L002100 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L002110 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L003000 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L003010 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L003100 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L003110 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L004000 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L004010 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L004100 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L004110 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L011000 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L011010 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L011100 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L011110 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L012000 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L012010 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L012100 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L012110 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L013000 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L013010 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L013100 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L013110 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L014000 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L014010 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L014100 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
-
-    public static class _L014110 {
-        public static void render(LineRenderInfo info, Vertex v0, Vertex v1) {
-        }
-    }
 
     private static class TemplateTriangleRenderer {
         private static Vertex[] verts = new Vertex[3];
@@ -7854,16 +2285,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
 
         switch (getMaskModes()) {
             case 0:
-                _T000000.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T000000.render(m_polygonInfo, v0, v1, v2);
                 break;
             case DRAWMODE_SET_MASK:
-                _T000100.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T000100.render(m_polygonInfo, v0, v1, v2);
                 break;
             case DRAWMODE_CHECK_MASK:
-                _T000010.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T000010.render(m_polygonInfo, v0, v1, v2);
                 break;
             default:
-                _T000110.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T000110.render(m_polygonInfo, v0, v1, v2);
                 break;
         }
         return 0;
@@ -7894,64 +2325,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             case 0:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _T001000.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T001000.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _T002000.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T002000.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _T003000.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T003000.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _T004000.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T004000.render(m_polygonInfo, v0, v1, v2);
                         break;
                 }
                 break;
             case DRAWMODE_SET_MASK:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _T001100.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T001100.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _T002100.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T002100.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _T003100.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T003100.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _T004100.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T004100.render(m_polygonInfo, v0, v1, v2);
                         break;
                 }
                 break;
             case DRAWMODE_CHECK_MASK:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _T001010.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T001010.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _T002010.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T002010.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _T003010.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T003010.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _T004010.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T004010.render(m_polygonInfo, v0, v1, v2);
                         break;
                 }
                 break;
             default:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _T001110.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T001110.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _T002110.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T002110.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _T003110.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T003110.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _T004110.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T004110.render(m_polygonInfo, v0, v1, v2);
                         break;
                 }
                 break;
@@ -8008,31 +2439,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette4(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _T400001.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T400001.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T400101.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T400101.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T400011.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T400011.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T400111.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T400111.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _T400000.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T400000.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T400100.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T400100.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T400010.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T400010.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T400110.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T400110.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 }
@@ -8041,31 +2472,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette8(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _T800001.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T800001.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T800101.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T800101.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T800011.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T800011.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T800111.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T800111.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _T800000.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T800000.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T800100.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T800100.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T800010.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T800010.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T800110.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T800110.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 }
@@ -8078,16 +2509,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 // todo breg
                 switch (getMaskModes()) {
                     case 0:
-                        _T600000.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T600000.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SET_MASK:
-                        _T600100.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T600100.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_CHECK_MASK:
-                        _T600010.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T600010.render(m_polygonInfo, v0, v1, v2);
                         break;
                     default:
-                        _T600110.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T600110.render(m_polygonInfo, v0, v1, v2);
                         break;
                 }
                 break;
@@ -8096,31 +2527,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette4(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _T500001.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T500001.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T500101.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T500101.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T500011.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T500011.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T500111.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T500111.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _T500000.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T500000.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T500100.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T500100.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T500010.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T500010.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T500110.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T500110.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 }
@@ -8129,31 +2560,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette8(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _T900001.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T900001.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T900101.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T900101.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T900011.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T900011.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T900111.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T900111.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _T900000.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T900000.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T900100.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T900100.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T900010.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T900010.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T900110.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T900110.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 }
@@ -8166,16 +2597,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 // todo breg
                 switch (getMaskModes()) {
                     case 0:
-                        _T700000.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T700000.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SET_MASK:
-                        _T700100.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T700100.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_CHECK_MASK:
-                        _T700010.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T700010.render(m_polygonInfo, v0, v1, v2);
                         break;
                     default:
-                        _T700110.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T700110.render(m_polygonInfo, v0, v1, v2);
                         break;
                 }
             }
@@ -8183,7 +2614,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         return 0;
     }
 
-    static int[] m_tempPalette = new int[256];
+    static int[] m_TempPalette = new int[256];
 
     // todo check for cached palette
     public static boolean getPalette4(int val) {
@@ -8220,7 +2651,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         int rmul = (val & 0xff);
         int gmul = ((val >> 8) & 0xff);
         int bmul = ((val >> 16) & 0xff);
-        int[] dest = m_tempPalette;
+        int[] dest = m_TempPalette;
         boolean solid = true;
         for (int i = 0; i < 16; i++) {
             int current = src[srcIndex + i];
@@ -8280,7 +2711,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         int rmul = (val & 0xff);
         int gmul = ((val >> 8) & 0xff);
         int bmul = ((val >> 16) & 0xff);
-        int[] dest = m_tempPalette;
+        int[] dest = m_TempPalette;
         for (int i = 0; i < 256; i++) {
             int current = src[srcIndex + i];
             int b = (current & 0xff);
@@ -8343,64 +2774,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T401001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T401001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T402001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T402001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T403001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T403001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T404001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T404001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T401101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T401101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T402101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T402101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T403101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T403101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T404101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T404101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T401011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T401011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T402011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T402011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T403011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T403011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T404011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T404011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T401111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T401111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T402111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T402111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T403111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T403111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T404111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T404111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -8410,64 +2841,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T401000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T401000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T402000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T402000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T403000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T403000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T404000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T404000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T401100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T401100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T402100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T402100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T403100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T403100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T404100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T404100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T401010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T401010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T402010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T402010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T403010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T403010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T404010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T404010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T401110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T401110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T402110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T402110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T403110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T403110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T404110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T404110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -8480,64 +2911,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T801001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T801001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T802001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T802001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T803001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T803001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T804001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T804001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T801101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T801101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T802101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T802101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T803101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T803101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T804101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T804101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T801011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T801011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T802011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T802011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T803011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T803011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T804011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T804011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T801111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T801111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T802111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T802111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T803111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T803111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T804111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T804111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -8547,64 +2978,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T801000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T801000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T802000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T802000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T803000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T803000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T804000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T804000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T801100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T801100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T802100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T802100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T803100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T803100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T804100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T804100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T801010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T801010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T802010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T802010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T803010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T803010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T804010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T804010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T801110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T801110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T802110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T802110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T803110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T803110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T804110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T804110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -8621,64 +3052,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     case 0:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T601000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T601000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T602000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T602000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T603000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T603000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T604000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T604000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     case DRAWMODE_SET_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T601100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T601100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T602100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T602100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T603100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T603100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T604100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T604100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     case DRAWMODE_CHECK_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T601010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T601010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T602010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T602010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T603010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T603010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T604010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T604010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     default:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T601110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T601110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T602110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T602110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T603110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T603110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T604110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T604110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
@@ -8691,64 +3122,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T501001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T501001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T502001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T502001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T503001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T503001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T504001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T504001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T501101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T501101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T502101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T502101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T503101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T503101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T504101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T504101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T501011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T501011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T502011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T502011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T503011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T503011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T504011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T504011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T501111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T501111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T502111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T502111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T503111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T503111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T504111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T504111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -8758,64 +3189,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T501000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T501000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T502000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T502000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T503000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T503000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T504000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T504000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T501100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T501100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T502100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T502100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T503100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T503100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T504100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T504100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T501010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T501010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T502010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T502010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T503010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T503010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T504010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T504010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T501110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T501110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T502110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T502110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T503110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T503110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T504110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T504110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -8828,64 +3259,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T901001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T901001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T902001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T902001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T903001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T903001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T904001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T904001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T901101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T901101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T902101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T902101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T903101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T903101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T904101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T904101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T901011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T901011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T902011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T902011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T903011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T903011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T904011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T904011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T901111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T901111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T902111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T902111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T903111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T903111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T904111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T904111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -8895,64 +3326,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T901000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T901000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T902000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T902000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T903000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T903000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T904000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T904000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T901100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T901100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T902100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T902100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T903100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T903100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T904100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T904100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T901010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T901010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T902010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T902010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T903010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T903010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T904010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T904010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T901110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T901110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T902110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T902110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T903110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T903110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T904110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T904110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -8969,64 +3400,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     case 0:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T701000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T701000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T702000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T702000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T703000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T703000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T704000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T704000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     case DRAWMODE_SET_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T701100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T701100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T702100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T702100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T703100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T703100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T704100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T704100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     case DRAWMODE_CHECK_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T701010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T701010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T702010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T702010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T703010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T703010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T704010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T704010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     default:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T701110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T701110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T702110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T702110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T703110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T703110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T704110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T704110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
@@ -9069,16 +3500,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
 
         switch (getMaskModes()) {
             case 0:
-                _Q000000.render(m_polygonInfo, v0, v1, v2, v3);
+                GPUGenerated._Q000000.render(m_polygonInfo, v0, v1, v2, v3);
                 break;
             case DRAWMODE_SET_MASK:
-                _Q000100.render(m_polygonInfo, v0, v1, v2, v3);
+                GPUGenerated._Q000100.render(m_polygonInfo, v0, v1, v2, v3);
                 break;
             case DRAWMODE_CHECK_MASK:
-                _Q000010.render(m_polygonInfo, v0, v1, v2, v3);
+                GPUGenerated._Q000010.render(m_polygonInfo, v0, v1, v2, v3);
                 break;
             default:
-                _Q000110.render(m_polygonInfo, v0, v1, v2, v3);
+                GPUGenerated._Q000110.render(m_polygonInfo, v0, v1, v2, v3);
                 break;
         }
         return 0;
@@ -9113,64 +3544,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             case 0:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _Q001000.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q001000.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _Q002000.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q002000.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _Q003000.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q003000.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _Q004000.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q004000.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                 }
                 break;
             case DRAWMODE_SET_MASK:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _Q001100.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q001100.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _Q002100.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q002100.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _Q003100.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q003100.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _Q004100.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q004100.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                 }
                 break;
             case DRAWMODE_CHECK_MASK:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _Q001010.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q001010.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _Q002010.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q002010.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _Q003010.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q003010.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _Q004010.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q004010.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                 }
                 break;
             default:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _Q001110.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q001110.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _Q002110.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q002110.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _Q003110.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q003110.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _Q004110.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q004110.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                 }
                 break;
@@ -9220,31 +3651,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette4(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q400001.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q400001.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q400101.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q400101.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q400011.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q400011.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q400111.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q400111.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q400000.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q400000.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q400100.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q400100.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q400010.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q400010.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q400110.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q400110.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 }
@@ -9253,31 +3684,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette8(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q800001.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q800001.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q800101.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q800101.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q800011.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q800011.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q800111.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q800111.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q800000.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q800000.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q800100.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q800100.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q800010.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q800010.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q800110.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q800110.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 }
@@ -9290,16 +3721,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 // todo breg
                 switch (getMaskModes()) {
                     case 0:
-                        _Q600000.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q600000.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SET_MASK:
-                        _Q600100.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q600100.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_CHECK_MASK:
-                        _Q600010.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q600010.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     default:
-                        _Q600110.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q600110.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                 }
                 break;
@@ -9308,31 +3739,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette4(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q500001.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q500001.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q500101.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q500101.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q500011.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q500011.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q500111.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q500111.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q500000.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q500000.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q500100.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q500100.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q500010.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q500010.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q500110.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q500110.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 }
@@ -9341,31 +3772,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette8(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q900001.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q900001.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q900101.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q900101.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q900011.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q900011.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q900111.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q900111.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q900000.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q900000.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q900100.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q900100.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q900010.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q900010.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q900110.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q900110.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 }
@@ -9378,16 +3809,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 // todo breg
                 switch (getMaskModes()) {
                     case 0:
-                        _Q700000.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q700000.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SET_MASK:
-                        _Q700100.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q700100.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_CHECK_MASK:
-                        _Q700010.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q700010.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     default:
-                        _Q700110.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q700110.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                 }
             }
@@ -9439,64 +3870,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q401001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q401001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q402001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q402001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q403001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q403001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q404001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q404001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q401101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q401101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q402101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q402101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q403101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q403101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q404101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q404101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q401011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q401011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q402011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q402011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q403011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q403011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q404011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q404011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q401111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q401111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q402111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q402111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q403111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q403111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q404111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q404111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -9506,64 +3937,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q401000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q401000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q402000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q402000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q403000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q403000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q404000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q404000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q401100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q401100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q402100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q402100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q403100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q403100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q404100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q404100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q401010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q401010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q402010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q402010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q403010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q403010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q404010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q404010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q401110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q401110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q402110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q402110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q403110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q403110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q404110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q404110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -9576,64 +4007,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q801001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q801001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q802001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q802001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q803001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q803001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q804001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q804001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q801101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q801101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q802101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q802101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q803101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q803101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q804101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q804101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q801011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q801011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q802011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q802011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q803011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q803011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q804011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q804011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q801111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q801111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q802111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q802111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q803111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q803111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q804111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q804111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -9643,64 +4074,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q801000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q801000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q802000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q802000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q803000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q803000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q804000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q804000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q801100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q801100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q802100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q802100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q803100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q803100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q804100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q804100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q801010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q801010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q802010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q802010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q803010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q803010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q804010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q804010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q801110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q801110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q802110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q802110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q803110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q803110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q804110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q804110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -9717,64 +4148,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     case 0:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q601000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q601000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q602000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q602000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q603000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q603000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q604000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q604000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     case DRAWMODE_SET_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q601100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q601100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q602100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q602100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q603100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q603100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q604100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q604100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     case DRAWMODE_CHECK_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q601010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q601010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q602010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q602010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q603010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q603010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q604010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q604010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     default:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q601110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q601110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q602110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q602110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q603110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q603110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q604110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q604110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
@@ -9787,64 +4218,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q501001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q501001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q502001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q502001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q503001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q503001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q504001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q504001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q501101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q501101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q502101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q502101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q503101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q503101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q504101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q504101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q501011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q501011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q502011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q502011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q503011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q503011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q504011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q504011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q501111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q501111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q502111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q502111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q503111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q503111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q504111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q504111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -9854,64 +4285,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q501000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q501000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q502000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q502000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q503000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q503000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q504000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q504000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q501100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q501100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q502100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q502100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q503100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q503100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q504100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q504100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q501010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q501010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q502010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q502010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q503010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q503010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q504010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q504010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q501110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q501110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q502110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q502110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q503110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q503110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q504110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q504110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -9924,64 +4355,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q901001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q901001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q902001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q902001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q903001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q903001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q904001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q904001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q901101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q901101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q902101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q902101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q903101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q903101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q904101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q904101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q901011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q901011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q902011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q902011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q903011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q903011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q904011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q904011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q901111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q901111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q902111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q902111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q903111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q903111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q904111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q904111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -9991,64 +4422,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q901000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q901000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q902000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q902000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q903000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q903000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q904000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q904000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q901100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q901100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q902100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q902100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q903100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q903100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q904100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q904100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q901010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q901010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q902010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q902010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q903010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q903010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q904010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q904010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q901110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q901110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q902110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q902110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q903110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q903110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q904110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q904110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -10065,64 +4496,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     case 0:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q701000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q701000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q702000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q702000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q703000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q703000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q704000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q704000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     case DRAWMODE_SET_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q701100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q701100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q702100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q702100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q703100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q703100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q704100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q704100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     case DRAWMODE_CHECK_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q701010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q701010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q702010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q702010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q703010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q703010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q704010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q704010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     default:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q701110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q701110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q702110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q702110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q703110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q703110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q704110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q704110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
@@ -10164,16 +4595,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         }
         switch (getMaskModes()) {
             case 0:
-                _T010001.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T010001.render(m_polygonInfo, v0, v1, v2);
                 break;
             case DRAWMODE_SET_MASK:
-                _T010101.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T010101.render(m_polygonInfo, v0, v1, v2);
                 break;
             case DRAWMODE_CHECK_MASK:
-                _T010011.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T010011.render(m_polygonInfo, v0, v1, v2);
                 break;
             default:
-                _T010111.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T010111.render(m_polygonInfo, v0, v1, v2);
                 break;
         }
         return 0;
@@ -10208,16 +4639,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         // todo lots
         switch (getSemiMode()) {
             case DRAWMODE_SEMI_5P5:
-                _T011000.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T011000.render(m_polygonInfo, v0, v1, v2);
                 break;
             case DRAWMODE_SEMI_10P10:
-                _T012000.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T012000.render(m_polygonInfo, v0, v1, v2);
                 break;
             case DRAWMODE_SEMI_10M10:
-                _T013000.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T013000.render(m_polygonInfo, v0, v1, v2);
                 break;
             case DRAWMODE_SEMI_10P25:
-                _T014000.render(m_polygonInfo, v0, v1, v2);
+                GPUGenerated._T014000.render(m_polygonInfo, v0, v1, v2);
                 break;
         }
         return 0;
@@ -10268,31 +4699,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette4(data[offset] | 0x01000000)) {
                     switch (getMaskModes()) {
                         case 0:
-                            _T410001.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T410001.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T410101.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T410101.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T410011.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T410011.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T410111.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T410111.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _T410000.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T410000.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T410100.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T410100.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T410010.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T410010.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T410110.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T410110.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 }
@@ -10301,31 +4732,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette8(data[offset] | 0x01000000)) {
                     switch (getMaskModes()) {
                         case 0:
-                            _T810001.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T810001.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T810101.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T810101.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T810011.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T810011.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T810111.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T810111.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _T810000.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T810000.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T810100.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T810100.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T810010.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T810010.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T810110.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T810110.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 }
@@ -10333,16 +4764,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             case DRAWMODE_TEXTURE_16BIT:
                 switch (getMaskModes()) {
                     case 0:
-                        _T610000.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T610000.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SET_MASK:
-                        _T610100.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T610100.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_CHECK_MASK:
-                        _T610010.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T610010.render(m_polygonInfo, v0, v1, v2);
                         break;
                     default:
-                        _T610110.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T610110.render(m_polygonInfo, v0, v1, v2);
                         break;
                 }
                 break;
@@ -10350,31 +4781,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette4(data[offset] | 0x01000000)) {
                     switch (getMaskModes()) {
                         case 0:
-                            _T510001.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T510001.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T510101.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T510101.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T510011.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T510011.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T510111.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T510111.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _T510000.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T510000.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T510100.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T510100.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T510010.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T510010.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T510110.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T510110.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 }
@@ -10383,31 +4814,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette8(data[offset] | 0x01000000)) {
                     switch (getMaskModes()) {
                         case 0:
-                            _T910001.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T910001.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T910101.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T910101.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T910011.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T910011.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T910111.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T910111.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _T910000.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T910000.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _T910100.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T910100.render(m_polygonInfo, v0, v1, v2);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _T910010.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T910010.render(m_polygonInfo, v0, v1, v2);
                             break;
                         default:
-                            _T910110.render(m_polygonInfo, v0, v1, v2);
+                            GPUGenerated._T910110.render(m_polygonInfo, v0, v1, v2);
                             break;
                     }
                 }
@@ -10415,16 +4846,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             case DRAWMODE_TEXTURE_16BITW:
                 switch (getMaskModes()) {
                     case 0:
-                        _T710000.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T710000.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_SET_MASK:
-                        _T710100.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T710100.render(m_polygonInfo, v0, v1, v2);
                         break;
                     case DRAWMODE_CHECK_MASK:
-                        _T710010.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T710010.render(m_polygonInfo, v0, v1, v2);
                         break;
                     default:
-                        _T710110.render(m_polygonInfo, v0, v1, v2);
+                        GPUGenerated._T710110.render(m_polygonInfo, v0, v1, v2);
                         break;
                 }
         }
@@ -10478,64 +4909,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T411001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T411001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T412001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T412001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T413001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T413001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T414001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T414001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T411101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T411101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T412101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T412101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T413101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T413101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T414101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T414101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T411011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T411011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T412011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T412011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T413011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T413011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T414011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T414011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T411111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T411111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T412111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T412111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T413111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T413111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T414111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T414111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -10545,64 +4976,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T411000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T411000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T412000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T412000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T413000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T413000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T414000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T414000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T411100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T411100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T412100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T412100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T413100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T413100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T414100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T414100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T411010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T411010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T412010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T412010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T413010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T413010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T414010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T414010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T411110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T411110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T412110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T412110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T413110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T413110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T414110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T414110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -10615,64 +5046,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T811001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T811001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T812001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T812001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T813001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T813001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T814001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T814001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T811101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T811101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T812101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T812101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T813101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T813101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T814101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T814101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T811011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T811011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T812011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T812011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T813011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T813011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T814011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T814011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T811111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T811111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T812111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T812111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T813111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T813111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T814111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T814111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -10682,64 +5113,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T811000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T811000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T812000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T812000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T813000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T813000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T814000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T814000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T811100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T811100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T812100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T812100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T813100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T813100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T814100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T814100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T811010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T811010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T812010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T812010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T813010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T813010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T814010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T814010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T811110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T811110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T812110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T812110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T813110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T813110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T814110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T814110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -10751,64 +5182,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     case 0:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T611000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T611000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T612000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T612000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T613000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T613000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T614000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T614000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     case DRAWMODE_SET_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T611100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T611100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T612100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T612100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T613100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T613100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T614100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T614100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     case DRAWMODE_CHECK_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T611010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T611010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T612010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T612010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T613010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T613010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T614010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T614010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     default:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T611110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T611110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T612110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T612110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T613110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T613110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T614110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T614110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
@@ -10820,64 +5251,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T511001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T511001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T512001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T512001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T513001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T513001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T514001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T514001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T511101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T511101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T512101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T512101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T513101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T513101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T514101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T514101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T511011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T511011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T512011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T512011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T513011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T513011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T514011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T514011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T511111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T511111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T512111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T512111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T513111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T513111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T514111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T514111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -10887,64 +5318,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T511000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T511000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T512000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T512000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T513000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T513000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T514000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T514000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T511100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T511100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T512100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T512100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T513100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T513100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T514100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T514100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T511010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T511010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T512010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T512010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T513010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T513010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T514010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T514010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T511110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T511110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T512110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T512110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T513110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T513110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T514110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T514110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -10957,64 +5388,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T911001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T911001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T912001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T912001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T913001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T913001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T914001.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T914001.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T911101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T911101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T912101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T912101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T913101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T913101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T914101.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T914101.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T911011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T911011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T912011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T912011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T913011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T913011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T914011.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T914011.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T911111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T911111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T912111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T912111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T913111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T913111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T914111.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T914111.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -11024,64 +5455,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T911000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T911000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T912000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T912000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T913000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T913000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T914000.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T914000.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T911100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T911100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T912100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T912100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T913100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T913100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T914100.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T914100.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T911010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T911010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T912010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T912010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T913010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T913010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T914010.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T914010.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _T911110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T911110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _T912110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T912110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _T913110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T913110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _T914110.render(m_polygonInfo, v0, v1, v2);
+                                    GPUGenerated._T914110.render(m_polygonInfo, v0, v1, v2);
                                     break;
                             }
                             break;
@@ -11093,64 +5524,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     case 0:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T711000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T711000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T712000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T712000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T713000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T713000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T714000.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T714000.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     case DRAWMODE_SET_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T711100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T711100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T712100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T712100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T713100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T713100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T714100.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T714100.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     case DRAWMODE_CHECK_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T711010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T711010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T712010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T712010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T713010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T713010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T714010.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T714010.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
                     default:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _T711110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T711110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _T712110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T712110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _T713110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T713110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _T714110.render(m_polygonInfo, v0, v1, v2);
+                                GPUGenerated._T714110.render(m_polygonInfo, v0, v1, v2);
                                 break;
                         }
                         break;
@@ -11192,7 +5623,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         if (dumpGPUD) {
             System.out.println("gpud4PointGouraud");
         }
-        _Q010000.render(m_polygonInfo, v0, v1, v2, v3);
+        GPUGenerated._Q010000.render(m_polygonInfo, v0, v1, v2, v3);
         return 0;
     }
 
@@ -11232,16 +5663,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         // todo lots
         switch (getSemiMode()) {
             case DRAWMODE_SEMI_5P5:
-                _Q011000.render(m_polygonInfo, v0, v1, v2, v3);
+                GPUGenerated._Q011000.render(m_polygonInfo, v0, v1, v2, v3);
                 break;
             case DRAWMODE_SEMI_10P10:
-                _Q012000.render(m_polygonInfo, v0, v1, v2, v3);
+                GPUGenerated._Q012000.render(m_polygonInfo, v0, v1, v2, v3);
                 break;
             case DRAWMODE_SEMI_10M10:
-                _Q013000.render(m_polygonInfo, v0, v1, v2, v3);
+                GPUGenerated._Q013000.render(m_polygonInfo, v0, v1, v2, v3);
                 break;
             case DRAWMODE_SEMI_10P25:
-                _Q014000.render(m_polygonInfo, v0, v1, v2, v3);
+                GPUGenerated._Q014000.render(m_polygonInfo, v0, v1, v2, v3);
                 break;
         }
         return 0;
@@ -11301,31 +5732,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette4(data[offset] | 0x01000000)) {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q410001.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q410001.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q410101.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q410101.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q410011.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q410011.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q410111.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q410111.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q410000.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q410000.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q410100.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q410100.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q410010.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q410010.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q410110.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q410110.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 }
@@ -11334,31 +5765,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette8(data[offset] | 0x01000000)) {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q810001.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q810001.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q810101.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q810101.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q810011.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q810011.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q810111.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q810111.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q810000.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q810000.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q810100.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q810100.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q810010.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q810010.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q810110.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q810110.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 }
@@ -11366,16 +5797,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             case DRAWMODE_TEXTURE_16BIT:
                 switch (getMaskModes()) {
                     case 0:
-                        _Q610000.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q610000.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SET_MASK:
-                        _Q610100.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q610100.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_CHECK_MASK:
-                        _Q610010.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q610010.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     default:
-                        _Q610110.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q610110.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                 }
                 break;
@@ -11383,31 +5814,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette4(data[offset] | 0x01000000)) {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q510001.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q510001.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q510101.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q510101.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q510011.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q510011.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q510111.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q510111.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q510000.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q510000.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q510100.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q510100.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q510010.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q510010.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q510110.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q510110.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 }
@@ -11416,31 +5847,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette8(data[offset] | 0x01000000)) {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q910001.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q910001.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q910101.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q910101.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q910011.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q910011.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q910111.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q910111.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _Q910000.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q910000.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _Q910100.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q910100.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _Q910010.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q910010.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                         default:
-                            _Q910110.render(m_polygonInfo, v0, v1, v2, v3);
+                            GPUGenerated._Q910110.render(m_polygonInfo, v0, v1, v2, v3);
                             break;
                     }
                 }
@@ -11448,16 +5879,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             case DRAWMODE_TEXTURE_16BITW:
                 switch (getMaskModes()) {
                     case 0:
-                        _Q710000.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q710000.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_SET_MASK:
-                        _Q710100.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q710100.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     case DRAWMODE_CHECK_MASK:
-                        _Q710010.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q710010.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                     default:
-                        _Q710110.render(m_polygonInfo, v0, v1, v2, v3);
+                        GPUGenerated._Q710110.render(m_polygonInfo, v0, v1, v2, v3);
                         break;
                 }
         }
@@ -11520,64 +5951,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q411001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q411001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q412001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q412001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q413001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q413001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q414001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q414001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q411101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q411101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q412101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q412101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q413101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q413101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q414101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q414101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q411011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q411011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q412011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q412011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q413011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q413011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q414011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q414011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q411111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q411111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q412111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q412111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q413111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q413111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q414111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q414111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -11587,64 +6018,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q411000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q411000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q412000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q412000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q413000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q413000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q414000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q414000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q411100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q411100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q412100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q412100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q413100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q413100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q414100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q414100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q411010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q411010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q412010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q412010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q413010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q413010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q414010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q414010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q411110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q411110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q412110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q412110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q413110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q413110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q414110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q414110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -11657,64 +6088,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q811001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q811001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q812001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q812001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q813001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q813001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q814001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q814001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q811101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q811101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q812101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q812101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q813101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q813101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q814101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q814101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q811011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q811011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q812011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q812011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q813011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q813011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q814011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q814011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q811111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q811111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q812111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q812111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q813111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q813111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q814111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q814111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -11724,64 +6155,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q811000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q811000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q812000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q812000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q813000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q813000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q814000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q814000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q811100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q811100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q812100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q812100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q813100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q813100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q814100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q814100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q811010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q811010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q812010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q812010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q813010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q813010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q814010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q814010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q811110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q811110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q812110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q812110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q813110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q813110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q814110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q814110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -11793,64 +6224,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     case 0:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q611000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q611000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q612000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q612000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q613000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q613000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q614000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q614000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     case DRAWMODE_SET_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q611100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q611100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q612100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q612100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q613100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q613100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q614100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q614100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     case DRAWMODE_CHECK_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q611010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q611010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q612010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q612010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q613010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q613010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q614010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q614010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     default:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q611110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q611110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q612110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q612110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q613110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q613110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q614110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q614110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
@@ -11862,64 +6293,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q511001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q511001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q512001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q512001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q513001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q513001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q514001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q514001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q511101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q511101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q512101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q512101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q513101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q513101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q514101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q514101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q511011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q511011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q512011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q512011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q513011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q513011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q514011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q514011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q511111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q511111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q512111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q512111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q513111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q513111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q514111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q514111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -11929,64 +6360,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q511000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q511000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q512000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q512000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q513000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q513000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q514000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q514000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q511100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q511100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q512100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q512100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q513100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q513100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q514100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q514100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q511010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q511010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q512010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q512010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q513010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q513010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q514010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q514010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q511110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q511110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q512110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q512110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q513110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q513110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q514110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q514110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -11999,64 +6430,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q911001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q911001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q912001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q912001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q913001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q913001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q914001.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q914001.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q911101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q911101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q912101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q912101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q913101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q913101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q914101.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q914101.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q911011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q911011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q912011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q912011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q913011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q913011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q914011.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q914011.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q911111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q911111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q912111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q912111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q913111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q913111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q914111.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q914111.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -12066,64 +6497,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q911000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q911000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q912000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q912000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q913000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q913000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q914000.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q914000.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q911100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q911100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q912100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q912100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q913100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q913100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q914100.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q914100.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q911010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q911010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q912010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q912010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q913010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q913010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q914010.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q914010.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _Q911110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q911110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _Q912110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q912110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _Q913110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q913110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _Q914110.render(m_polygonInfo, v0, v1, v2, v3);
+                                    GPUGenerated._Q914110.render(m_polygonInfo, v0, v1, v2, v3);
                                     break;
                             }
                             break;
@@ -12135,64 +6566,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     case 0:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q711000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q711000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q712000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q712000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q713000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q713000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q714000.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q714000.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     case DRAWMODE_SET_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q711100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q711100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q712100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q712100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q713100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q713100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q714100.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q714100.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     case DRAWMODE_CHECK_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q711010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q711010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q712010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q712010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q713010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q713010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q714010.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q714010.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
                     default:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _Q711110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q711110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _Q712110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q712110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _Q713110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q713110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _Q714110.render(m_polygonInfo, v0, v1, v2, v3);
+                                GPUGenerated._Q714110.render(m_polygonInfo, v0, v1, v2, v3);
                                 break;
                         }
                         break;
@@ -12215,16 +6646,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         }
         switch (getMaskModes()) {
             case 0:
-                _L000000.render(m_lineInfo, v0, v1);
+                GPUGenerated._L000000.render(m_lineInfo, v0, v1);
                 break;
             case DRAWMODE_SET_MASK:
-                _L000100.render(m_lineInfo, v0, v1);
+                GPUGenerated._L000100.render(m_lineInfo, v0, v1);
                 break;
             case DRAWMODE_CHECK_MASK:
-                _L000010.render(m_lineInfo, v0, v1);
+                GPUGenerated._L000010.render(m_lineInfo, v0, v1);
                 break;
             default:
-                _L000110.render(m_lineInfo, v0, v1);
+                GPUGenerated._L000110.render(m_lineInfo, v0, v1);
                 break;
         }
         return 0;
@@ -12246,64 +6677,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             case 0:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _L001000.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L001000.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _L002000.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L002000.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _L003000.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L003000.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _L004000.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L004000.render(m_lineInfo, v0, v1);
                         break;
                 }
                 break;
             case DRAWMODE_SET_MASK:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _L001100.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L001100.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _L002100.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L002100.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _L003100.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L003100.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _L004100.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L004100.render(m_lineInfo, v0, v1);
                         break;
                 }
                 break;
             case DRAWMODE_CHECK_MASK:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _L001010.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L001010.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _L002010.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L002010.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _L003010.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L003010.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _L004010.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L004010.render(m_lineInfo, v0, v1);
                         break;
                 }
                 break;
             default:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _L001110.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L001110.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _L002110.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L002110.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _L003110.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L003110.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _L004110.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L004110.render(m_lineInfo, v0, v1);
                         break;
                 }
                 break;
@@ -12365,64 +6796,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             case 0:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _L011000.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L011000.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _L012000.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L012000.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _L013000.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L013000.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _L014000.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L014000.render(m_lineInfo, v0, v1);
                         break;
                 }
                 break;
             case DRAWMODE_SET_MASK:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _L011100.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L011100.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _L012100.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L012100.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _L013100.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L013100.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _L014100.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L014100.render(m_lineInfo, v0, v1);
                         break;
                 }
                 break;
             case DRAWMODE_CHECK_MASK:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _L011010.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L011010.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _L012010.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L012010.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _L013010.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L013010.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _L014010.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L014010.render(m_lineInfo, v0, v1);
                         break;
                 }
                 break;
             default:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _L011110.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L011110.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _L012110.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L012110.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _L013110.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L013110.render(m_lineInfo, v0, v1);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _L014110.render(m_lineInfo, v0, v1);
+                        GPUGenerated._L014110.render(m_lineInfo, v0, v1);
                         break;
                 }
                 break;
@@ -12449,16 +6880,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         }
         switch (getMaskModes()) {
             case 0:
-                _L010000.render(m_lineInfo, v0, v1);
+                GPUGenerated._L010000.render(m_lineInfo, v0, v1);
                 break;
             case DRAWMODE_SET_MASK:
-                _L010100.render(m_lineInfo, v0, v1);
+                GPUGenerated._L010100.render(m_lineInfo, v0, v1);
                 break;
             case DRAWMODE_CHECK_MASK:
-                _L010010.render(m_lineInfo, v0, v1);
+                GPUGenerated._L010010.render(m_lineInfo, v0, v1);
                 break;
             default:
-                _L010110.render(m_lineInfo, v0, v1);
+                GPUGenerated._L010110.render(m_lineInfo, v0, v1);
                 break;
         }
         return 0;
@@ -12518,16 +6949,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         }
         switch (getMaskModes()) {
             case 0:
-                _S000000.render(m_polygonInfo, x, y, w, h);
+                GPUGenerated._S000000.render(m_polygonInfo, x, y, w, h);
                 break;
             case DRAWMODE_SET_MASK:
-                _S000100.render(m_polygonInfo, x, y, w, h);
+                GPUGenerated._S000100.render(m_polygonInfo, x, y, w, h);
                 break;
             case DRAWMODE_CHECK_MASK:
-                _S000010.render(m_polygonInfo, x, y, w, h);
+                GPUGenerated._S000010.render(m_polygonInfo, x, y, w, h);
                 break;
             default:
-                _S000110.render(m_polygonInfo, x, y, w, h);
+                GPUGenerated._S000110.render(m_polygonInfo, x, y, w, h);
                 break;
         }
         return 0;
@@ -12552,64 +6983,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             case 0:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _S001000.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S001000.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _S002000.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S002000.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _S003000.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S003000.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _S004000.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S004000.render(m_polygonInfo, x, y, w, h);
                         break;
                 }
                 break;
             case DRAWMODE_SET_MASK:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _S001100.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S001100.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _S002100.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S002100.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _S003100.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S003100.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _S004100.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S004100.render(m_polygonInfo, x, y, w, h);
                         break;
                 }
                 break;
             case DRAWMODE_CHECK_MASK:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _S001010.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S001010.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _S002010.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S002010.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _S003010.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S003010.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _S004010.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S004010.render(m_polygonInfo, x, y, w, h);
                         break;
                 }
                 break;
             default:
                 switch (getSemiMode()) {
                     case DRAWMODE_SEMI_5P5:
-                        _S001110.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S001110.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10P10:
-                        _S002110.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S002110.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10M10:
-                        _S003110.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S003110.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SEMI_10P25:
-                        _S004110.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S004110.render(m_polygonInfo, x, y, w, h);
                         break;
                 }
                 break;
@@ -12656,31 +7087,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette4(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _S400001.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S400001.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _S400101.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S400101.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _S400011.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S400011.render(m_polygonInfo, x, y, w, h);
                             break;
                         default:
-                            _S400111.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S400111.render(m_polygonInfo, x, y, w, h);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _S400000.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S400000.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _S400100.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S400100.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _S400010.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S400010.render(m_polygonInfo, x, y, w, h);
                             break;
                         default:
-                            _S400110.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S400110.render(m_polygonInfo, x, y, w, h);
                             break;
                     }
                 }
@@ -12689,31 +7120,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette8(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _S800001.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S800001.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _S800101.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S800101.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _S800011.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S800011.render(m_polygonInfo, x, y, w, h);
                             break;
                         default:
-                            _S800111.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S800111.render(m_polygonInfo, x, y, w, h);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _S800000.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S800000.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _S800100.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S800100.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _S800010.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S800010.render(m_polygonInfo, x, y, w, h);
                             break;
                         default:
-                            _S800110.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S800110.render(m_polygonInfo, x, y, w, h);
                             break;
                     }
                 }
@@ -12726,16 +7157,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 // todo breg
                 switch (getMaskModes()) {
                     case 0:
-                        _S600000.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S600000.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SET_MASK:
-                        _S600100.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S600100.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_CHECK_MASK:
-                        _S600010.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S600010.render(m_polygonInfo, x, y, w, h);
                         break;
                     default:
-                        _S600110.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S600110.render(m_polygonInfo, x, y, w, h);
                         break;
                 }
                 break;
@@ -12744,31 +7175,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette4(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _S500001.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S500001.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _S500101.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S500101.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _S500011.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S500011.render(m_polygonInfo, x, y, w, h);
                             break;
                         default:
-                            _S500111.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S500111.render(m_polygonInfo, x, y, w, h);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _S500000.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S500000.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _S500100.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S500100.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _S500010.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S500010.render(m_polygonInfo, x, y, w, h);
                             break;
                         default:
-                            _S500110.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S500110.render(m_polygonInfo, x, y, w, h);
                             break;
                     }
                 }
@@ -12777,31 +7208,31 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 if (getPalette8(data[offset])) {
                     switch (getMaskModes()) {
                         case 0:
-                            _S900001.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S900001.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _S900101.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S900101.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _S900011.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S900011.render(m_polygonInfo, x, y, w, h);
                             break;
                         default:
-                            _S900111.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S900111.render(m_polygonInfo, x, y, w, h);
                             break;
                     }
                 } else {
                     switch (getMaskModes()) {
                         case 0:
-                            _S900000.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S900000.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_SET_MASK:
-                            _S900100.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S900100.render(m_polygonInfo, x, y, w, h);
                             break;
                         case DRAWMODE_CHECK_MASK:
-                            _S900010.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S900010.render(m_polygonInfo, x, y, w, h);
                             break;
                         default:
-                            _S900110.render(m_polygonInfo, x, y, w, h);
+                            GPUGenerated._S900110.render(m_polygonInfo, x, y, w, h);
                             break;
                     }
                 }
@@ -12814,16 +7245,16 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 // todo breg
                 switch (getMaskModes()) {
                     case 0:
-                        _S700000.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S700000.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_SET_MASK:
-                        _S700100.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S700100.render(m_polygonInfo, x, y, w, h);
                         break;
                     case DRAWMODE_CHECK_MASK:
-                        _S700010.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S700010.render(m_polygonInfo, x, y, w, h);
                         break;
                     default:
-                        _S700110.render(m_polygonInfo, x, y, w, h);
+                        GPUGenerated._S700110.render(m_polygonInfo, x, y, w, h);
                         break;
                 }
             }
@@ -12858,64 +7289,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S401001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S401001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S402001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S402001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S403001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S403001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S404001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S404001.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S401101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S401101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S402101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S402101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S403101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S403101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S404101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S404101.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S401011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S401011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S402011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S402011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S403011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S403011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S404011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S404011.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S401111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S401111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S402111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S402111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S403111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S403111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S404111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S404111.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
@@ -12925,64 +7356,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S401000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S401000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S402000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S402000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S403000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S403000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S404000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S404000.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S401100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S401100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S402100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S402100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S403100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S403100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S404100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S404100.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S401010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S401010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S402010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S402010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S403010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S403010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S404010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S404010.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S401110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S401110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S402110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S402110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S403110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S403110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S404110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S404110.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
@@ -12995,64 +7426,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S801001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S801001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S802001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S802001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S803001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S803001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S804001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S804001.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S801101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S801101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S802101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S802101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S803101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S803101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S804101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S804101.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S801011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S801011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S802011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S802011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S803011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S803011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S804011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S804011.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S801111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S801111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S802111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S802111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S803111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S803111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S804111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S804111.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
@@ -13062,64 +7493,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S801000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S801000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S802000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S802000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S803000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S803000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S804000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S804000.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S801100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S801100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S802100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S802100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S803100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S803100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S804100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S804100.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S801010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S801010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S802010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S802010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S803010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S803010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S804010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S804010.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S801110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S801110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S802110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S802110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S803110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S803110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S804110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S804110.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
@@ -13136,64 +7567,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     case 0:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _S601000.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S601000.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _S602000.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S602000.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _S603000.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S603000.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _S604000.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S604000.render(m_polygonInfo, x, y, w, h);
                                 break;
                         }
                         break;
                     case DRAWMODE_SET_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _S601100.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S601100.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _S602100.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S602100.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _S603100.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S603100.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _S604100.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S604100.render(m_polygonInfo, x, y, w, h);
                                 break;
                         }
                         break;
                     case DRAWMODE_CHECK_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _S601010.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S601010.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _S602010.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S602010.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _S603010.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S603010.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _S604010.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S604010.render(m_polygonInfo, x, y, w, h);
                                 break;
                         }
                         break;
                     default:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _S601110.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S601110.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _S602110.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S602110.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _S603110.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S603110.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _S604110.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S604110.render(m_polygonInfo, x, y, w, h);
                                 break;
                         }
                         break;
@@ -13206,64 +7637,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S501001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S501001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S502001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S502001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S503001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S503001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S504001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S504001.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S501101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S501101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S502101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S502101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S503101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S503101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S504101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S504101.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S501011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S501011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S502011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S502011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S503011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S503011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S504011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S504011.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S501111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S501111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S502111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S502111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S503111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S503111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S504111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S504111.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
@@ -13273,64 +7704,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S501000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S501000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S502000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S502000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S503000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S503000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S504000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S504000.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S501100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S501100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S502100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S502100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S503100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S503100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S504100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S504100.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S501010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S501010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S502010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S502010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S503010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S503010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S504010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S504010.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S501110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S501110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S502110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S502110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S503110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S503110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S504110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S504110.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
@@ -13343,64 +7774,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S901001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S901001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S902001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S902001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S903001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S903001.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S904001.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S904001.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S901101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S901101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S902101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S902101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S903101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S903101.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S904101.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S904101.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S901011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S901011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S902011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S902011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S903011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S903011.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S904011.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S904011.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S901111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S901111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S902111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S902111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S903111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S903111.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S904111.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S904111.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
@@ -13410,64 +7841,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         case 0:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S901000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S901000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S902000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S902000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S903000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S903000.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S904000.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S904000.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_SET_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S901100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S901100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S902100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S902100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S903100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S903100.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S904100.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S904100.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         case DRAWMODE_CHECK_MASK:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S901010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S901010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S902010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S902010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S903010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S903010.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S904010.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S904010.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
                         default:
                             switch (getSemiMode()) {
                                 case DRAWMODE_SEMI_5P5:
-                                    _S901110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S901110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P10:
-                                    _S902110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S902110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10M10:
-                                    _S903110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S903110.render(m_polygonInfo, x, y, w, h);
                                     break;
                                 case DRAWMODE_SEMI_10P25:
-                                    _S904110.render(m_polygonInfo, x, y, w, h);
+                                    GPUGenerated._S904110.render(m_polygonInfo, x, y, w, h);
                                     break;
                             }
                             break;
@@ -13484,64 +7915,64 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     case 0:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _S701000.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S701000.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _S702000.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S702000.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _S703000.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S703000.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _S704000.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S704000.render(m_polygonInfo, x, y, w, h);
                                 break;
                         }
                         break;
                     case DRAWMODE_SET_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _S701100.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S701100.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _S702100.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S702100.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _S703100.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S703100.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _S704100.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S704100.render(m_polygonInfo, x, y, w, h);
                                 break;
                         }
                         break;
                     case DRAWMODE_CHECK_MASK:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _S701010.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S701010.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _S702010.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S702010.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _S703010.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S703010.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _S704010.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S704010.render(m_polygonInfo, x, y, w, h);
                                 break;
                         }
                         break;
                     default:
                         switch (getSemiMode()) {
                             case DRAWMODE_SEMI_5P5:
-                                _S701110.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S701110.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P10:
-                                _S702110.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S702110.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10M10:
-                                _S703110.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S703110.render(m_polygonInfo, x, y, w, h);
                                 break;
                             case DRAWMODE_SEMI_10P25:
-                                _S704110.render(m_polygonInfo, x, y, w, h);
+                                GPUGenerated._S704110.render(m_polygonInfo, x, y, w, h);
                                 break;
                         }
                         break;
@@ -14408,95 +8839,95 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         return ((pixel & 0xf8) << 7) | ((pixel & 0xf800) >> 6) | ((pixel & 0xf80000) >> 19) | ((pixel & 0x1000000) >> 9);
     }
 
-    private static JavaClass m_templateTClass;
-    private static JavaClass m_templateLClass;
-    private static JavaClass m_templateSClass;
-    private static JavaClass m_templateQClass;
-    private static JavaClass m_templateRClass;
+    private static JavaClass m_TemplateTClass;
+    private static JavaClass m_TemplateLClass;
+    private static JavaClass m_TemplateSClass;
+    private static JavaClass m_TemplateQClass;
+    private static JavaClass m_TemplateRClass;
 
     private JavaClass getTemplateTClass() {
-        if (m_templateTClass == null) {
+        if (m_TemplateTClass == null) {
             String filename = "org/jpsx/runtime/components/hardware/gpu/GPU$TemplateTriangleRenderer.class";
             final URL url = getClass().getClassLoader().getResource(filename);
             try {
                 InputStream stream = url.openStream();
                 try {
-                    m_templateTClass = (new ClassParser(stream, filename)).parse();
+                    m_TemplateTClass = (new ClassParser(stream, filename)).parse();
                 } finally {
                     stream.close();
                 }
             } catch (IOException e) {
             }
         }
-        return m_templateTClass.copy();
+        return m_TemplateTClass.copy();
     }
 
     private JavaClass getTemplateSClass() {
-        if (m_templateSClass == null) {
+        if (m_TemplateSClass == null) {
             String filename = "org/jpsx/runtime/components/hardware/gpu/GPU$TemplateSpriteRenderer.class";
             final URL url = getClass().getClassLoader().getResource(filename);
             try {
                 InputStream stream = url.openStream();
                 try {
-                    m_templateSClass = (new ClassParser(stream, filename)).parse();
+                    m_TemplateSClass = (new ClassParser(stream, filename)).parse();
                 } finally {
                     stream.close();
                 }
             } catch (IOException e) {
             }
         }
-        return m_templateSClass.copy();
+        return m_TemplateSClass.copy();
     }
 
     private JavaClass getTemplateQClass() {
-        if (m_templateQClass == null) {
+        if (m_TemplateQClass == null) {
             String filename = "org/jpsx/runtime/components/hardware/gpu/GPU$TemplateQuadRenderer.class";
             final URL url = getClass().getClassLoader().getResource(filename);
             try {
                 InputStream stream = url.openStream();
                 try {
-                    m_templateQClass = (new ClassParser(stream, filename)).parse();
+                    m_TemplateQClass = (new ClassParser(stream, filename)).parse();
                 } finally {
                     stream.close();
                 }
             } catch (IOException e) {
             }
         }
-        return m_templateQClass.copy();
+        return m_TemplateQClass.copy();
     }
 
     private JavaClass getTemplateRClass() {
-        if (m_templateRClass == null) {
+        if (m_TemplateRClass == null) {
             String filename = "org/jpsx/runtime/components/hardware/gpu/GPU$TemplateRectangleRenderer.class";
             final URL url = getClass().getClassLoader().getResource(filename);
             try {
                 InputStream stream = url.openStream();
                 try {
-                    m_templateRClass = (new ClassParser(stream, filename)).parse();
+                    m_TemplateRClass = (new ClassParser(stream, filename)).parse();
                 } finally {
                     stream.close();
                 }
             } catch (IOException e) {
             }
         }
-        return m_templateRClass.copy();
+        return m_TemplateRClass.copy();
     }
 
     private JavaClass getTemplateLClass() {
-        if (m_templateLClass == null) {
+        if (m_TemplateLClass == null) {
             String filename = "org/jpsx/runtime/components/hardware/gpu/GPU$TemplateLineRenderer.class";
             final URL url = getClass().getClassLoader().getResource(filename);
             try {
                 InputStream stream = url.openStream();
                 try {
-                    m_templateLClass = (new ClassParser(stream, filename)).parse();
+                    m_TemplateLClass = (new ClassParser(stream, filename)).parse();
                 } finally {
                     stream.close();
                 }
             } catch (IOException e) {
             }
         }
-        return m_templateLClass.copy();
+        return m_TemplateLClass.copy();
     }
 
     // _T

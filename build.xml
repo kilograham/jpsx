@@ -89,7 +89,7 @@
                 </javac>
                 <delete>
                         <fileset dir="${runtime.classes}">
-                                <include name="org/jpsx/runtime/components/hardware/gpu/GPU$$_*.class"/>
+                                <include name="org/jpsx/runtime/components/hardware/gpu/GPUGenerated*.class"/>
                         </fileset>
                 </delete>
         </target>
