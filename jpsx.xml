@@ -33,7 +33,7 @@
 
 	<machine id="nostretch">
 		<include refid="imagecd2"/>
-		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">
+		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.AWTDisplay">
 			<property name="showBlitTime" value="true"/>
 		</component>
 	</machine>
@@ -60,7 +60,7 @@
 	<machine id="ff7">
 		<var name="image" value="/Users/mich/psx_games/vs.cue"/>
 		<include refid="imagecd2noconsole"/>
-		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">
+		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.AWTDisplay">
 			<property name="x" value="640"/>
 			<property name="y" value="0"/>
 		</component>
@@ -73,7 +73,7 @@
 	<machine id="vp">
 		<var name="image" value="/Users/mich/psx_games/vs.cue"/>
 		<include refid="imagecd2noconsole"/>
-		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">
+		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.AWTDisplay">
 			<property name="x" value="640"/>
 			<property name="y" value="0"/>
 		</component>
@@ -90,7 +90,7 @@
 		<var name="image" value="/rips/bandicoot.cue"/>
 		<include refid="imagecd2noconsole"/>
 		
-		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">
+		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.AWTDisplay">
 			<property name="x" value="0"/>
 			<property name="y" value="512"/>
 		</component>
@@ -158,7 +158,7 @@
 		<component classname="org.jpsx.runtime.components.hardware.sio.SIO0"/>
 		<component classname="org.jpsx.runtime.components.hardware.sio.AWTKeyboardController"/>
 		<component classname="org.jpsx.runtime.components.hardware.gpu.GPU"/>
-		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplay">
+		<component id="display" classname="org.jpsx.runtime.components.hardware.gpu.AWTDisplay">
 			<property name="showBlitTime" value="true"/>
 		</component>
 		<component classname="org.jpsx.runtime.components.hardware.gpu.DefaultDisplayManager"/>

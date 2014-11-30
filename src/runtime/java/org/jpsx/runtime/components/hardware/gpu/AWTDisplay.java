@@ -33,7 +33,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.*;
 
-public class DefaultDisplay extends JPSXComponent implements Display, KeyListener {
+/**
+ * Basic AWT Display implementation. There are other ways to do this, but this seems to work pretty at least as well
+ * as any other java2d method on most JDKs.
+ */
+public class AWTDisplay extends JPSXComponent implements Display, KeyListener {
     private static final Logger log = Logger.getLogger("Display");
 
     public static final String LOCATION_X_PROPERTY = "x";
@@ -76,7 +80,7 @@ public class DefaultDisplay extends JPSXComponent implements Display, KeyListene
 
     int resindex = 1;
 
-    public DefaultDisplay() {
+    public AWTDisplay() {
         super("JPSX Default AWT Frame Display");
     }
 
