@@ -23,8 +23,8 @@ import org.jpsx.bootstrap.util.CollectionsFactory;
 import java.util.Map;
 
 public class ComponentDefinition {
-    private String className;
-    private Map<String, String> properties = CollectionsFactory.newHashMap();
+    private final String className;
+    private final Map<String, String> properties = CollectionsFactory.newHashMap();
 
     public ComponentDefinition(String className) {
         this.className = className;

@@ -19,9 +19,9 @@
 package org.jpsx.api.components.core;
 
 public final class ReturnFromExceptionException extends RuntimeException {
+    // static singleton used since exception creation is costly, and we don't care about stack traces in this case
     public static final ReturnFromExceptionException INSTANCE = new ReturnFromExceptionException();
 
     private ReturnFromExceptionException() {
-
     }
 }

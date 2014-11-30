@@ -63,11 +63,11 @@ public class JPSXClassLoader extends ClassLoader {
 
     private static int BUFFER_SIZE = 8192;
 
-    private List<String> generatorClassnamePrefixes = CollectionsFactory.newArrayList();
-    private List<ClassGenerator> generators = CollectionsFactory.newArrayList();
-    private List<String> modifierClassnamePrefixes = CollectionsFactory.newArrayList();
-    private List<ClassModifier> modifiers = CollectionsFactory.newArrayList();
-    private Set<String> jpsxClassnamePrefixes = CollectionsFactory.newHashSet();
+    private final List<String> generatorClassnamePrefixes = CollectionsFactory.newArrayList();
+    private final List<ClassGenerator> generators = CollectionsFactory.newArrayList();
+    private final List<String> modifierClassnamePrefixes = CollectionsFactory.newArrayList();
+    private final List<ClassModifier> modifiers = CollectionsFactory.newArrayList();
+    private final Set<String> jpsxClassnamePrefixes = CollectionsFactory.newHashSet();
 
     private JPSXClassLoader(ClassLoader parent, MachineDefinition machineDefinition) {
         super(parent);

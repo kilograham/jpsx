@@ -42,13 +42,14 @@ public interface AddressSpace {
     public static final int BIOS_SIZE = 0x80000;
     public static final int BIOS_END = BIOS_BASE + BIOS_SIZE;
 
+    // Markers for the type of RAM access that an instruction at a particular addresses does
     byte TAG_RAM = 0x01;
     byte TAG_SCRATCH = 0x02;
     byte TAG_HW = 0x04;
     byte TAG_BIOS = 0x08;
     byte TAG_PAR = 0x10;
-    byte TAG_POLL = 0x20;
-    byte TAG_RESERVED_FOR_COMPILER = 0x40;
+    byte TAG_POLL = 0x20; // polling detected at this address
+    byte TAG_RESERVED_FOR_COMPILER = 0x40; // our compiler happens to need a bit
 
     public static class Util {
         public static boolean isBIOS(int address) {
@@ -58,29 +59,41 @@ public interface AddressSpace {
 
     // read or write from RAM without any side effects (e.g. hardware IO)
     int internalRead32(int address);
-
     void internalWrite32(int address, int value);
 
     int read8(int address);
-
     int read16(int address);
-
     int read32(int address);
 
     void write8(int address, int value);
-
     void write16(int address, int value);
-
     void write32(int address, int value);
 
+    /**
+     * Called by the SCP to enable/disable writing to RAM
+     * @param enable
+     */
     void enableMemoryWrite(boolean enable);
 
     byte getTag(int pc);
 
     void orTag(int pc, byte val);
 
+    /**
+     * Return the array and index in a ResolveResult based on a given address
+     * @param address
+     * @param result the resolved address information or null if the address is not backed
+     */
     void resolve(int address, ResolveResult result);
 
+    /**
+     * Return the array and index in a ResolveResult based on a given address,
+     * ensuring that both the address & address + size fall within the same memory
+     * region
+     *
+     * @param address
+     * @param result the resolved address information or null if the full address range is not backed
+     */
     void resolve(int address, int size, ResolveResult result);
 
     int[] getMainRAM();

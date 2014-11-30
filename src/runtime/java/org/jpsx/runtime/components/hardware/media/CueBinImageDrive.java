@@ -98,7 +98,7 @@ public class CueBinImageDrive extends SingletonJPSXComponent implements CDDrive 
             try {
                 reader = new LineNumberReader(new FileReader(cueFilename));
             } catch (IOException e) {
-                log.warn("Unable to open CUE file " + cueFilename+" e "+e.getMessage());
+                log.warn("Unable to open CUE file " + cueFilename+": "+e.getMessage());
                 return false;
             }
             String binFilename = cueFilename;
@@ -133,7 +133,7 @@ public class CueBinImageDrive extends SingletonJPSXComponent implements CDDrive 
                         if (q1 >= 0) {
                             int q2 = line.indexOf("\"", q1 + 1);
                             if (q2 >= q1) {
-                                binFilename = binFilename.substring(0, binFilename.lastIndexOf(File.separator) + 1) + line.substring(q1 + 1, q2);
+                                binFilename = line.substring(q1 + 1, q2);
                             }
                         }
                     }
@@ -148,14 +148,24 @@ public class CueBinImageDrive extends SingletonJPSXComponent implements CDDrive 
                 } catch (IOException e) {
                 }
             }
+            // hack
+            binFilename = binFilename.replace('\\','/');
+            binFilename = binFilename.toLowerCase();
+            File file = new File(binFilename);
+            if (!file.exists()) {
+                file = new File(new File(cueFilename).getParent(), file.getName());
+                log.info("try "+file);
+                if (file.exists()) {
+                    binFilename = file.getAbsolutePath();
+                }
+            }
             binFile = null;
             long length;
-            log.warn("== "+binFilename);
             try {
                 binFile = new RandomAccessFile(binFilename, "r");
                 length = binFile.length();
             } catch (IOException e) {
-                log.warn("Unable to open BIN file " + binFilename+" e "+e.getMessage());
+                log.warn("Unable to open BIN file " + binFilename+": "+e.getMessage());
                 return false;
             }
             msf[0] = toMSF(offset + (int) (length / 2352L));

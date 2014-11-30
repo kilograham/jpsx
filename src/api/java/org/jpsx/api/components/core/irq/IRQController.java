@@ -19,14 +19,14 @@
 package org.jpsx.api.components.core.irq;
 
 public interface IRQController {
-    int IRQ_VSYNC = 0;
-    int IRQ_GPU = 1;
-    int IRQ_CD = 2;
-    int IRQ_DMA = 3;
-    int IRQ_COUNTER0 = 4;
-    int IRQ_COUNTER1 = 5;
-    int IRQ_COUNTER2 = 6;
-    int IRQ_SIO0 = 7;
+    public static final int IRQ_VSYNC = 0;
+    public static final int IRQ_GPU = 1;
+    public static final int IRQ_CD = 2;
+    public static final int IRQ_DMA = 3;
+    public static final int IRQ_COUNTER0 = 4;
+    public static final int IRQ_COUNTER1 = 5;
+    public static final int IRQ_COUNTER2 = 6;
+    public static final int IRQ_SIO0 = 7;
 
     void registerIRQOwner(IRQOwner owner);
 

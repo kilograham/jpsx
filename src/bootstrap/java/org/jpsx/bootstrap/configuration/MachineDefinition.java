@@ -37,8 +37,8 @@ import java.util.List;
  * usual class loader, such that code modification/generation and multiple machine instances work correctly.
  */
 public class MachineDefinition {
-    private List<ComponentDefinition> components = CollectionsFactory.newArrayList();
-    private List<String> classNamePrefixes = CollectionsFactory.newArrayList();
+    private final List<ComponentDefinition> components = CollectionsFactory.newArrayList();
+    private final List<String> classNamePrefixes = CollectionsFactory.newArrayList();
 
     public void addComponent(ComponentDefinition definition) {
         components.add(definition);

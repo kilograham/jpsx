@@ -35,6 +35,8 @@ import java.awt.*;
 
 /**
  * Bootstrap for JPSX - simply runs JPSXSystem in the {@link org.jpsx.bootstrap.classloader.JPSXClassLoader}
+ *
+ * THIS IS JUST A TEST CLASS THAT RUNS 3 GAMES IN THE SAME VM ON MY MACHINE!!!
  */
 public class JPSXLauncher2 {
     private static final Logger log = Logger.getLogger("Bootstrap");

@@ -29,7 +29,7 @@ import java.util.Set;
  * the same piece of hardware
  */
 public abstract class SingletonJPSXComponent extends JPSXComponent {
-    private static Set<String> usedClasses = CollectionsFactory.newHashSet();
+    private static final Set<String> usedClasses = CollectionsFactory.newHashSet();
 
     protected SingletonJPSXComponent(String description) {
         super(description);

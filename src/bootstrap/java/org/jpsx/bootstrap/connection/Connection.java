@@ -51,12 +51,12 @@ public abstract class Connection<I> {
     /**
      * Name of the connection
      */
-    private String name;
+    private final String name;
 
     /**
      * the callbable interface implemented by the return value from {@link #resolve()}
      */
-    private Class<I> ifc;
+    private final Class<I> ifc;
 
     /**
      * true if the connection accepts calls

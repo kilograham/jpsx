@@ -21,8 +21,9 @@ package org.jpsx.api.components.core;
 public class ContinueExecutionException extends RuntimeException {
     private boolean skipCurrentInstruction;
 
-    public static ContinueExecutionException SKIP_CURRENT = new ContinueExecutionException(true);
-    public static ContinueExecutionException DONT_SKIP_CURRENT = new ContinueExecutionException(false);
+    // static members used since exception creation is costly, and we don't care about stack traces in this case
+    public static final ContinueExecutionException SKIP_CURRENT = new ContinueExecutionException(true);
+    public static final ContinueExecutionException DONT_SKIP_CURRENT = new ContinueExecutionException(false);
 
     public ContinueExecutionException() {
         this(false);
