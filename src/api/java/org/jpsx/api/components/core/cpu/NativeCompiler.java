@@ -38,7 +38,7 @@ public interface NativeCompiler {
      * after a certain number of invocations).
      * <p/>
      * The compiler, if it decides to enter compiled code, should continue executing
-     * until the corresponding JR to the speicified return address (i.e. return), or may throw a ContinueExecutionException
+     * until the corresponding JR to the specified return address (i.e. return), or may throw a ContinueExecutionException
      * if it needs to return execution flow to the interpreter for any other reason.
      * <p/>
      * Note, that the compiler may be entered recursively; e.g. once for main
@@ -76,14 +76,14 @@ public interface NativeCompiler {
     public boolean exceptionInCompiler(Throwable t);
 
     /**
-     * Called by thte JPSX system if there is some interruption to execution
+     * Called by the JPSX system if there is some interruption to execution
      * flow that requires the compiler to return control temporarily. This
      * includes, but is not limited to R3000 interrupts.
      * <p/>
      * The compiler should call {@link R3000#compilerInterrupted} from the execution
      * thread as soon as possible.
      * <p/>
-     * Note, this method is generally not be called from the execution thread, though
+     * Note, this method is generally not called from the execution thread, though
      * in some circumstances it could be.
      * <p/>
      * On return from {@link R3000#compilerInterrupted}, the compiler should be

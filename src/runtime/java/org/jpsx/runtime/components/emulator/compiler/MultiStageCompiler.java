@@ -391,7 +391,8 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
         }
     }
 
-    protected static Class createClass(CodeUnit unit, JavaClass jclass) {
+    protected static Class createClass(CodeUnit unit,
+                                       JavaClass jclass) {
         if (AddressSpace.Util.isBIOS(unit.getBase())) {
             return romLoader.createClass(jclass.getClassName(), jclass.getBytes());
         } else {
