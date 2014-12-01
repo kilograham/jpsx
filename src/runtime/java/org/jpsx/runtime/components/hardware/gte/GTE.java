@@ -760,11 +760,6 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                     il.append(new ISHR());
                     il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_sy2", "I")));
                     break;
-                    //        case R_SXYP:
-                    //            //TODO: not certain this is 100% correct - but seems to work for Tony Hawk's (which is the only thing I've seen so far which uses it...)
-                    //           reg_sx0 = reg_sx1; reg_sx1 = reg_sx2; reg_sx2 = (value<<16)>>16;
-                    //          reg_sy0 = reg_sy1; reg_sy1 = reg_sy2; reg_sy2 = value>>16;
-                    //         break;
                 case R_SZX:
                     il.append(new PUSH(cp, 0xffff));
                     il.append(new IAND());
@@ -817,31 +812,18 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                     // todo check this
                     il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_orgb", "I")));
                     break;
-                    //            case R_LZCS:
-                    //                {
-                    //                    reg_lzcs = value;
-                    //                   int mask = 0x80000000;
-                    //                  int comp = value&0x80000000;
-                    //                 int bits;
-                    //
-                    //              for (bits=0;bits<32;bits++) {
-                    //                 if ((value&mask)!=comp)
-                    //                      break;
-                    //                 mask >>= 1;
-                    //                comp >>= 1;
-                    //           }
-                    //          reg_lzcr = bits;
-                    //         //Console.println("LZCS "+MiscUtil.toHex( reg_lzcs, 8)+" "+bits);
-                    //         break;
-                    //     }
-                case R_LZCR:
-                    // todo check this
-                    il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_lzcr", "I")));
-                    break;
+//                case R_LZCS:
+                    // fall thru for writeRegister
+//                case R_LZCR:
+                    // fall thru for writeRegister
+//                case R_SXYP:
+                    // fall thru for writeRegister
                 default:
                     il.append(new ISTORE(temp));
                     il.append(new PUSH(cp, reg));
                     il.append(new ILOAD(temp));
+//                    il.append(new PUSH(cp, reg));
+//                    il.append(new SWAP());
                     il.append(new INVOKESTATIC(cp.addMethodref(CLASS, "writeRegister", "(II)V")));
                     break;
             }
@@ -1668,6 +1650,8 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                 break;
             case R_LZCS: {
                 reg_lzcs = value;
+                /*
+                // old code for pre JDK5
                 int mask = 0x80000000;
                 int comp = value & 0x80000000;
                 int bits;
@@ -1679,12 +1663,13 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                     comp >>= 1;
                 }
                 reg_lzcr = bits;
-                //Console.println("LZCS "+MiscUtil.toHex( reg_lzcs, 8)+" "+bits);
+                */
+                reg_lzcr = Integer.numberOfLeadingZeros(value >= 0 ? value : ~value);
                 break;
             }
             case R_LZCR:
-                // todo check this
-                reg_lzcr = value;
+                // lzcr is read only
+//                reg_lzcr = value;
                 break;
             case R_R11R12:
                 reg_rot.m11 = (value << 16) >> 16;
@@ -2644,10 +2629,73 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     }
 
     public static void interpret_dcpl(final int ci) {
-        if (true) throw new IllegalStateException("GTE UNIMPLEMENTED: DCPL");
+
+        /*
+        In: RGB Primary color. R,G,B,CODE [0,8,0]
+IR0 interpolation value. [1,3,12]
+[IR1,IR2,IR3] Local color vector. [1,3,12]
+CODE Code value from RGB. CODE [0,8,0]
+FC Far color. [1,27,4]
+Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
+[IR1,IR2,IR3] Color vector [1,11,4]
+[MAC1,MAC2,MAC3] Color vector [1,27,4]
+        Calculation:
+        [1,27,4] MAC1=A1[R*IR1 + IR0*(Lm_B1[RFC-R* IR1])] [1,27,16]
+        [1,27,4] MAC2=A2[G*IR2 + IR0*(Lm_B1[GFC-G* IR2])] [1,27,16]
+        [1,27,4] MAC3=A3[B*IR3 + IR0*(Lm_B1[BFC-B* IR3])] [1,27,16]
+        [1,11,4] IR1=Lm_B1[MAC1] [1,27,4]
+        [1,11,4] IR2=Lm_B2[MAC2] [1,27,4]
+        [1,11,4] IR3=Lm_B3[MAC3] [1,27,4]
+        [0,8,0] Cd0<-Cd1<-Cd2<- CODE
+                [0,8,0] R0<-R1<-R2<- Lm_C1[MAC1] [1,27,4]
+        [0,8,0] G0<-G1<-G2<- Lm_C2[MAC2] [1,27,4]
+        [0,8,0] B0<-B1<-B2<- Lm_C3[MAC3] [1,27,4]
+        */
+        reg_flag = 0;
+        int chi = reg_rgb & 0xff000000;
+        int r = (reg_rgb & 0xff) << 4;
+        int g = (reg_rgb & 0xff00) >> 4;
+        int b = (reg_rgb & 0xff0000) >> 12;
+
+        // TODO - is this B1 all the way correct?
+        reg_mac1 = A1(r * reg_ir1 + reg_ir0 * LiB1_0(reg_rfc - ((r * reg_ir1) >> 12)));
+        reg_mac2 = A2(g * reg_ir2 + reg_ir0 * LiB1_0(reg_gfc - ((g * reg_ir2) >> 12)));
+        reg_mac3 = A3(b * reg_ir3 + reg_ir0 * LiB1_0(reg_bfc - ((b * reg_ir3) >> 12)));
+
+        // TODO - is this B1 all the way correct?
+        reg_ir1 = LiB1_0(reg_mac1);
+        reg_ir2 = LiB2_0(reg_mac2);
+        reg_ir3 = LiB3_0(reg_mac3);
+
+        int rr = LiC1(reg_mac1 >> 4);
+        int gg = LiC2(reg_mac2 >> 4);
+        int bb = LiC3(reg_mac3 >> 4);
+        reg_rgb0 = reg_rgb1;
+        reg_rgb1 = reg_rgb2;
+        reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
     }
 
     public static void interpret_dpcs(final int ci) {
+        /**
+         In: IR0 Interpolation value [1,3,12]
+         RGB Color R,G,B,CODE [0,8,0]
+         FC Far color RFC,GFC,BFC [1,27,4]
+
+         Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
+         [IR1,IR2,IR3] Color vector [1,11,4]
+         [MAC1,MAC2,MAC3] Color vector [1,27,4]
+
+         [1,27,4] MAC1=A1[(R + IR0*(Lm_B1[RFC - R])] [1,27,16][lm=0]
+         [1,27,4] MAC2=A2[(G + IR0*(Lm_B1[GFC - G])] [1,27,16][lm=0]
+         [1,27,4] MAC3=A3[(B + IR0*(Lm_B1[BFC - B])] [1,27,16][lm=0]
+         [1,11,4] IR1=Lm_B1[MAC1] [1,27,4][lm=0]
+         [1,11,4] IR2=Lm_B2[MAC2] [1,27,4][lm=0]
+         [1,11,4] IR3=Lm_B3[MAC3] [1,27,4][lm=0]
+         [0,8,0] Cd0<-Cd1<-Cd2<- CODE
+         [0,8,0] R0<-R1<-R2<- Lm_C1[MAC1] [1,27,4]
+         [0,8,0] G0<-G1<-G2<- Lm_C2[MAC2] [1,27,4]
+         [0,8,0] B0<-B1<-B2<- Lm_C3[MAC3] [1,27,4]
+         */
         reg_flag = 0;
         int chi = reg_rgb & 0xff000000;
         int r = (reg_rgb & 0xff) << 4;
