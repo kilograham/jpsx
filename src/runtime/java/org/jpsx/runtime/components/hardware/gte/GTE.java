@@ -1786,10 +1786,10 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                 reg_dqb = value;
                 break;
             case R_ZSF3:
-                reg_zsf3 = value;
+                reg_zsf3 = (value << 16) >> 16;
                 break;
             case R_ZSF4:
-                reg_zsf4 = value;
+                reg_zsf4 = (value << 16) >> 16;
                 break;
             case R_FLAG:
                 reg_flag = value;
@@ -2306,9 +2306,9 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         if (src < 0) {
             reg_flag |= FLAG_D;
             return 0;
-        } else if (src >= 0x8000) {
+        } else if (src >= 0x10000) {
             reg_flag |= FLAG_D;
-            return 0x7fff;
+            return 0xffff;
         }
         return src;
     }
@@ -2418,29 +2418,31 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     }
 
     public static void interpret_avsz3(final int ci) {
+//        in: SZ1, SZ2, SZ3 Z-Values [0,16,0]
+//        ZSF3 Divider [1,3,12]
+//        out: OTZ Average. [0,16,0]
+//        MAC0 Average. [1,31,0]
+//        Calculation:
+//        [1,31,0] MAC0=F[ZSF3*SZ1 + ZSF3*SZ2 + ZSF3*SZ3] [1,31,12]
+//        [0,16,0] OTZ=Lm_D[MAC0] [1,31,0]
+
         reg_flag = 0;
-        // UNTESTED
-
-        // [1,31,0] MAC0=F[ZSF3*SZ0 + ZSF3*SZ1 + ZSF3*SZ2]     [1,31,12]
-        // [0,16,0] OTZ=LD[MAC0]                                        [1,31,0]
-        // skipping F for now
-        // TODO figure out why LiF is 16 for now when it should be twelve
-
-        reg_mac0 = (reg_zsf3 * (reg_sz0 + reg_sz1 + reg_sz2)) >> 12;
+        reg_mac0 = LiF(reg_zsf3 * (long)((reg_sz0 + reg_sz1 + reg_sz2)<<4));
         reg_otz = LiD(reg_mac0);
     }
 
     public static void interpret_avsz4(final int ci) {
+//        Fields:
+//        in: SZ1,SZ2,SZ3,SZ4 Z-Values [0,16,0]
+//        ZSF4 Divider [1,3,12]
+//        out: OTZ Average. [0,16,0]
+//        MAC0 Average. [1,31,0]
+//        Calculation:
+//        [1,31,0] MAC0=F[ZSF4*SZ0 + ZSF4*SZ1 + ZSF4*SZ2 + ZSF4*SZ3] [1,31,12]
+//        [0,16,0] OTZ=Lm_D[MAC0] [1,31,0]
+
         reg_flag = 0;
-        // UNTESTED
-
-        // [1,31,0] MAC0=F[ZSF4*SZ0 + ZSF4*SZ1 + ZSF4*SZ2 + ZSF4*SZ3]     [1,31,12]
-        // [0,16,0] OTZ=LD[MAC0]                                        [1,31,0]
-
-        // skipping F for now
-        // TODO figure out why LiF is 16 for now when it should be twelve
-
-        reg_mac0 = (reg_zsf4 * (reg_szx + reg_sz0 + reg_sz1 + reg_sz2)) >> 12;
+        reg_mac0 = LiF(reg_zsf4 * (long)((reg_sz0 + reg_sz1 + reg_sz2 + reg_szx)<<4));
         reg_otz = LiD(reg_mac0);
     }
 
