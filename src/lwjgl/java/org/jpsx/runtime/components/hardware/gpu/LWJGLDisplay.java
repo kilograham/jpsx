@@ -93,7 +93,7 @@ public class LWJGLDisplay extends JPSXComponent implements Display, KeyListener 
     private int blitTimeCount;
     private long refreshTimeTotal;
     private int refreshTimeCount;
-    private boolean noStretch;
+//    private boolean noStretch;
     private int textureHandle;
 
     private AWTGLCanvas canvas;
@@ -117,7 +117,7 @@ public class LWJGLDisplay extends JPSXComponent implements Display, KeyListener 
 
         showBlitTime = Boolean.valueOf(getProperty("showBlitTime","true"));
         antiAlias = Boolean.valueOf(getProperty("antiAlias","true"));
-        noStretch = Boolean.valueOf(getProperty("noStretch","false"));
+//        noStretch = Boolean.valueOf(getProperty("noStretch","false"));
     }
 
     @Override
