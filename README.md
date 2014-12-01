@@ -1,7 +1,7 @@
 # JPSX
 
-JPSX is a PlayStation emulator written entirely in Java (you can see what it is supposed to look like in this old video https://www.youtube.com/watch?v=_8oyzLJHhS0)..
-if it doesn't work at least that well for those games, it is probably your environment!
+JPSX is a PlayStation emulator written entirely in Java (you can see what it is supposed to look like in this old video https://www.youtube.com/watch?v=_8oyzLJHhS0).
+If it doesn't work at least that well for those games, it is probably your environment!
 
 # History
 
@@ -150,6 +150,8 @@ For example, `./osx.sh lwjgl` will use the machine definition called *lwjgl* tha
 
 The default machine definition includes a `Console` component... this is interactive sort of like `gdb`.
 So to get stuff to run in this mode you need to enter "g" for go. You can look at the code for Console to figure out some other commands. "b" breaks for example
+
+By default the pad is controlled by giving focus to the display window.
 
 These are the default mappings copied from `AWTKeyboardController`
 
