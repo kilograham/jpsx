@@ -150,7 +150,29 @@ For example, `./osx.sh lwjgl` will use the machine definition called *lwjgl* tha
 The default machine definition includes a `Console` component... this is interactive sort of like `gdb`.
 So to get stuff to run in this mode you need to enter "g" for go. You can look at the code for Console to figure out some other commands. "b" breaks for example
 
-Look at `AWTKeyboardController` for the controller mappings
+These are the default mappings copied from `AWTKeyboardController`
+
+```
+        DEF_CONTROLLER_0_MAPPING.put(PADstart, KeyEvent.VK_SPACE);
+        DEF_CONTROLLER_0_MAPPING.put(PADselect, KeyEvent.VK_S);
+        DEF_CONTROLLER_0_MAPPING.put(PADLup, KeyEvent.VK_UP);
+        DEF_CONTROLLER_0_MAPPING.put(PADLleft, KeyEvent.VK_LEFT);
+        DEF_CONTROLLER_0_MAPPING.put(PADLright, KeyEvent.VK_RIGHT);
+        DEF_CONTROLLER_0_MAPPING.put(PADLdown, KeyEvent.VK_DOWN);
+        DEF_CONTROLLER_0_MAPPING.put(PADRup, KeyEvent.VK_8);
+        DEF_CONTROLLER_0_MAPPING.put(PADRup, KeyEvent.VK_KP_UP);
+        DEF_CONTROLLER_0_MAPPING.put(PADRdown, KeyEvent.VK_K);
+        DEF_CONTROLLER_0_MAPPING.put(PADRleft, KeyEvent.VK_KP_LEFT);
+        DEF_CONTROLLER_0_MAPPING.put(PADRright, KeyEvent.VK_I);
+        DEF_CONTROLLER_0_MAPPING.put(PADRright, KeyEvent.VK_KP_RIGHT);
+        DEF_CONTROLLER_0_MAPPING.put(PADRdown, KeyEvent.VK_KP_DOWN);
+        DEF_CONTROLLER_0_MAPPING.put(PADRleft, KeyEvent.VK_U);
+        DEF_CONTROLLER_0_MAPPING.put(PADL1, KeyEvent.VK_1);
+        DEF_CONTROLLER_0_MAPPING.put(PADL2, KeyEvent.VK_Q);
+        DEF_CONTROLLER_0_MAPPING.put(PADR1, KeyEvent.VK_2);
+        DEF_CONTROLLER_0_MAPPING.put(PADR2, KeyEvent.VK_W);
+```
+
 
 The display also supports a few keys (don't forget `fn` on OS X).
 
