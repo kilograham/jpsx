@@ -64,7 +64,9 @@ An example connection is `Display` which is used by the current software GPU (wh
 
 Similarly there are some abstractions for serial ports and devices, CD sector providers etc.
 
-# Platform Compatibility
+# Compatibility
+
+## Java Compatibility
 
 See the [wiki](https://github.com/jvilk/jpsx/wiki/Platform-Compatibility) for full details, but recent tests of
 
@@ -90,27 +92,37 @@ band-aided for now, so you do get sound, but JDK6 sound is better
 
 It will not run on anything prior to JDK1.4, and JDK5 will likely be the minimum since JMM is not properly defined before that.
 
-# Software Compatibility
+## Software Compatibility
 
 See the [wiki](https://github.com/jvilk/jpsx/wiki/Software-Compatibility) for full list of games and demos that have been tested
 
-# Hardware Compatibility
+## Hardware Compatibility
 
-See the [wiki](https://github.com/jvilk/jpsx/wiki/Hardware-Compatibility) for current compatibility status and details of available
-emulation components
+See the [wiki](https://github.com/jvilk/jpsx/wiki/Hardware-Components) for current compatibility status and details of available
+hardware emulation components
 
-# Developer Documentation
+## Developer Documentation
 
-See the [wiki](https://github.com/jvilk/jpsx/wiki/Development-Documentation) for general development and other documentation
+See the [wiki](https://github.com/jvilk/jpsx/wiki/Development-Documentation) for development related documentation
 
 # Building the Emulator
 
-TODO: complete this
-"ant" should do it.
+`ant` should probably do it.
 
 # Running the Emulator
 
-Right now this is pretty bare bones
+**todo** flesh this out 
+
+Right now this is pretty bare bones, but this should get you started.
+
+* You must launch from the command-line - there is currently no GUI except the screen display
+* You need a bios image called bios.bin
+* The set of emulation components is defined as a named "machine" in XML: The `"default"` machine `jpsx.xml` is used unless you specify something else.
+A machine lists the components that make it up, possible including (and optionally overriding) components from another machine definition. This makes it easy to tweak components
+ or component settings for a particular game. If you don't include enough basic hardware, then things won't run
+* Right now CUE/BIN CD image files are the only thing supported (though it should be easy to add other format). Without one, you'll get stuck in the BIOS. Note that
+you can (and it is quite gratifying) use the CD player in the BIOS if you provide a CUE/BIN image of a music CD.
+* The currently supplied components that can display PSX graphics on your desktop all do so in a window.
 
 ## Command Line
 
@@ -142,5 +154,5 @@ Look at `AWTKeyboardController` for the controller mappings
 
 The display also supports a few keys (don't forget `fn` on OS X).
 
-* **F12**: Resize window
+* **F12**: Change window size (picks from a preset list of resolutions)
 * **F9**: Toggle full VRAM display - this is kinda cool
