@@ -8477,14 +8477,29 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         if (manager.getInterlaceField())
             rc |= 0x80000000; //for interlace
 
+        // The poll detection code does not always work, so as a temporary workaround, add another backstop here to catch
+        // vsync timeouts that never end
+        if  (0 != (displayMode & 0x0040)) {
+            if (++pollHackStatusReadCount == 1000) {
+                _poll(ADDR_GPU_CTRLSTATUS,4);
+            }
+        }
+
         return rc;
     }
+
+    static int pollHackStatusReadCount;
 
     public void aboutToBlock() {
         manager.preAsync();
     }
 
     public void poll(int address, int size) {
+        _poll(address, size);
+    }
+
+    protected static void _poll(int address, int size) {
+        pollHackStatusReadCount = 0;
         assert address == ADDR_GPU_CTRLSTATUS;
         if (0 != (displayMode & 0x0040)) {
             //System.out.println("flicking interlace because of 1814 poll in interlaced mode");

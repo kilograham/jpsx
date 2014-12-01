@@ -122,9 +122,9 @@ public class CodeUnit {
      * Get the JavaClass representation of this unit.
      * <p/>
      * This method may be called from the execution or background
-     * compilation thread; in either case it is not synchonrized,
+     * compilation thread; in either case it is not synchronized,
      * since we don't want the execution thread to wait on the
-     * background thread if they end up compiling the same class...
+     * background thread if they end up compiling the same class.
      */
     public JavaClass getStage1JavaClass(Stage1Generator generator, boolean executionThread) {
         // note while not synchronized, once stage1Ready is set
@@ -134,7 +134,6 @@ public class CodeUnit {
             return null;
 
         JavaClass rc = (JavaClass) stage1JavaClassRef.get();
-        ;
         if (rc == null) {
             rc = generator.createJavaClass(this);
             if (!executionThread) {

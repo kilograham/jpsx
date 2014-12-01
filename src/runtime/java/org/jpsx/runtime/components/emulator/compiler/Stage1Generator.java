@@ -270,7 +270,7 @@ public class Stage1Generator implements CompilationContext {
 
             int maxCount = getMaxMethodInstructionCount();
             if (flowInfo.instructionCount > maxCount) {
-                // too many instructions, we want to sort baisc blocks
+                // too many instructions, we want to sort basic blocks
                 // by size, and choose to inline the code up to the branch
                 // from each one
                 //System.out.println("sorting for "+flowInfo.instructionCount);

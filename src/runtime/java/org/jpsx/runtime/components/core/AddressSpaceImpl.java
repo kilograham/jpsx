@@ -77,10 +77,6 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
     private static int lastPoll32Count = 0;
     private static boolean writeEnabled = true;
 
-    // we use this when determining addresses as the offset from the prefix (top 16 bits)...
-    // this is because the 2M of ram should be repeated 4 times... since no other offsets are close to 2M big, this should be AOK
-    private static final int OFFSET_MASK = 0x0f9fffff;
-
     private static final int SCRATCH_MASK = SCRATCH_SIZE - 1;
     private static final int PAR_MASK = PAR_SIZE - 1;
     private static final int BIOS_MASK = BIOS_SIZE - 1;
@@ -89,12 +85,15 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
     private static int readPC0;
     private static int readPC1;
     private static int readPC2;
+    private static int readPCHW; // PC of last hw read
     private static int readAddress0;
     private static int readAddress1;
     private static int readAddress2;
+    private static int readAddressHW;
+    private static int readsSinceHW; // count of reads since last hw read
+    private static final int MAX_READS_SINCE_HW = 16;
 
     private static AddressSpaceListener addressSpaceListeners;
-    private static R3000 r3000;
     private static Scheduler scheduler;
 
     static {
@@ -118,7 +117,7 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
     public void resolveConnections() {
         super.resolveConnections();
         addressSpaceListeners = CoreComponentConnections.ADDRESS_SPACE_LISTENERS.resolve();
-        r3000 = CoreComponentConnections.R3000.resolve();
+//        r3000 = CoreComponentConnections.R3000.resolve();
         scheduler = CoreComponentConnections.SCHEDULER.resolve();
     }
 
@@ -588,6 +587,11 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
                 if (logPollDebug) {
                     logPoll.debug("possible poll at " + MiscUtil.toHex(pc, 8) + " of " + MiscUtil.toHex(address, 8));
                 }
+            } else if (pc == readPCHW && address == readAddressHW && readsSinceHW < MAX_READS_SINCE_HW) {
+                tag |= TAG_POLL;
+                if (logPollDebug) {
+                    logPoll.debug("possible HW specific poll8 at " + MiscUtil.toHex(pc, 8) + " of " + MiscUtil.toHex(address, 8));
+                }
             }
         }
         readPC0 = readPC1;
@@ -596,6 +600,14 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
         readAddress0 = readAddress1;
         readAddress1 = readAddress2;
         readAddress2 = address;
+        if (address < HW_END && address >= HW_BASE) {
+            readAddressHW = address;
+            readPCHW = pc;
+            readsSinceHW = 0;
+        } else {
+            readsSinceHW++;
+        }
+
         tags[index] |= tag;
     }
 
@@ -646,6 +658,11 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
                 if (logPollDebug) {
                     logPoll.debug("possible poll at " + MiscUtil.toHex(pc, 8) + " of " + MiscUtil.toHex(address, 8));
                 }
+            } else if (pc == readPCHW && address == readAddressHW && readsSinceHW < MAX_READS_SINCE_HW) {
+                tag |= TAG_POLL;
+                if (logPollDebug) {
+                    logPoll.debug("possible HW specific poll16 at " + MiscUtil.toHex(pc, 8) + " of " + MiscUtil.toHex(address, 8));
+                }
             }
         }
         readPC0 = readPC1;
@@ -654,6 +671,13 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
         readAddress0 = readAddress1;
         readAddress1 = readAddress2;
         readAddress2 = address;
+        if (address < HW_END && address >= HW_BASE) {
+            readAddressHW = address;
+            readPCHW = pc;
+            readsSinceHW = 0;
+        } else {
+            readsSinceHW++;
+        }
         tags[index] |= tag;
     }
 
@@ -666,9 +690,6 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
      * BIOS
      */
     public static void _tagAddressAccessRead32(final int pc, final int address) {
-        //if (pc==0x8004a564 && address==0x1f801814) {
-        //    System.out.println("HERE! "+MiscUtil.toHex(readPC0,8)+":"+MiscUtil.toHex(readAddress0,8));
-        //}
         byte[] tags;
         if (pc < BIOS_BASE || pc >= BIOS_END) {
             tags = ramTags;
@@ -703,10 +724,18 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
         if (0 != (oldTag & TAG_POLL)) {
             _checkPoll32(address);
         } else {
+            // Simple check of last 3 reads
             if ((pc == readPC0 && address == readAddress0) || (pc == readPC1 && address == readAddress1) || (pc == readPC2 && address == readAddress2)) {
                 tag |= TAG_POLL;
                 if (logPollDebug) {
-                    logPoll.debug("possible poll at " + MiscUtil.toHex(pc, 8) + " of " + MiscUtil.toHex(address, 8));
+                    logPoll.debug("possible poll32 at " + MiscUtil.toHex(pc, 8) + " of " + MiscUtil.toHex(address, 8));
+                }
+            } else if (pc == readPCHW && address == readAddressHW && readsSinceHW < MAX_READS_SINCE_HW) {
+                // Tony Hawk fails to catch poll of 0x1f801814 for vsync in interlaced mode, because the polling is spread
+                // across several functions... in this hardware read case, lets look back a little further
+                tag |= TAG_POLL;
+                if (logPollDebug) {
+                    logPoll.debug("possible HW specific poll32 at " + MiscUtil.toHex(pc, 8) + " of " + MiscUtil.toHex(address, 8));
                 }
             }
         }
@@ -716,6 +745,13 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
         readAddress0 = readAddress1;
         readAddress1 = readAddress2;
         readAddress2 = address;
+        if (address < HW_END && address >= HW_BASE) {
+            readAddressHW = address;
+            readPCHW = pc;
+            readsSinceHW = 0;
+        } else {
+            readsSinceHW++;
+        }
         tags[index] |= tag;
     }
 

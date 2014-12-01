@@ -457,6 +457,7 @@ public class Stage2Generator extends Stage1Generator {
         // we must do tag==0 since this means we haven't executed this statement yet
         if (tag == 0 || 0 != (tag & AddressSpace.TAG_POLL)) {
             il.append(new PUSH(contextCP, address));
+            // todo note this only detects REALLY tight polling; we'd be better off waiting to get a tag somehow (de-optimize perhaps)
             il.append(new INVOKESTATIC(contextCP.addMethodref(ADDRESS_SPACE_CLASS, "_checkPoll8", "(I)V")));
         }
         rr.mem = null;
@@ -526,6 +527,7 @@ public class Stage2Generator extends Stage1Generator {
                 il.append(new PUSH(contextCP, offset));
                 il.append(new IADD());
             }
+            // todo note this only detects REALLY tight polling; we'd be better off waiting to get a tag somehow (de-optimize perhaps)
             il.append(new INVOKESTATIC(contextCP.addMethodref(ADDRESS_SPACE_CLASS, "_checkPoll8", "(I)V")));
             tag &= ~AddressSpace.TAG_POLL;
         }
@@ -577,6 +579,7 @@ public class Stage2Generator extends Stage1Generator {
         // we must do tag==0 since this means we haven't executed this statement yet
         if (tag == 0 || 0 != (tag & AddressSpace.TAG_POLL)) {
             il.append(new PUSH(contextCP, address));
+            // todo note this only detects REALLY tight polling; we'd be better off waiting to get a tag somehow (de-optimize perhaps)
             il.append(new INVOKESTATIC(contextCP.addMethodref(ADDRESS_SPACE_CLASS, "_checkPoll16", "(I)V")));
         }
         rr.mem = null;
@@ -631,6 +634,7 @@ public class Stage2Generator extends Stage1Generator {
                 il.append(new PUSH(contextCP, offset));
                 il.append(new IADD());
             }
+            // todo note this only detects REALLY tight polling; we'd be better off waiting to get a tag somehow (de-optimize perhaps)
             il.append(new INVOKESTATIC(contextCP.addMethodref(ADDRESS_SPACE_CLASS, "_checkPoll16", "(I)V")));
             tag &= ~AddressSpace.TAG_POLL;
         }
@@ -680,8 +684,14 @@ public class Stage2Generator extends Stage1Generator {
     public void emitReadMem32(InstructionList il, int address, boolean forceAlign) {
         int tag = addressSpace.getTag(contextAddress) & READ_TAG_MASK;
         // we must do tag==0 since this means we haven't executed this statement yet
-        if (tag == 0 || 0 != (tag & AddressSpace.TAG_POLL)) {
+        if (tag == 0) {
+            // this only calls _checkPoll32 sometimes
+            il.append(new PUSH(contextCP, contextAddress));
             il.append(new PUSH(contextCP, address));
+            il.append(new INVOKESTATIC(contextCP.addMethodref(ADDRESS_SPACE_CLASS, "_tagAddressAccessRead32", "(II)V")));
+        } else if (0 != (tag & AddressSpace.TAG_POLL)) {
+            il.append(new PUSH(contextCP, address));
+            // todo note this only detects REALLY tight polling; we'd be better off waiting to get a tag somehow (de-optimize perhaps)
             il.append(new INVOKESTATIC(contextCP.addMethodref(ADDRESS_SPACE_CLASS, "_checkPoll32", "(I)V")));
         }
         rr.mem = null;
@@ -717,12 +727,23 @@ public class Stage2Generator extends Stage1Generator {
 
     public void emitReadMem32(InstructionList il, int reg, int offset, boolean forceAlign) {
         int tag = (0 != ((1 << reg) & MultiStageCompiler.Settings.alwaysRAMRegs)) ? AddressSpace.TAG_RAM : (addressSpace.getTag(contextAddress) & READ_TAG_MASK);
-        if (0 == tag || 0 != (tag & AddressSpace.TAG_POLL)) {
+        // we must do tag==0 since this means we haven't executed this statement yet
+        if (tag == 0) {
+            il.append(new PUSH(contextCP, contextAddress));
             emitGetReg(il, reg);
             if (offset != 0) {
                 il.append(new PUSH(contextCP, offset));
                 il.append(new IADD());
             }
+            // this only calls _checkPoll32 sometimes
+            il.append(new INVOKESTATIC(contextCP.addMethodref(ADDRESS_SPACE_CLASS, "_tagAddressAccessRead32", "(II)V")));
+        } else if (0 != (tag & AddressSpace.TAG_POLL)) {
+            emitGetReg(il, reg);
+            if (offset != 0) {
+                il.append(new PUSH(contextCP, offset));
+                il.append(new IADD());
+            }
+            // todo note this only detects REALLY tight polling; we'd be better off waiting to get a tag somehow (de-optimize perhaps)
             il.append(new INVOKESTATIC(contextCP.addMethodref(ADDRESS_SPACE_CLASS, "_checkPoll32", "(I)V")));
             tag &= ~AddressSpace.TAG_POLL;
         }
