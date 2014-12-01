@@ -20,7 +20,11 @@ package org.jpsx.api.components.core.addressspace;
 
 
 public interface AddressSpace {
-    public static final int RAM_AND = 0x5fffffff; // value to and main ram address with to make it map to array index*4 (or invalid)
+    // we use this when determining addresses as the offset from the prefix (top 16 bits)...
+    // this is because the 2M of ram should be repeated 4 times... since no other offsets are close to 2M big, this should be AOK
+    public static final int OFFSET_MASK = 0x0f9fffff;
+    public static final int RAM_AND = 0x5fffffff & OFFSET_MASK; // value to and main ram address with to make it map to array index*4 (or invalid)
+
     public static final int SCRATCH_XOR = 0x1f800000; // value to xor scratch address with to make it map to array index*4 (or invalid)
     public static final int BIOS_XOR = 0xbfc00000; // value to xor bios address with to make it map to array index*4 (or invalid)
 
