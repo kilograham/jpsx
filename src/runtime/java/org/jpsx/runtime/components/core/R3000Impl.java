@@ -682,9 +682,9 @@ public final class R3000Impl extends SingletonJPSXComponent implements ClassModi
             s.append(fmt);
             String str = s.toString();
             while (str.endsWith("\n") || str.endsWith("\r")) {
-                str = str.substring(0, s.length() - 1);
+                str = str.substring(0, str.length() - 1);
             }
-            logPrintf.info(s);
+            logPrintf.info(str);
         }
     }
 
