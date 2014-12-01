@@ -205,8 +205,8 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int reg_mac1;
     public static int reg_mac2;
     public static int reg_mac3;
-    public static int reg_irgb;
-    public static int reg_orgb;
+//    public static int reg_irgb;
+//    public static int reg_orgb;
     public static int reg_lzcr;
     public static int reg_lzcs;
 
@@ -385,12 +385,10 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                     il.append(new GETSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_mac3", "I")));
                     break;
                 case R_IRGB:
-                    // todo check this
-                    il.append(new GETSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_irgb", "I")));
+                    il.append(new INVOKESTATIC(cp.addMethodref(CLASS, "readIORGB", "()V")));
                     break;
                 case R_ORGB:
-                    // todo check this
-                    il.append(new GETSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_orgb", "I")));
+                    il.append(new INVOKESTATIC(cp.addMethodref(CLASS, "readIORGB", "()V")));
                     break;
                 case R_LZCS:
                     il.append(new GETSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_lzcs", "I")));
@@ -805,19 +803,18 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                     il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_mac3", "I")));
                     break;
                 case R_IRGB:
-                    // todo check this
-                    il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_irgb", "I")));
+                    il.append(new INVOKESTATIC(cp.addMethodref(CLASS, "writeIRGB", "(I)V")));
                     break;
                 case R_ORGB:
-                    // todo check this
-                    il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_orgb", "I")));
+                    il.append(new POP()); // read only
+                    break;
+                case R_LZCR:
+                    il.append(new POP()); // read only
                     break;
 //                case R_LZCS:
-                    // fall thru for writeRegister
-//                case R_LZCR:
-                    // fall thru for writeRegister
+//                    fall thru for writeRegister
 //                case R_SXYP:
-                    // fall thru for writeRegister
+//                    fall thru for writeRegister
                 default:
                     il.append(new ISTORE(temp));
                     il.append(new PUSH(cp, reg));
@@ -1419,12 +1416,10 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                 value = reg_mac3;
                 break;
             case R_IRGB:
-                // todo check this
-                value = reg_irgb;
+                value = readIORGB();
                 break;
             case R_ORGB:
-                // todo check this
-                value = reg_orgb;
+                value = readIORGB();
                 break;
             case R_LZCS:
                 value = reg_lzcs;
@@ -1542,6 +1537,28 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
             r3000regs[rt] = value;
     }
 
+    public static void writeIRGB(int value) {
+        reg_ir1 = (value&0x1f)<<7;
+        reg_ir2 = ((value>>5)&0x1f)<<7;
+        reg_ir3 = ((value>>10)&0x1f)<<7;
+    }
+
+    public static int clampIR(int value) {
+        if (value < 0) {
+            value = 0;
+        } else {
+            value = value >> 7;
+            if (value > 0x1f) {
+                value = 0x1f;
+            }
+        }
+        return value;
+    }
+
+    public static int readIORGB() {
+        return clampIR(reg_ir1)|(clampIR(reg_ir2)<<5)|(clampIR(reg_ir3)<<10);
+    }
+
     public static void writeRegister(int reg, int value) {
         switch (reg) {
             case R_VXY0:
@@ -1641,12 +1658,10 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                 reg_mac3 = value;
                 break;
             case R_IRGB:
-                // todo check this
-                reg_irgb = value;
+                writeIRGB(value);
                 break;
             case R_ORGB:
-                // todo check this
-                reg_orgb = value;
+                // no op
                 break;
             case R_LZCS: {
                 reg_lzcs = value;
