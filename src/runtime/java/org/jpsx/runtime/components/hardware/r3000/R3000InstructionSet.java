@@ -393,6 +393,35 @@ public final class R3000InstructionSet extends JPSXComponent implements Instruct
             }
         };
         CPUInstruction i_bgezal = new CPUInstruction("bgezal", R3000InstructionSet.class, 0, CPUInstruction.FLAG_READS_RS | CPUInstruction.FLAG_BRANCH | CPUInstruction.FLAG_IMM_NEAR_TARGET | CPUInstruction.FLAG_LINK) {
+            public void compile(CompilationContext context, int address, int ci, InstructionList il) {
+                int rs = bits_rs(ci);
+
+                int cr = context.getConstantRegs();
+                int target = address + 4 + R3000.Util.signed_branch_delta(ci);
+                if (0 != (cr & (1 << rs))) {
+                    log.warn("Untested constant bgezal");
+                    context.emitDelaySlot(il);
+                    if (context.getRegValue(rs) >= 0) {
+                        ConstantPoolGen cp = context.getConstantPoolGen();
+                        il.append(new PUSH(cp, address + 8));
+                        context.emitSetReg(il, R3000.R_RETADDR);
+                        context.emitCall(il, target, address + 8);
+                    }
+                } else {
+                    context.emitGetReg(il, rs);
+                    context.emitDelaySlot(il);
+                    // skip over the call if not GE
+                    IFLT lt = new IFLT(null);
+                    il.append(lt);
+                    ConstantPoolGen cp = context.getConstantPoolGen();
+                    il.append(new PUSH(cp, address + 8));
+                    context.emitSetReg(il, R3000.R_RETADDR);
+                    context.emitCall(il, target, address + 8);
+                    // Link up the to whatever comes next - since we don't now what that is, we'll insert a NOP
+                    lt.setTarget(il.append(new NOP()));
+                }
+            }
+
             public int getBranchType(int ci) {
                 if (R3000.Util.bits_rs(ci) != 0)
                     return BRANCH_SOMETIMES;
@@ -469,6 +498,35 @@ public final class R3000InstructionSet extends JPSXComponent implements Instruct
             }
         };
         CPUInstruction i_bltzal = new CPUInstruction("bltzal", R3000InstructionSet.class, 0, CPUInstruction.FLAG_READS_RS | CPUInstruction.FLAG_BRANCH | CPUInstruction.FLAG_IMM_NEAR_TARGET | CPUInstruction.FLAG_LINK) {
+            public void compile(CompilationContext context, int address, int ci, InstructionList il) {
+                int rs = bits_rs(ci);
+
+                int cr = context.getConstantRegs();
+                int target = address + 4 + R3000.Util.signed_branch_delta(ci);
+                if (0 != (cr & (1 << rs))) {
+                    log.warn("Untested constant bltzal");
+                    context.emitDelaySlot(il);
+                    if (context.getRegValue(rs) < 0) {
+                        ConstantPoolGen cp = context.getConstantPoolGen();
+                        il.append(new PUSH(cp, address + 8));
+                        context.emitSetReg(il, R3000.R_RETADDR);
+                        context.emitCall(il, target, address + 8);
+                    }
+                } else {
+                    context.emitGetReg(il, rs);
+                    context.emitDelaySlot(il);
+                    // skip over the call if not LT
+                    IFGE ge = new IFGE(null);
+                    il.append(ge);
+                    ConstantPoolGen cp = context.getConstantPoolGen();
+                    il.append(new PUSH(cp, address + 8));
+                    context.emitSetReg(il, R3000.R_RETADDR);
+                    context.emitCall(il, target, address + 8);
+                    // Link up the to whatever comes next - since we don't now what that is, we'll insert a NOP
+                    ge.setTarget(il.append(new NOP()));
+                }
+            }
+
             public int getBranchType(int ci) {
                 if (R3000.Util.bits_rs(ci) != 0)
                     return BRANCH_SOMETIMES;
@@ -532,17 +590,30 @@ public final class R3000InstructionSet extends JPSXComponent implements Instruct
                 // reg_lo = regs[rs]/regs[rt];
                 // reg_hi = regs[rs]%regs[rt];
 
+                IFEQ gotoDivideByZero = null;
+                GOTO gotoWriteRegHi = null;
                 if (rt != 0) {
-                    if (0 != (context.getConstantRegs() & (1 << rs))) {
-                        il.append(new PUSH(cp, context.getRegValue(rs)));
-                    } else {
-                        context.emitGetReg(il, rs);
-                    }
                     if (0 != (context.getConstantRegs() & (1 << rt))) {
                         il.append(new PUSH(cp, context.getRegValue(rt)));
                     } else {
                         context.emitGetReg(il, rt);
                     }
+
+                    gotoDivideByZero = new IFEQ(null);
+                    il.append(gotoDivideByZero);
+
+                    if (0 != (context.getConstantRegs() & (1 << rs))) {
+                        il.append(new PUSH(cp, context.getRegValue(rs)));
+                    } else {
+                        context.emitGetReg(il, rs);
+                    }
+
+                    if (0 != (context.getConstantRegs() & (1 << rt))) {
+                        il.append(new PUSH(cp, context.getRegValue(rt)));
+                    } else {
+                        context.emitGetReg(il, rt);
+                    }
+
                     il.append(new IDIV());
                     il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(R3000_CLASS, "reg_lo", "I")));
 
@@ -557,7 +628,31 @@ public final class R3000InstructionSet extends JPSXComponent implements Instruct
                         context.emitGetReg(il, rt);
                     }
                     il.append(new IREM());
-                    il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(R3000_CLASS, "reg_hi", "I")));
+                    gotoWriteRegHi = new GOTO(null);
+                    il.append(gotoWriteRegHi);
+                }
+                // Code for divide by zero
+                InstructionHandle end = il.getEnd();
+                if (0 != (context.getConstantRegs() & (1 << rs))) {
+                    il.append(new PUSH(cp, context.getRegValue(rs)));
+                } else {
+                    context.emitGetReg(il, rs);
+                }
+                if (gotoDivideByZero != null) {
+                    gotoDivideByZero.setTarget(end.getNext());
+                }
+                il.append(new DUP());
+                il.append(new PUSH(cp, 31));
+                il.append(new ISHR());
+                il.append(new PUSH(cp, 1));
+                il.append(new ISHL());
+                il.append(new PUSH(cp, 1));
+                il.append(new ISUB());
+                il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(R3000_CLASS, "reg_lo", "I")));
+
+                InstructionHandle writeRegHi = il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(R3000_CLASS, "reg_hi", "I")));
+                if (gotoWriteRegHi != null) {
+                    gotoWriteRegHi.setTarget(writeRegHi);
                 }
             }
         };
@@ -573,7 +668,19 @@ public final class R3000InstructionSet extends JPSXComponent implements Instruct
                 //reg_lo = (int)(a/b);
                 //reg_hi = (int)(a%b);
 
+                IFEQ gotoDivideByZero = null;
+                GOTO gotoWriteRegHi = null;
+
                 if (rt != 0) {
+                    if (0 != (context.getConstantRegs() & (1 << rt))) {
+                        il.append(new PUSH(cp, context.getRegValue(rt)));
+                    } else {
+                        context.emitGetReg(il, rt);
+                    }
+
+                    gotoDivideByZero = new IFEQ(null);
+                    il.append(gotoDivideByZero);
+
                     if (0 != (context.getConstantRegs() & (1 << rs))) {
                         il.append(new PUSH(cp, longFromUnsigned(context.getRegValue(rs))));
                     } else {
@@ -604,7 +711,24 @@ public final class R3000InstructionSet extends JPSXComponent implements Instruct
                     }
                     il.append(new LREM());
                     il.append(new L2I());
-                    il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(R3000_CLASS, "reg_hi", "I")));
+                    gotoWriteRegHi = new GOTO(null);
+                    il.append(gotoWriteRegHi);
+                }
+                // Code for divide by zero
+                InstructionHandle divdieByZero = il.append(new PUSH(cp, -1));
+                if (gotoDivideByZero != null) {
+                    gotoDivideByZero.setTarget(divdieByZero);
+                }
+                il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(R3000_CLASS, "reg_lo", "I")));
+
+                if (0 != (context.getConstantRegs() & (1 << rs))) {
+                    il.append(new PUSH(cp, context.getRegValue(rs)));
+                } else {
+                    context.emitGetReg(il, rs);
+                }
+                InstructionHandle writeRegHi = il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(R3000_CLASS, "reg_hi", "I")));
+                if (gotoWriteRegHi != null) {
+                    gotoWriteRegHi.setTarget(writeRegHi);
                 }
             }
         };
@@ -625,7 +749,7 @@ public final class R3000InstructionSet extends JPSXComponent implements Instruct
                 target += ((ci & 0x3ffffff) << 2);
                 ConstantPoolGen cp = context.getConstantPoolGen();
                 il.append(new PUSH(cp, address + 8));
-                context.emitSetReg(il, 31);
+                context.emitSetReg(il, R3000.R_RETADDR);
                 context.emitCall(il, target, address + 8);
             }
         };
@@ -2337,10 +2461,13 @@ public final class R3000InstructionSet extends JPSXComponent implements Instruct
         int rs = bits_rs(ci);
         int rt = bits_rt(ci);
 
-        // behaviour undefined if divsior==0
         if (Refs.r3000Regs[rt] != 0) {
             Refs.r3000.setLO(Refs.r3000Regs[rs] / Refs.r3000Regs[rt]);
             Refs.r3000.setHI(Refs.r3000Regs[rs] % Refs.r3000Regs[rt]);
+        } else {
+            // According to docs, this is what it does
+            Refs.r3000.setLO(((Refs.r3000Regs[rs] >>> 31) << 1) - 1);
+            Refs.r3000.setHI(Refs.r3000Regs[rs]);
         }
     }
 
@@ -2348,12 +2475,15 @@ public final class R3000InstructionSet extends JPSXComponent implements Instruct
         int rs = bits_rs(ci);
         int rt = bits_rt(ci);
 
-        // behaviour undefined if divsior==0
         if (Refs.r3000Regs[rt] != 0) {
             long a = longFromUnsigned(Refs.r3000Regs[rs]);
             long b = longFromUnsigned(Refs.r3000Regs[rt]);
             Refs.r3000.setLO((int) (a / b));
             Refs.r3000.setHI((int) (a % b));
+        } else {
+            // According to docs, this is what it does
+            Refs.r3000.setLO(-1);
+            Refs.r3000.setHI(Refs.r3000Regs[rs]);
         }
     }
 
@@ -2814,5 +2944,4 @@ public final class R3000InstructionSet extends JPSXComponent implements Instruct
         il.append(new PUSH(cp, 0xffffffffL));
         il.append(new LAND());
     }
-
 }
