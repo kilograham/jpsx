@@ -184,19 +184,19 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int reg_ir2;
     public static int reg_ir3;
 
-    public static int reg_sx0;
-    public static int reg_sy0;
-    public static int reg_sx1;
-    public static int reg_sy1;
-    public static int reg_sx2;
-    public static int reg_sy2;
-    public static int reg_sxp;
-    public static int reg_syp;
+    public static int reg_sx0; // checked
+    public static int reg_sy0; // checked
+    public static int reg_sx1; // checked
+    public static int reg_sy1; // checked
+    public static int reg_sx2; // checked
+    public static int reg_sy2; // checked
+    public static int reg_sxp; // checked
+    public static int reg_syp; // checked
 
-    public static int reg_szx;
-    public static int reg_sz0;
-    public static int reg_sz1;
-    public static int reg_sz2;
+    public static int reg_szx; // checked
+    public static int reg_sz0; // checked
+    public static int reg_sz1; // checked
+    public static int reg_sz2; // checked
     public static int reg_rgb0;
     public static int reg_rgb1;
     public static int reg_rgb2;
@@ -205,10 +205,10 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int reg_mac1;
     public static int reg_mac2;
     public static int reg_mac3;
-//    public static int reg_irgb;
-//    public static int reg_orgb;
-    public static int reg_lzcr;
-    public static int reg_lzcs;
+//    public static int reg_irgb; // checked
+//    public static int reg_orgb; // checked
+    public static int reg_lzcr; // checked
+    public static int reg_lzcs; // checked
 
     public static Matrix reg_rot = new Matrix();
 
@@ -2418,6 +2418,7 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     }
 
     public static void interpret_avsz3(final int ci) {
+        // checked
 //        in: SZ1, SZ2, SZ3 Z-Values [0,16,0]
 //        ZSF3 Divider [1,3,12]
 //        out: OTZ Average. [0,16,0]
@@ -2432,6 +2433,7 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     }
 
     public static void interpret_avsz4(final int ci) {
+        // checked
 //        Fields:
 //        in: SZ1,SZ2,SZ3,SZ4 Z-Values [0,16,0]
 //        ZSF4 Divider [1,3,12]
