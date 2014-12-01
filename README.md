@@ -96,12 +96,12 @@ See the [wiki](https://github.com/jvilk/jpsx/wiki/Software-Compatibility) for fu
 
 # Hardware Compatibility
 
-See the [wiki](https://github.com/jvilk/jpsx/wiki/Hardware-Compatibility) for current compatibility status of currently available
+See the [wiki](https://github.com/jvilk/jpsx/wiki/Hardware-Compatibility) for current compatibility status and details of available
 emulation components
 
 # Developer Documentation
 
-See the [wiki](https://github.com/jvilk/jpsx/wiki/Documentation) for general development and other documentation
+See the [wiki](https://github.com/jvilk/jpsx/wiki/Development-Documentation) for general development and other documentation
 
 # Building the Emulator
 
