@@ -41,6 +41,7 @@
                         <fileset dir="${bootstrap.classes}"/>
                         <fileset dir="${runtime.classes}"/>
                         <fileset dir="${api.classes}"/>
+			<fileset file="LICENSE"/>
                         <zipgroupfileset dir="external" includes="bcel-5.1/bin/bcel.jar log4j-1.2.13.jar"/>
                         <manifest>
                                 <attribute name="Main-Class" value="org.jpsx.bootstrap.JPSXLauncher"/>

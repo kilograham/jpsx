@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007, 2014 Graham Sanderson
+ * Copyright (C) 2003, 2014 Graham Sanderson
  *
  * This file is part of JPSX.
  * 

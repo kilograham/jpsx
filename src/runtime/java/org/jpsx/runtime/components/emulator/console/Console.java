@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007, 2014 Graham Sanderson
+ * Copyright (C) 2003, 2014 Graham Sanderson
  *
  * This file is part of JPSX.
  * 
@@ -29,10 +29,7 @@ import org.jpsx.runtime.components.core.CoreComponentConnections;
 import org.jpsx.runtime.components.hardware.gte.GTE;
 import org.jpsx.runtime.util.MiscUtil;
 
-import java.io.DataInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class Console extends JPSXComponent implements Runnable, CPUListener {
     protected int lastDisAddress;
@@ -63,6 +60,11 @@ public class Console extends JPSXComponent implements Runnable, CPUListener {
     }
 
     public void run() {
+        System.out.println("JPSX Copyright (C) 2003, 2014 Graham Sanderson");
+        System.out.println("This program comes with ABSOLUTELY NO WARRANTY; type 'l' for details.");
+        System.out.println("This is free software, and you are welcome to redistribute it");
+        System.out.println("under certain conditions; type 'l' for details.");
+        System.out.println();
         dumpMainRegs();
 
         int lastDumpAddress = 0;
@@ -126,6 +128,13 @@ public class Console extends JPSXComponent implements Runnable, CPUListener {
                         }
                         break;
                     }
+                    case'l':
+                        LineNumberReader reader = new LineNumberReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("LICENSE")));
+                        String licenseLine;
+                        while (null != (licenseLine = reader.readLine())) {
+                            System.out.println(licenseLine);
+                        }
+                        break;
                     case'b':
                         if (line.length() > 1) {
                             switch (line.charAt(1)) {
