@@ -1613,7 +1613,6 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                 reg_sy2 = value >> 16;
                 break;
             case R_SXYP:
-                //TODO: not certain this is 100% correct - but seems to work for Tony Hawk's (which is the only thing I've seen so far which uses it...)
                 reg_sx0 = reg_sx1;
                 reg_sx1 = reg_sx2;
                 reg_sx2 = (value << 16) >> 16;
@@ -1684,7 +1683,7 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
             }
             case R_LZCR:
                 // lzcr is read only
-//                reg_lzcr = value;
+                // no op
                 break;
             case R_R11R12:
                 reg_rot.m11 = (value << 16) >> 16;
@@ -2391,6 +2390,7 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     }
 
     public static void interpret_op(final int ci) {
+        // checked except todo unclear whether lm is supported - added here
 //        Fields: sf
 //        in: [R11R12,R22R23,R33] vector 1
 //                [IR1,IR2,IR3] vector 2
@@ -2775,6 +2775,19 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
     }
 
     public static void interpret_sqr(final int ci) {
+        // checked
+//        Fields: sf
+//        in: [IR1,IR2,IR3] vector [1,15,0][1,3,12]
+//        out: [IR1,IR2,IR3] vector^2 [1,15,0][1,3,12]
+//        [MAC1,MAC2,MAC3] vector^2 [1,31,0][1,19,12]
+//        Calculation: (left format sf=0, right format sf=1)
+//        [1,31,0][1,19,12] MAC1=A1[IR1*IR1] [1,43,0][1,31,12]
+//        [1,31,0][1,19,12] MAC2=A2[IR2*IR2] [1,43,0][1,31,12]
+//        [1,31,0][1,19,12] MAC3=A3[IR3*IR3] [1,43,0][1,31,12]
+//        [1,15,0][1,3,12] IR1=Lm_B1[MAC1] [1,31,0][1,19,12][lm=1]
+//        [1,15,0][1,3,12] IR2=Lm_B2[MAC2] [1,31,0][1,19,12][lm=1]
+//        [1,15,0][1,3,12] IR3=Lm_B3[MAC3] [1,31,0][1,19,12][lm=1]
+
         reg_flag = 0;
 
         // [1,31,0] MAC1=A1[IR1*IR1]                     [1,43,0]
@@ -2784,18 +2797,22 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         // [1,15,0] IR2=LB2[MAC2]                      [1,31,0][lm=1]
         // [1,15,0] IR3=LB3[MAC3]                      [1,31,0][lm=1]
 
-        // A1,A2,A3 not possible... if IR inputs are 16 bit (well except for -32768!)
         int i1 = reg_ir1 * reg_ir1;
         int i2 = reg_ir2 * reg_ir2;
         int i3 = reg_ir3 * reg_ir3;
+
         if (0 != (ci & GTE_SF_MASK)) {
             i1 >>= 12;
             i2 >>= 12;
             i3 >>= 12;
         }
+
+        // A1,A2,A3 not possible since the inputs are signed 16 bit
         reg_mac1 = i1;
         reg_mac2 = i2;
         reg_mac3 = i3;
+
+        // lm=0 also not pertinent
         reg_ir1 = LiB1_1(i1);
         reg_ir2 = LiB1_1(i2);
         reg_ir3 = LiB1_1(i3);
