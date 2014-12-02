@@ -2270,33 +2270,33 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         if (src < 0) {
             reg_flag |= FLAG_C1;
             return 0;
-        } else if (src > 0xff) {
+        } else if (src > 0xfff) {
             reg_flag |= FLAG_C1;
             return 0xff;
         }
-        return src;
+        return src>>4;
     }
 
     public static int LiC2(int src) {
         if (src < 0) {
             reg_flag |= FLAG_C2;
             return 0;
-        } else if (src > 0xff) {
+        } else if (src > 0xfff) {
             reg_flag |= FLAG_C2;
             return 0xff;
         }
-        return src;
+        return src>>4;
     }
 
     public static int LiC3(int src) {
         if (src < 0) {
             reg_flag |= FLAG_C3;
             return 0;
-        } else if (src > 0xff) {
+        } else if (src > 0xfff) {
             reg_flag |= FLAG_C3;
             return 0xff;
         }
-        return src;
+        return src>>4;
     }
 
     public static int LiD(int src) {
@@ -2550,9 +2550,9 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         mac2 = A2(g * ir2);
         mac3 = A3(b * ir3);
 
-        int rr = LiC1(mac1 >> 4);
-        int gg = LiC2(mac2 >> 4);
-        int bb = LiC3(mac3 >> 4);
+        int rr = LiC1(mac1);
+        int gg = LiC2(mac2);
+        int bb = LiC3(mac3);
         reg_rgb0 = rr | (gg << 8) | (bb << 16) | chi;
 
         // 2
@@ -2585,9 +2585,9 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         mac3 = A3(b * ir3);
 
         // gcs 011802 added >>4
-        rr = LiC1(mac1 >> 4);
-        gg = LiC2(mac2 >> 4);
-        bb = LiC3(mac3 >> 4);
+        rr = LiC1(mac1);
+        gg = LiC2(mac2);
+        bb = LiC3(mac3);
         reg_rgb1 = rr | (gg << 8) | (bb << 16) | chi;
 
         // 3
@@ -2623,9 +2623,9 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         reg_ir3 = LiB3_1(reg_mac3);
 
         // gcs 011802 added >>4
-        rr = LiC1(reg_mac1 >> 4);
-        gg = LiC2(reg_mac2 >> 4);
-        bb = LiC3(reg_mac3 >> 4);
+        rr = LiC1(reg_mac1);
+        gg = LiC2(reg_mac2);
+        bb = LiC3(reg_mac3);
         reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
     }
 
@@ -2655,9 +2655,9 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         reg_ir1 = LiB1_0(reg_mac1);
         reg_ir2 = LiB2_0(reg_mac2);
         reg_ir3 = LiB3_0(reg_mac3);
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
         reg_rgb0 = reg_rgb1;
         reg_rgb1 = reg_rgb2;
         reg_rgb2 = (reg_rgb & 0xff000000) | rr | (gg << 8) | (bb << 16);
@@ -2665,27 +2665,26 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
 
     public static void interpret_dcpl(final int ci) {
 
-        /*
-        In: RGB Primary color. R,G,B,CODE [0,8,0]
-IR0 interpolation value. [1,3,12]
-[IR1,IR2,IR3] Local color vector. [1,3,12]
-CODE Code value from RGB. CODE [0,8,0]
-FC Far color. [1,27,4]
-Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
-[IR1,IR2,IR3] Color vector [1,11,4]
-[MAC1,MAC2,MAC3] Color vector [1,27,4]
-        Calculation:
-        [1,27,4] MAC1=A1[R*IR1 + IR0*(Lm_B1[RFC-R* IR1])] [1,27,16]
-        [1,27,4] MAC2=A2[G*IR2 + IR0*(Lm_B1[GFC-G* IR2])] [1,27,16]
-        [1,27,4] MAC3=A3[B*IR3 + IR0*(Lm_B1[BFC-B* IR3])] [1,27,16]
-        [1,11,4] IR1=Lm_B1[MAC1] [1,27,4]
-        [1,11,4] IR2=Lm_B2[MAC2] [1,27,4]
-        [1,11,4] IR3=Lm_B3[MAC3] [1,27,4]
-        [0,8,0] Cd0<-Cd1<-Cd2<- CODE
-                [0,8,0] R0<-R1<-R2<- Lm_C1[MAC1] [1,27,4]
-        [0,8,0] G0<-G1<-G2<- Lm_C2[MAC2] [1,27,4]
-        [0,8,0] B0<-B1<-B2<- Lm_C3[MAC3] [1,27,4]
-        */
+//        In: RGB Primary color. R,G,B,CODE [0,8,0]
+//        IR0 interpolation value. [1,3,12]
+//        [IR1,IR2,IR3] Local color vector. [1,3,12]
+//        CODE Code value from RGB. CODE [0,8,0]
+//        FC Far color. [1,27,4]
+//        Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
+//        [IR1,IR2,IR3] Color vector [1,11,4]
+//        [MAC1,MAC2,MAC3] Color vector [1,27,4]
+//        Calculation:
+//        [1,27,4] MAC1=A1[R*IR1 + IR0*(Lm_B1[RFC-R* IR1])] [1,27,16]
+//        [1,27,4] MAC2=A2[G*IR2 + IR0*(Lm_B1[GFC-G* IR2])] [1,27,16]
+//        [1,27,4] MAC3=A3[B*IR3 + IR0*(Lm_B1[BFC-B* IR3])] [1,27,16]
+//        [1,11,4] IR1=Lm_B1[MAC1] [1,27,4]
+//        [1,11,4] IR2=Lm_B2[MAC2] [1,27,4]
+//        [1,11,4] IR3=Lm_B3[MAC3] [1,27,4]
+//        [0,8,0] Cd0<-Cd1<-Cd2<- CODE
+//                [0,8,0] R0<-R1<-R2<- Lm_C1[MAC1] [1,27,4]
+//        [0,8,0] G0<-G1<-G2<- Lm_C2[MAC2] [1,27,4]
+//        [0,8,0] B0<-B1<-B2<- Lm_C3[MAC3] [1,27,4]
+
         reg_flag = 0;
         int chi = reg_rgb & 0xff000000;
         int r = (reg_rgb & 0xff) << 4;
@@ -2702,15 +2701,16 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         reg_ir2 = LiB2_0(reg_mac2);
         reg_ir3 = LiB3_0(reg_mac3);
 
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
         reg_rgb0 = reg_rgb1;
         reg_rgb1 = reg_rgb2;
         reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
     }
 
     public static void interpret_dpcs(final int ci) {
+        // checked
         /**
          In: IR0 Interpolation value [1,3,12]
          RGB Color R,G,B,CODE [0,8,0]
@@ -2732,12 +2732,12 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
          [0,8,0] B0<-B1<-B2<- Lm_C3[MAC3] [1,27,4]
          */
         reg_flag = 0;
+
         int chi = reg_rgb & 0xff000000;
         int r = (reg_rgb & 0xff) << 4;
         int g = (reg_rgb & 0xff00) >> 4;
         int b = (reg_rgb & 0xff0000) >> 12;
 
-        // TODO - is this B1 all the way correct?
         reg_mac1 = A1((r << 12) + reg_ir0 * LiB1_0(reg_rfc - r));
         reg_mac2 = A2((g << 12) + reg_ir0 * LiB1_0(reg_gfc - g));
         reg_mac3 = A3((b << 12) + reg_ir0 * LiB1_0(reg_bfc - b));
@@ -2746,9 +2746,10 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         reg_ir2 = LiB2_0(reg_mac2);
         reg_ir3 = LiB3_0(reg_mac3);
 
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
+
         reg_rgb0 = reg_rgb1;
         reg_rgb1 = reg_rgb2;
         reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
@@ -2766,9 +2767,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         reg_ir2 = LiB2_0(reg_mac2);
         reg_ir3 = LiB3_0(reg_mac3);
 
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
         reg_rgb0 = reg_rgb1;
         reg_rgb1 = reg_rgb2;
         reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
@@ -2863,9 +2864,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         reg_ir2 = LiB2_1(reg_mac2);
         reg_ir3 = LiB3_1(reg_mac3);
 
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
         reg_rgb0 = reg_rgb1;
         reg_rgb1 = reg_rgb2;
         reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
@@ -2912,9 +2913,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         mac2 = A2(c21 * ir1 + c22 * ir2 + c23 * ir3 + (bkg << 12));
         mac3 = A3(c31 * ir1 + c32 * ir2 + c33 * ir3 + (bkb << 12));
 
-        int rr = LiC1(mac1 >> 4);
-        int gg = LiC2(mac2 >> 4);
-        int bb = LiC3(mac3 >> 4);
+        int rr = LiC1(mac1);
+        int gg = LiC2(mac2);
+        int bb = LiC3(mac3);
         reg_rgb0 = rr | (gg << 8) | (bb << 16) | chi;
 
         // 2
@@ -2931,9 +2932,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         mac2 = A2(c21 * ir1 + c22 * ir2 + c23 * ir3 + (bkg << 12));
         mac3 = A3(c31 * ir1 + c32 * ir2 + c33 * ir3 + (bkb << 12));
 
-        rr = LiC1(mac1 >> 4);
-        gg = LiC2(mac2 >> 4);
-        bb = LiC3(mac3 >> 4);
+        rr = LiC1(mac1);
+        gg = LiC2(mac2);
+        bb = LiC3(mac3);
         reg_rgb1 = rr | (gg << 8) | (bb << 16) | chi;
 
         // 3
@@ -2954,9 +2955,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         reg_ir2 = LiB2_1(reg_mac2);
         reg_ir3 = LiB3_1(reg_mac3);
 
-        rr = LiC1(reg_mac1 >> 4);
-        gg = LiC2(reg_mac2 >> 4);
-        bb = LiC3(reg_mac3 >> 4);
+        rr = LiC1(reg_mac1);
+        gg = LiC2(reg_mac2);
+        bb = LiC3(reg_mac3);
         reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
     }
 
@@ -3040,9 +3041,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         // [0,8,0]   R0<-R1<-R2<- LC1[MAC1]                             [1,27,4]
         // [0,8,0]   G0<-G1<-G2<- LC2[MAC2]                             [1,27,4]
         // [0,8,0]   B0<-B1<-B2<- LC3[MAC3]                             [1,27,4]
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
         reg_rgb0 = reg_rgb1;
         reg_rgb1 = reg_rgb2;
         reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
@@ -3124,9 +3125,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         // [0,8,0]   R0<-R1<-R2<- LC1[MAC1]                             [1,27,4]
         // [0,8,0]   G0<-G1<-G2<- LC2[MAC2]                             [1,27,4]
         // [0,8,0]   B0<-B1<-B2<- LC3[MAC3]                             [1,27,4]
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
         reg_rgb0 = rr | (gg << 8) | (bb << 16) | chi;
 
         // 2 ----
@@ -3150,9 +3151,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         reg_mac2 = A2(g * ir2 + ((ir0 * LiB2_0((reg_gfc << 12) - g * ir2)) >> 12));
         reg_mac3 = A3(b * ir3 + ((ir0 * LiB3_0((reg_bfc << 12) - b * ir3)) >> 12));
 
-        rr = LiC1(reg_mac1 >> 4);
-        gg = LiC2(reg_mac2 >> 4);
-        bb = LiC3(reg_mac3 >> 4);
+        rr = LiC1(reg_mac1);
+        gg = LiC2(reg_mac2);
+        bb = LiC3(reg_mac3);
         reg_rgb1 = rr | (gg << 8) | (bb << 16) | chi;
 
         // 3 ----
@@ -3176,46 +3177,56 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         reg_mac2 = A2(g * ir2 + ((ir0 * LiB2_0((reg_gfc << 12) - g * ir2)) >> 12));
         reg_mac3 = A3(b * ir3 + ((ir0 * LiB3_0((reg_bfc << 12) - b * ir3)) >> 12));
 
-        rr = LiC1(reg_mac1 >> 4);
-        gg = LiC2(reg_mac2 >> 4);
-        bb = LiC3(reg_mac3 >> 4);
+        rr = LiC1(reg_mac1);
+        gg = LiC2(reg_mac2);
+        bb = LiC3(reg_mac3);
         reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
     }
 
     public static void interpret_dpct(final int ci) {
+        // checked
+//        [1,27,4] MAC1=A1[R0+ IR0*(Lm_B1[RFC - R0])] [1,27,16][lm=0]
+//        [1,27,4] MAC2=A2[G0+ IR0*(Lm_B1[GFC - G0])] [1,27,16][lm=0]
+//        [1,27,4] MAC3=A3[B0+ IR0*(Lm_B1[BFC - B0])] [1,27,16][lm=0]
+//        [1,11,4] IR1=Lm_B1[MAC1] [1,27,4][lm=0]
+//        [1,11,4] IR2=Lm_B2[MAC2] [1,27,4][lm=0]
+//        [1,11,4] IR3=Lm_B3[MAC3] [1,27,4][lm=0]
+//        [0,8,0] Cd0<-Cd1<-Cd2<- CODE
+//        [0,8,0] R0<-R1<-R2<- Lm_C1[MAC1] [1,27,4]
+//        [0,8,0] G0<-G1<-G2<- Lm_C2[MAC2] [1,27,4]
+//        [0,8,0] B0<-B1<-B2<- Lm_C3[MAC3] [1,27,4]
+//        *3
+
         reg_flag = 0;
 
+        // 1 ----
         int chi = reg_rgb & 0xff000000;
-        int r = (reg_rgb & 0xff) << 4;
-        int g = (reg_rgb & 0xff00) >> 4;
-        int b = (reg_rgb & 0xff0000) >> 12;
+        int r = (reg_rgb0 & 0xff) << 4;
+        int g = (reg_rgb0 & 0xff00) >> 4;
+        int b = (reg_rgb0 & 0xff0000) >> 12;
 
-        // TODO - is this B1 all the way correct?
-        reg_mac1 = A1((r << 12) + reg_ir0 * LiB1_0(reg_rfc - r));
-        reg_mac2 = A2((g << 12) + reg_ir0 * LiB1_0(reg_gfc - g));
-        reg_mac3 = A3((b << 12) + reg_ir0 * LiB1_0(reg_bfc - b));
-
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
-        reg_rgb0 = rr | (gg << 8) | (bb << 16) | chi;
+        int rr = LiC1(A1((r << 12) + reg_ir0 * LiB1_0(reg_rfc - r)));
+        int gg = LiC2(A2((g << 12) + reg_ir0 * LiB1_0(reg_gfc - g)));
+        int bb = LiC3(A3((b << 12) + reg_ir0 * LiB1_0(reg_bfc - b)));
+        reg_rgb0 = chi | rr | (gg << 8) | (bb << 16);
 
         // 2 ----
 
-        // TODO - is this B1 all the way correct?
-        reg_mac1 = A1((r << 12) + reg_ir0 * LiB1_0(reg_rfc - r));
-        reg_mac2 = A2((g << 12) + reg_ir0 * LiB1_0(reg_gfc - g));
-        reg_mac3 = A3((b << 12) + reg_ir0 * LiB1_0(reg_bfc - b));
+        r = (reg_rgb1 & 0xff) << 4;
+        g = (reg_rgb1 & 0xff00) >> 4;
+        b = (reg_rgb1 & 0xff0000) >> 12;
 
-        rr = LiC1(reg_mac1 >> 4);
-        gg = LiC2(reg_mac2 >> 4);
-        bb = LiC3(reg_mac3 >> 4);
-
-        reg_rgb1 = rr | (gg << 8) | (bb << 16) | chi;
+        rr = LiC1(A1((r << 12) + reg_ir0 * LiB1_0(reg_rfc - r)));
+        gg = LiC2(A2((g << 12) + reg_ir0 * LiB1_0(reg_gfc - g)));
+        bb = LiC3(A3((b << 12) + reg_ir0 * LiB1_0(reg_bfc - b)));
+        reg_rgb1 = chi | rr | (gg << 8) | (bb << 16);
 
         // 3 ----
 
-        // TODO - is this B1 all the way correct?
+        r = (reg_rgb2 & 0xff) << 4;
+        g = (reg_rgb2 & 0xff00) >> 4;
+        b = (reg_rgb2 & 0xff0000) >> 12;
+
         reg_mac1 = A1((r << 12) + reg_ir0 * LiB1_0(reg_rfc - r));
         reg_mac2 = A2((g << 12) + reg_ir0 * LiB1_0(reg_gfc - g));
         reg_mac3 = A3((b << 12) + reg_ir0 * LiB1_0(reg_bfc - b));
@@ -3224,10 +3235,10 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         reg_ir2 = LiB2_0(reg_mac2);
         reg_ir3 = LiB3_0(reg_mac3);
 
-        rr = LiC1(reg_mac1 >> 4);
-        gg = LiC2(reg_mac2 >> 4);
-        bb = LiC3(reg_mac3 >> 4);
-        reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
+        rr = LiC1(reg_mac1);
+        gg = LiC2(reg_mac2);
+        bb = LiC3(reg_mac3);
+        reg_rgb2 = chi | rr | (gg << 8) | (bb << 16);
     }
 
     public static void interpret_nccs(final int ci) {
@@ -3294,9 +3305,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         reg_ir2 = LiB2_1(reg_mac2);
         reg_ir3 = LiB3_1(reg_mac3);
 
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
         reg_rgb0 = reg_rgb1;
         reg_rgb1 = reg_rgb2;
         reg_rgb2 = rr | (gg << 8) | (bb << 16) | chi;
@@ -3355,9 +3366,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         // [0,8,0] R0<-R1<-R2<- Lm_C1[MAC1] [1,27,4]
         // [0,8,0] G0<-G1<-G2<- Lm_C2[MAC2] [1,27,4]
         // [0,8,0] B0<-B1<-B2<- Lm_C3[MAC3] [1,27,4]
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
         reg_rgb0 = reg_rgb1;
         reg_rgb1 = reg_rgb2;
         reg_rgb2 = (reg_rgb & 0xff000000) | rr | (gg << 8) | (bb << 16);
@@ -3401,7 +3412,6 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         // [1,3,12] IR1= Lm_B1[MAC1] [1,27,4][lm=1]
         // [1,3,12] IR2= Lm_B2[MAC2] [1,27,4][lm=1]
         // [1,3,12] IR3= Lm_B3[MAC3] [1,27,4][lm=1]
-        long ir0 = reg_ir0;
         int r = (reg_rgb & 0xff) << 4;
         int g = (reg_rgb & 0xff00) >> 4;
         int b = (reg_rgb & 0xff0000) >> 12;
@@ -3416,9 +3426,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         // [0,8,0] R0<-R1<-R2<- Lm_C1[MAC1] [1,27,4]
         // [0,8,0] G0<-G1<-G2<- Lm_C2[MAC2] [1,27,4]
         // [0,8,0] B0<-B1<-B2<- Lm_C3[MAC3] [1,27,4]
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
         reg_rgb0 = reg_rgb1;
         reg_rgb1 = reg_rgb2;
         reg_rgb2 = (reg_rgb & 0xff000000) | rr | (gg << 8) | (bb << 16);
@@ -3440,9 +3450,9 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
         reg_ir1 = LiB1_0(reg_mac1);
         reg_ir2 = LiB2_0(reg_mac2);
         reg_ir3 = LiB3_0(reg_mac3);
-        int rr = LiC1(reg_mac1 >> 4);
-        int gg = LiC2(reg_mac2 >> 4);
-        int bb = LiC3(reg_mac3 >> 4);
+        int rr = LiC1(reg_mac1);
+        int gg = LiC2(reg_mac2);
+        int bb = LiC3(reg_mac3);
         reg_rgb0 = reg_rgb1;
         reg_rgb1 = reg_rgb2;
         reg_rgb2 = (reg_rgb & 0xff000000) | rr | (gg << 8) | (bb << 16);
