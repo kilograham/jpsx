@@ -3364,7 +3364,64 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
     }
 
     public static void interpret_cc(final int ci) {
-        if (true) throw new IllegalStateException("GTE UNIMPLEMENTED: CC");
+        // [1,19,12] MAC1=A1[RBK + LR1*IR1 + LR2*IR2 + LR3*IR3] [1,19,24]
+        // [1,19,12] MAC2=A2[GBK + LG1*IR1 + LG2*IR2 + LG3*IR3] [1,19,24]
+        // [1,19,12] MAC3=A3[BBK + LB1*IR1 + LB2*IR2 + LB3*IR3] [1,19,24]
+        int ir1 = reg_ir1;
+        int ir2 = reg_ir2;
+        int ir3 = reg_ir3;
+        long c11 = reg_lc.m11;
+        long c12 = reg_lc.m12;
+        long c13 = reg_lc.m13;
+        long c21 = reg_lc.m21;
+        long c22 = reg_lc.m22;
+        long c23 = reg_lc.m23;
+        long c31 = reg_lc.m31;
+        long c32 = reg_lc.m32;
+        long c33 = reg_lc.m33;
+
+        long bkr = reg_rbk;
+        long bkg = reg_gbk;
+        long bkb = reg_bbk;
+
+        int mac1 = A1(c11 * ir1 + c12 * ir2 + c13 * ir3 + (bkr << 12));
+        int mac2 = A2(c21 * ir1 + c22 * ir2 + c23 * ir3 + (bkg << 12));
+        int mac3 = A3(c31 * ir1 + c32 * ir2 + c33 * ir3 + (bkb << 12));
+
+        // [1,3,12] IR1= Lm_B1[MAC1] [1,19,12][lm=1]
+        // [1,3,12] IR2= Lm_B2[MAC2] [1,19,12][lm=1]
+        // [1,3,12] IR3= Lm_B3[MAC3] [1,19,12][lm=1]
+        ir1 = LiB1_1(mac1);
+        ir2 = LiB1_1(mac2);
+        ir3 = LiB1_1(mac3);
+
+        // [1,27,4] MAC1=A1[R*IR1] [1,27,16]
+        // [1,27,4] MAC2=A2[G*IR2] [1,27,16]
+        // [1,27,4] MAC3=A3[B*IR3] [1,27,16]
+        // [1,3,12] IR1= Lm_B1[MAC1] [1,27,4][lm=1]
+        // [1,3,12] IR2= Lm_B2[MAC2] [1,27,4][lm=1]
+        // [1,3,12] IR3= Lm_B3[MAC3] [1,27,4][lm=1]
+        long ir0 = reg_ir0;
+        int r = (reg_rgb & 0xff) << 4;
+        int g = (reg_rgb & 0xff00) >> 4;
+        int b = (reg_rgb & 0xff0000) >> 12;
+        reg_mac1 = A1(r * ir1);
+        reg_mac2 = A2(g * ir2);
+        reg_mac3 = A3(b * ir3);
+        reg_ir1 = LiB1_1(mac1);
+        reg_ir2 = LiB1_1(mac2);
+        reg_ir3 = LiB1_1(mac3);
+
+        // [0,8,0] Cd0<-Cd1<-Cd2<- CODE
+        // [0,8,0] R0<-R1<-R2<- Lm_C1[MAC1] [1,27,4]
+        // [0,8,0] G0<-G1<-G2<- Lm_C2[MAC2] [1,27,4]
+        // [0,8,0] B0<-B1<-B2<- Lm_C3[MAC3] [1,27,4]
+        int rr = LiC1(reg_mac1 >> 4);
+        int gg = LiC2(reg_mac2 >> 4);
+        int bb = LiC3(reg_mac3 >> 4);
+        reg_rgb0 = reg_rgb1;
+        reg_rgb1 = reg_rgb2;
+        reg_rgb2 = (reg_rgb & 0xff000000) | rr | (gg << 8) | (bb << 16);
     }
 
     public static void interpret_gpl(final int ci) {
