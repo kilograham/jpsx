@@ -1105,7 +1105,6 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         e2.current.y++;
                         base += 1024;
                     }
-                    ;
                 } else {
                     while (e2.current.y < e2.endy) {
                         int left = el.current.x >> 16;
@@ -2505,6 +2504,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpud3PointTexture");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -2593,6 +2594,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpud3PointTexture");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -2707,6 +2710,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         //    src[srcIndex]|=PIXEL_BREG_CLUT;
         //}
 
+        // todo caching here!
         boolean solid = true;
         int rmul = (val & 0xff);
         int gmul = ((val >> 8) & 0xff);
@@ -2717,7 +2721,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
             int b = (current & 0xff);
             int g = ((current >> 8) & 0xff);
             int r = ((current >> 16) & 0xff);
-            // we mustn't change pixel to a zero unless it was zero to configure with
+            // we mustn't change pixel to a zero unless it was zero to start with
             int mask = ((current & 0xffffff) == 0) ? 0 : 1;
             r = (r * rmul) >> 7;
             if (r > 255) r = 255;
@@ -3046,6 +3050,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpud3PointTextureSemi");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -3394,6 +3400,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpud3PointTextureSemi");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -3717,6 +3725,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpud4PointTexture");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -3805,6 +3815,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpud4PointTexture");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -4142,6 +4154,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpud4PointTextureSemi");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -4490,6 +4504,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpud4PointTextureSemi");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -7153,6 +7169,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpudSprite");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -7241,6 +7259,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpudSprite");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -7561,6 +7581,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpudSpriteSemi");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -7909,6 +7931,8 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 boolean nobreg = false;
                 if (((data[offset] & 0x01000000) != 0) || ((data[offset] & 0xffffff) == 0x808080)) {
                     nobreg = true;
+                } else {
+                    missing("16 bit breg gpudSpriteSemi");
                 }
                 // todo breg
                 switch (getMaskModes()) {
@@ -9207,6 +9231,15 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 }
             }
             display.releaseDisplayBuffer();
+        }
+    }
+
+    // Temporary hack to show stuff that is missing - we shoud do this with a system wide log4j channel
+    static int maxMissing = 10;
+    private static void missing(String s) {
+        if (maxMissing > 0) {
+            maxMissing --;
+            System.out.println("Missing "+s);
         }
     }
 }
