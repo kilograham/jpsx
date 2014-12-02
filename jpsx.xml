@@ -44,15 +44,8 @@
     </machine>
 
     <!-- GAME/CD specific machines -->
-    <!-- todo these don't really belong checked in -->
-
-    <machine id="bends">
-        <var name="image" value="/rips/bends.cue"/>
-        <include refid="named-image"/>
-    </machine>
 
     <machine id="ff7">
-        <var name="image" value="/Users/mich/psx_games/vs.cue"/>
         <include refid="named-image-no-console"/>
         <component id="display" classname="org.jpsx.runtime.components.hardware.gpu.AWTDisplay">
             <property name="x" value="640"/>
@@ -61,7 +54,6 @@
     </machine>
 
     <machine id="vp">
-        <var name="image" value="/Users/mich/psx_games/vs.cue"/>
         <include refid="named-image-no-console"/>
         <component id="display" classname="org.jpsx.runtime.components.hardware.gpu.AWTDisplay">
             <property name="x" value="640"/>
@@ -70,7 +62,6 @@
     </machine>
 
     <machine id="bandicoot">
-        <var name="image" value="/rips/bandicoot.cue"/>
         <include refid="named-image-no-console"/>
 
         <component id="display" classname="org.jpsx.runtime.components.hardware.gpu.AWTDisplay">
@@ -82,27 +73,6 @@
             <!-- temp hack for counters -->
             <property name="bandicootUS" value="true"/>
         </component>
-    </machine>
-
-    <machine id="tombraider">
-        <var name="image" value="/rips/tombraider.cue"/>
-        <include refid="named-image"/>
-
-        <!-- temporary turn of second stage -->
-        <!--		<component id="compiler" classname="org.jpsx.runtime.components.emulator.compiler.MultiStageCompiler">
-                    <property name="stage2" value="false"/>
-                </component>
-        -->
-    </machine>
-
-    <machine id="gt">
-        <var name="image" value="/rips/granturismo.cue"/>
-        <include refid="named-image-no-voice-audio"/>
-    </machine>
-
-    <machine id="sh">
-        <var name="image" value="/Users/jvilk/Code/jpsx/rips/Silent_Hill.cue"/>
-        <include refid="named-image-no-sound"/>
     </machine>
 
     <!-- handy core components -->
