@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="jpsx" default="all" basedir=".">
+<project name="jpsx" default="default" basedir=".">
         <property file="build.properties"/>
         <property name="src" value="${basedir}/src"/>
         <property name="bootstrap.src" value="${src}/bootstrap/java"/>
@@ -16,8 +16,18 @@
         <property name="bcel.classpath" value="${bcel.sourcepath}/bin/bcel.jar" />
         <property name="log4j.classpath" value="${basedir}/external/log4j-1.2.13.jar" />
         <property name="lwjgl.classpath" value="${basedir}/external/lwjgl-2.9.1/jar/lwjgl.jar" />
+        <property name="jar.path" value="${basedir}/ship" />
+        <property name="dist.path" value="${basedir}/dist" />
 
-        <target name="all" depends="api_build,bootstrap_build,runtime_build,lwjgl_build,package"/>
+        <target name="default" depends="api_build,bootstrap_build,runtime_build,lwjgl_build,package"/>
+
+        <target name="dist" depends="default">
+                <zip destfile="${dist.path}/jpsx.zip" basedir="${jar.path}">
+                        <zipfileset dir="." includes="LICENSE" fullpath="./LICENSE"/>
+                        <zipfileset dir="." includes="README.md" fullpath="./README.md"/>
+                        <zipfileset dir="." includes="jpsx.xml" fullpath="./jpsx.xml"/>
+                </zip>
+        </target>
 
         <target name="env">
         </target>
@@ -37,18 +47,19 @@
         </target>
 
         <target name="package">
-                <jar destfile="${basedir}/ship/jpsx.jar">
+                <jar destfile="${jar.path}/jpsx.jar">
                         <fileset dir="${bootstrap.classes}"/>
                         <fileset dir="${runtime.classes}"/>
                         <fileset dir="${api.classes}"/>
-			<fileset file="LICENSE"/>
+                        <fileset file="LICENSE"/>
                         <zipgroupfileset dir="external" includes="bcel-5.1/bin/bcel.jar log4j-1.2.13.jar"/>
                         <manifest>
                                 <attribute name="Main-Class" value="org.jpsx.bootstrap.JPSXLauncher"/>
                         </manifest>
                 </jar>
-                <jar destfile="${basedir}/ship/jpsx-lwjgl.jar">
+                <jar destfile="${jar.path}/jpsx-lwjgl.jar">
                         <fileset dir="${lwjgl.classes}" />
+                        <fileset file="LICENSE"/>
                 </jar>
         </target>
 

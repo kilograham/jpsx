@@ -8,3 +8,4 @@ target
 external/bcel-5.1/bin
 *.iml
 ship/
+dist/
