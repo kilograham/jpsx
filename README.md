@@ -66,15 +66,16 @@ By default the pad is controlled by giving focus to the display window.
 These are the default mappings for controller 1 copied from `AWTKeyboardController`, which you can currently only change in the source:
 
 
-| Button        | Key              | | Button        | Key           |
-|---------------|------------------|-|---------------|---------------|
-| ⬆            | <kbd>⬆</kbd>     | | △             | <kbd>8</kbd> or keypad <kbd>⬆</kbd> |
-| →             | <kbd>→</kbd>     | | ⓞ            | <kbd>I</kbd> or keypad <kbd>→</kbd>  |
-| ⬇            | <kbd>⬇</kbd>     | | ⓧ            | <kbd>U</kbd> or keypad <kbd>⬇</kbd> |
-| ⬅            | <kbd>⬅</kbd>     | | □             | <kbd>I</kbd> or keypad <kbd>⬅</kbd>  |
-| <kbd>L1</kbd> | <kbd>1</kbd>     | | <kbd>R1</kbd> | <kbd>2</kbd> |
-| <kbd>L2</kbd> | <kbd>Q</kbd>     | | <kbd>R2</kbd> | <kbd>W</kbd> |
-| Select        | <kbd>S</kbd>     | | Start         | <kbd>Space</kbd> |
+<table>
+	<tr><th>Button</th><th>Key</th><th></th><th>Button</th><th>Key</th></tr>
+    <tr><td>⬆</td><td><kbd>⬆</kbd></td><td></td><td>△</td><td><kbd>8</kbd> or keypad <kbd>⬆</kbd></td></tr>
+    <tr><td>→</td><td><kbd>→</kbd></td><td></td><td>ⓞ</td><td><kbd>I</kbd> or keypad <kbd>→</kbd></td></tr>
+    <tr><td>⬇</td><td><kbd>⬇</kbd></td><td></td><td>ⓧ</td><td><kbd>U</kbd> or keypad <kbd>⬇</kbd></td></tr>
+    <tr><td>⬅</td><td><kbd>⬅</kbd></td><td></td><td>□</td><td><kbd>I</kbd> or keypad <kbd>⬅</kbd></td></tr>
+    <tr><td><kbd>L1</kbd></td><td><kbd>1</kbd></td><td></td><td><kbd>R1</kbd></td><td> <kbd>2</kbd></td></tr>
+    <tr><td><kbd>L2</kbd></td><td><kbd>Q</kbd></td><td></td><td><kbd>R2</kbd></td><td><kbd>W</kbd></td></tr>
+    <tr><td>Select</td><td><kbd>S</kbd></td><td></td><td>Start</td><td><kbd>Space</kbd></td></tr>
+</table>
 
 
 The current displays also supports a few keys (don't forget <kbd>fn</kbd> on OS X).
