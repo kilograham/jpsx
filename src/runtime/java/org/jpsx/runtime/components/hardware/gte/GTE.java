@@ -2814,8 +2814,8 @@ Out: RGBn RGB fifo Rn,Gn,Bn,CDn [0,8,0]
 
         // lm=0 also not pertinent
         reg_ir1 = LiB1_1(i1);
-        reg_ir2 = LiB1_1(i2);
-        reg_ir3 = LiB1_1(i3);
+        reg_ir2 = LiB2_1(i2);
+        reg_ir3 = LiB3_1(i3);
     }
 
     public static void interpret_ncs(final int ci) {
