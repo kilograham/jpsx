@@ -22,10 +22,14 @@
         <target name="default" depends="api_build,bootstrap_build,runtime_build,lwjgl_build,package"/>
 
         <target name="dist" depends="default">
-                <zip destfile="${dist.path}/jpsx.zip" basedir="${jar.path}">
-                        <zipfileset dir="." includes="LICENSE" fullpath="./LICENSE"/>
-                        <zipfileset dir="." includes="README.md" fullpath="./README.md"/>
-                        <zipfileset dir="." includes="jpsx.xml" fullpath="./jpsx.xml"/>
+                <zip destfile="${dist.path}/jpsx.zip">
+                        <zipfileset dir="${jar.path}" includes="*.jar" prefix="./ship" />
+                        <zipfileset dir="." includes="LICENSE" prefix="."/>
+                        <zipfileset dir="." includes="README.md" prefix="."/>
+                        <zipfileset dir="." includes="jpsx.xml" prefix="."/>
+                        <zipfileset dir="." includes="osx.sh" prefix="."/>
+                        <zipfileset dir="." includes="log4j.properties" prefix="."/>
+                        <zipfileset dir="external/lwjgl-2.9.1" prefix="external/lwjgl-2.9.1" />
                 </zip>
         </target>
 
