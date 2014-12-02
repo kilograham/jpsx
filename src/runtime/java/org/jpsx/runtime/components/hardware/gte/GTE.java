@@ -1586,19 +1586,19 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                 reg_rgb = value;
                 break;
             case R_OTZ:
-                reg_otz = value;
+                reg_otz = value & 0xffff; // checked
                 break;
             case R_IR0:
-                reg_ir0 = (value << 16) >> 16;
+                reg_ir0 = (value << 16) >> 16; // checked
                 break;
             case R_IR1:
-                reg_ir1 = (value << 16) >> 16;
+                reg_ir1 = (value << 16) >> 16; // checked
                 break;
             case R_IR2:
-                reg_ir2 = (value << 16) >> 16;
+                reg_ir2 = (value << 16) >> 16; // checked
                 break;
             case R_IR3:
-                reg_ir3 = (value << 16) >> 16;
+                reg_ir3 = (value << 16) >> 16; // checked
                 break;
             case R_SXY0:
                 reg_sx0 = (value << 16) >> 16;
@@ -2200,7 +2200,6 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         }
     }
 
-    // is this correct?
     public static int LiB1_0(int src) {
         if (src >= 0x8000) {
             reg_flag |= FLAG_B1;
@@ -2213,7 +2212,6 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     }
 
 
-    // is this correct?
     public static int LiB1_1(int src) {
         if (src >= 0x8000) {
             reg_flag |= FLAG_B1;
@@ -2393,6 +2391,18 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     }
 
     public static void interpret_op(final int ci) {
+//        Fields: sf
+//        in: [R11R12,R22R23,R33] vector 1
+//                [IR1,IR2,IR3] vector 2
+//        out: [IR1,IR2,IR3] outer product
+//        [MAC1,MAC2,MAC3] outer product
+//        Calculation: (D1=R11R12,D2=R22R23,D3=R33)
+//        MAC1=A1[D2*IR3 - D3*IR2]
+//        MAC2=A2[D3*IR1 - D1*IR3]
+//        MAC3=A3[D1*IR2 - D2*IR1]
+//        IR1=Lm_B1[MAC0]
+//        IR2=Lm_B2[MAC1]
+//        IR3=Lm_B3[MAC2]
         reg_flag = 0;
 
         long a1 = reg_rot.m11;
@@ -2412,9 +2422,15 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         reg_mac1 = A1(ss1);
         reg_mac2 = A2(ss2);
         reg_mac3 = A3(ss3);
-        reg_ir1 = LiB1_0(reg_mac1);
-        reg_ir2 = LiB2_0(reg_mac2);
-        reg_ir3 = LiB3_0(reg_mac3);
+        if (0 != (ci & GTE_LM_MASK)) {
+            reg_ir1 = LiB1_1(reg_mac1);
+            reg_ir2 = LiB2_1(reg_mac2);
+            reg_ir3 = LiB3_1(reg_mac3);
+        } else {
+            reg_ir1 = LiB1_0(reg_mac1);
+            reg_ir2 = LiB2_0(reg_mac2);
+            reg_ir3 = LiB3_0(reg_mac3);
+        }
     }
 
     public static void interpret_avsz3(final int ci) {
