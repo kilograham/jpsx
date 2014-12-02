@@ -69,7 +69,7 @@ These are the default mappings for controller 1 copied from `AWTKeyboardControll
 <table>
     <tr><th>Button</th><th>Key</th><th></th><th>Button</th><th>Key</th></tr>
     <tr><td>⬆</td><td><kbd>⬆</kbd></td><td></td><td>△</td><td><kbd>8</kbd> or keypad <kbd>⬆</kbd></td></tr>
-    <tr><td>→</td><td><kbd>→</kbd></td><td></td><td>ⓞ</td><td><kbd>I</kbd> or keypad <kbd>→</kbd></td></tr>
+    <tr><td>➡</td><td><kbd>➡</kbd></td><td></td><td>ⓞ</td><td><kbd>I</kbd> or keypad <kbd>➡</kbd></td></tr>
     <tr><td>⬇</td><td><kbd>⬇</kbd></td><td></td><td>ⓧ</td><td><kbd>K</kbd> or keypad <kbd>⬇</kbd></td></tr>
     <tr><td>⬅</td><td><kbd>⬅</kbd></td><td></td><td>□</td><td><kbd>U</kbd> or keypad <kbd>⬅</kbd></td></tr>
     <tr><td><kbd>L1</kbd></td><td><kbd>1</kbd></td><td></td><td><kbd>R1</kbd></td><td> <kbd>2</kbd></td></tr>
