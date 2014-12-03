@@ -26,6 +26,7 @@ import org.jpsx.api.components.core.scheduler.Quartz;
 import org.jpsx.runtime.JPSXComponent;
 import org.jpsx.runtime.RuntimeConnections;
 import org.jpsx.runtime.components.core.CoreComponentConnections;
+import org.jpsx.runtime.debugcomponents.core.DebugAddressSpaceImpl;
 import org.jpsx.runtime.components.hardware.gte.GTE;
 import org.jpsx.runtime.util.MiscUtil;
 
@@ -137,28 +138,64 @@ public class Console extends JPSXComponent implements Runnable, CPUListener {
                         break;
                     case'b':
                         if (line.length() > 1) {
-                            switch (line.charAt(1)) {
-                                case'l': {
-                                    int[] bps = cpuControl.getBreakpoints();
-                                    for (int i = 0; i < bps.length; i++) {
-                                        System.out.println(Integer.toHexString(i) + ": " + MiscUtil.toHex(bps[i], 8));
+                            try {
+                                switch (line.charAt(1)) {
+                                    case 'l': {
+                                        int[] bps = cpuControl.getBreakpoints();
+                                        for (int i = 0; i < bps.length; i++) {
+                                            System.out.println(Integer.toHexString(i) + ": " + MiscUtil.toHex(bps[i], 8));
+                                        }
+                                        break;
                                     }
-                                    break;
+                                    case 'p':
+                                    case ' ': {
+                                        int address = MiscUtil.parseHex(line.substring(2));
+                                        cpuControl.addBreakpoint(address);
+                                        break;
+                                    }
+                                    case 'c': {
+                                        int address = MiscUtil.parseHex(line.substring(2));
+                                        cpuControl.removeBreakpoint(address);
+                                        break;
+                                    }
                                 }
-                                case'p':
-                                case' ': {
-                                    int address = MiscUtil.parseHex(line.substring(2));
-                                    cpuControl.addBreakpoint(address);
-                                    break;
-                                }
-                                case'c': {
-                                    int address = MiscUtil.parseHex(line.substring(2));
-                                    cpuControl.removeBreakpoint(address);
-                                    break;
-                                }
+                            } catch (Throwable t) {
+                                System.out.println("Failed to set breakpoint: " + t);
                             }
                         } else {
                             cpuControl.pause();
+                        }
+                        break;
+                    // RAM breakpoints
+                    case'm':
+                        if (line.length() > 1 && addressSpace.getClass() == DebugAddressSpaceImpl.class) {
+                            DebugAddressSpaceImpl debugAddressSpace = (DebugAddressSpaceImpl) addressSpace;
+                            try {
+                                switch (line.charAt(1)) {
+                                    case 'l': {
+                                        int[] bps = debugAddressSpace.getActiveRAMBreakpoints();
+                                        for (int i = 0; i < bps.length; i++) {
+                                            System.out.println(Integer.toHexString(i) + ": " + MiscUtil.toHex(bps[i], 8));
+                                        }
+                                        break;
+                                    }
+                                    case 'p':
+                                    case ' ': {
+                                        int address = MiscUtil.parseHex(line.substring(2));
+                                        debugAddressSpace.activateRAMBreakpoint(address);
+                                        break;
+                                    }
+                                    case 'c': {
+                                        int address = MiscUtil.parseHex(line.substring(2));
+                                        debugAddressSpace.deactivateRAMBreakpoint(address);
+                                        break;
+                                    }
+                                }
+                            } catch (Throwable t) {
+                                System.out.println("Failed to set breakpoint: " + t);
+                            }
+                        } else if (addressSpace.getClass() != DebugAddressSpaceImpl.class) {
+                            System.out.println("You must use DebugAddressSpaceImpl in order to use this feature. Currently using: " + addressSpace.getClass().getName());
                         }
                         break;
                     case'c':

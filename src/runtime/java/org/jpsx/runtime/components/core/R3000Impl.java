@@ -265,7 +265,15 @@ public final class R3000Impl extends SingletonJPSXComponent implements ClassModi
     }
 
     public void pause() {
-        sendCmd(CMD_NOP);
+        if (isExecutionThread()) {
+            // If we're in the execution thread, then we can't send a command because we'll deadlock.
+            // Return to the interpreter through a convenient exception.
+            // TODO: We're taking advantage of the fact that JPSX will pause execution on an unrecognized
+            // exception, and correctly preserve state.
+            throw new Error("RAM breakpoint!");
+        } else {
+            sendCmd(CMD_NOP);
+        }
     }
 
     private static void sendCmd(int cmd) {
@@ -374,7 +382,7 @@ public final class R3000Impl extends SingletonJPSXComponent implements ClassModi
                 if (e.skipCurrentInstruction()) {
                     reg_pc += 4;
                 }
-                //System.out.println("... broke out to execute loop");
+                // System.out.println("... broke out to execute loop");
                 // continue from where we were!
                 delayedPCDelta = currentPCDelta = 4;
             } catch (ReturnFromExceptionException rfe) {
@@ -389,6 +397,7 @@ public final class R3000Impl extends SingletonJPSXComponent implements ClassModi
                 break;
             } catch (Throwable t) {
                 boolean ok = false;
+                System.out.println("Caught an exception!");
                 if (inCompiler[executionDepth]) {
                     ok = compiler.exceptionInCompiler(t);
                     inCompiler[executionDepth] = false;
