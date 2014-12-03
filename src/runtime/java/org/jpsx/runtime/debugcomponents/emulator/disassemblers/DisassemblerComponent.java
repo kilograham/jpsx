@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with JPSX.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.jpsx.runtime.components.emulator.disassemblers;
+package org.jpsx.runtime.debugcomponents.emulator.disassemblers;
 
 import org.jpsx.api.components.core.cpu.CPUInstruction;
 import org.jpsx.api.components.core.cpu.CPUInstructionDisassembler;

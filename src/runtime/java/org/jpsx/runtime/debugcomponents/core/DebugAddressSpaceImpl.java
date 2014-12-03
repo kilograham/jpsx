@@ -1,4 +1,4 @@
-package org.jpsx.runtime.components.core;
+package org.jpsx.runtime.debugcomponents.core;
 
 import org.apache.bcel.generic.ClassGen;
 import org.apache.log4j.Logger;
@@ -6,12 +6,9 @@ import org.jpsx.api.components.core.addressspace.AddressSpace;
 import org.jpsx.api.components.core.addressspace.AddressSpaceRegistrar;
 import org.jpsx.api.components.core.addressspace.Pollable;
 import org.jpsx.bootstrap.classloader.ClassModifier;
-import org.jpsx.runtime.FinalComponentSettings;
 import org.jpsx.runtime.SingletonJPSXComponent;
-import org.jpsx.runtime.components.emulator.compiler.MultiStageCompiler;
+import org.jpsx.runtime.components.core.AddressSpaceImpl;
 import org.jpsx.runtime.util.ClassUtil;
-
-import java.lang.reflect.Method;
 
 /**
  * A debug implementation of address space that gives you the ability to set RAM breakpoints and other goodies.

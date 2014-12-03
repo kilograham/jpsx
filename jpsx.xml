@@ -93,9 +93,9 @@
 
     <!-- console and disassembly -->
     <components id="console-bits">
-        <component classname="org.jpsx.runtime.components.emulator.disassemblers.R3000InstructionDisassembler"/>
-        <component classname="org.jpsx.runtime.components.emulator.disassemblers.GTEInstructionDisassembler"/>
-        <component classname="org.jpsx.runtime.components.emulator.console.Console"/>
+        <component classname="org.jpsx.runtime.debugcomponents.emulator.disassemblers.R3000InstructionDisassembler"/>
+        <component classname="org.jpsx.runtime.debugcomponents.emulator.disassemblers.GTEInstructionDisassembler"/>
+        <component classname="org.jpsx.runtime.debugcomponents.emulator.console.Console"/>
     </components>
 
     <!-- common stuff -->
@@ -125,7 +125,7 @@
     <!-- debug bits -->
     <components id="debug-bits">
         <include refid="common-bits"/>
-        <component id="addressspace" classname="org.jpsx.runtime.components.core.DebugAddressSpaceImpl"/>
+        <component id="addressspace" classname="org.jpsx.runtime.debugcomponents.core.DebugAddressSpaceImpl"/>
         <component id="compiler" classname="org.jpsx.runtime.components.emulator.compiler.MultiStageCompiler">
             <property name="printCode" value="${printCode}"/>
             <property name="saveClasses" value="${saveClasses}"/>
