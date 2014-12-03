@@ -397,7 +397,6 @@ public final class R3000Impl extends SingletonJPSXComponent implements ClassModi
                 break;
             } catch (Throwable t) {
                 boolean ok = false;
-                System.out.println("Caught an exception!");
                 if (inCompiler[executionDepth]) {
                     ok = compiler.exceptionInCompiler(t);
                     inCompiler[executionDepth] = false;
