@@ -460,7 +460,7 @@ public class SPU extends SingletonJPSXComponent implements MemoryMapped, CDAudio
                 System.out.println("begin DMA transfer to " + getName() + " " + MiscUtil.toHex(base, 8) + " 0x" + Integer.toHexString(blocks) + "*0x" + Integer.toHexString(blockSize) + " ctrl " + MiscUtil.toHex(ctrl, 8));
             int destIndex = m_transferOffset << 1;
             int size = blocks * blockSize;
-            addressSpace.resolve(base, base + size * 4, rr);
+            addressSpace.resolve(base, size * 4, true, rr);
             int srcIndex = rr.offset;
             if ((destIndex + size) > 0x20000) {
                 if (debugDMA)
@@ -482,7 +482,7 @@ public class SPU extends SingletonJPSXComponent implements MemoryMapped, CDAudio
                 System.out.println("begin DMA transfer from " + getName() + " " + MiscUtil.toHex(base, 8) + " 0x" + Integer.toHexString(blocks) + "*0x" + Integer.toHexString(blockSize) + " ctrl " + MiscUtil.toHex(ctrl, 8));
             int srcIndex = m_transferOffset << 1;
             int size = blocks * blockSize;
-            addressSpace.resolve(base, base + size * 4, rr);
+            addressSpace.resolve(base, size * 4, false, rr);
             int destIndex = rr.offset;
             int[] dest = rr.mem;
             for (size = size - 1; size >= 0; size--) {

@@ -177,7 +177,7 @@ public class MDEC extends JPSXComponent implements MemoryMapped {
 //                m_status &= ~DREG0;
 //                m_status &= ~NFIFO0;
 
-                addressSpace.resolve(base, base + size * 4, source);
+                addressSpace.resolve(base, size * 4, true, source);
                 sourceRemaining = size * 4;
 //            } else {
 //                throw new IllegalStateException("unknown MDEC ctrl = "+MiscUtil.toHex( m_ctrl, 8));
@@ -265,7 +265,7 @@ public class MDEC extends JPSXComponent implements MemoryMapped {
             int mbcount = size / mbsize;
 
             AddressSpace.ResolveResult target = new AddressSpace.ResolveResult();
-            addressSpace.resolve(base, base + size, target);
+            addressSpace.resolve(base, size, false, target);
 
             int dword = source.mem[source.offset];
 

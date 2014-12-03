@@ -495,7 +495,7 @@ public class CD extends JPSXComponent implements MemoryMapped {
             if (false || traceCD)
                 log.trace("size = " + (size * 4) + " remaining = " + (currentSectorEnd - currentSectorOffset));
             AddressSpace.ResolveResult rr = new AddressSpace.ResolveResult();
-            addressSpace.resolve(base, rr);
+            addressSpace.resolve(base, size * 4, true, rr);
             if (0 != (base & 3) || 0 != (currentSectorOffset & 3)) {
                 throw new IllegalStateException("doh unaligned dma!");
             }

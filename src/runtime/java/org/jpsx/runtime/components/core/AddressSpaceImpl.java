@@ -24,7 +24,6 @@ import org.jpsx.api.components.core.addressspace.AddressSpace;
 import org.jpsx.api.components.core.addressspace.AddressSpaceListener;
 import org.jpsx.api.components.core.addressspace.AddressSpaceRegistrar;
 import org.jpsx.api.components.core.addressspace.Pollable;
-import org.jpsx.api.components.core.cpu.R3000;
 import org.jpsx.api.components.core.scheduler.Scheduler;
 import org.jpsx.bootstrap.classloader.ClassModifier;
 import org.jpsx.bootstrap.classloader.JPSXClassLoader;
@@ -1453,12 +1452,13 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
         return;
     }
 
-    public void resolve(int address, int end, ResolveResult result) {
+    public void resolve(int address, int size, boolean write, ResolveResult result) {
         result.address = address;
         result.low2 = address & 3;
 
         // assert end>=address
 
+        int end = size == 0 ? address : (address + size - 1);
         int prefix = address >> 28;
         int prefix2 = end >> 28;
         if (prefix == prefix2) {
@@ -1488,7 +1488,6 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
         }
         result.mem = null;
         //result.tag = TAG_INVALID;
-        return;
     }
 
     public static int _parRead8(final int address) {

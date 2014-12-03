@@ -61,7 +61,7 @@ public class ImageBIOS extends JPSXComponent {
             RandomAccessFile in = new RandomAccessFile(filename, "r");
             AddressSpace.ResolveResult rr = new AddressSpace.ResolveResult();
             AddressSpace addressSpace = CoreComponentConnections.ADDRESS_SPACE.resolve();
-            addressSpace.resolve(ADDRESS, rr);
+            addressSpace.resolve(ADDRESS, SIZE, true, rr);
 
             FileChannel channel = in.getChannel();
             ByteBuffer bytebuf = ByteBuffer.allocateDirect(SIZE);
