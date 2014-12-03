@@ -27,10 +27,7 @@ import org.jpsx.api.components.core.cpu.CPUInstruction;
 import org.jpsx.api.components.core.cpu.NativeCompiler;
 import org.jpsx.api.components.core.cpu.R3000;
 import org.jpsx.bootstrap.util.CollectionsFactory;
-import org.jpsx.runtime.FinalComponentSettings;
-import org.jpsx.runtime.FinalResolvedConnectionCache;
-import org.jpsx.runtime.RuntimeConnections;
-import org.jpsx.runtime.SingletonJPSXComponent;
+import org.jpsx.runtime.*;
 import org.jpsx.runtime.components.core.CoreComponentConnections;
 import org.jpsx.runtime.util.MiscUtil;
 
@@ -156,10 +153,16 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
     @Override
     public void init() {
         super.init();
-        Settings.setComponent(this);
-        log.info("printCode " + Settings.printCode);
-        log.info("Second stage enabled = " + Settings.enableSecondStage);
         CoreComponentConnections.NATIVE_COMPILER.set(this);
+        JPSXMachine machine = RuntimeConnections.MACHINE.resolve();
+        machine.addInitializer(JPSXMachine.PRIORITY_FREEZE_SETTINGS, new Runnable() {
+            @Override
+            public void run() {
+                Settings.setComponent(MultiStageCompiler.this);
+                log.info("printCode " + Settings.printCode);
+                log.info("Second stage enabled = " + Settings.enableSecondStage);
+            }
+        });
     }
 
     public void begin() {
