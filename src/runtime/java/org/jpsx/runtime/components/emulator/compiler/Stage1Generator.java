@@ -85,10 +85,10 @@ public class Stage1Generator implements CompilationContext {
         }
     }
 
-    protected static final String R3000_CLASS = R3000Impl.class.getName();
+    protected final String R3000_CLASS = r3000.getClass().getName();
     protected static final String COMPILER_CLASS = MultiStageCompiler.class.getName();
-    protected static final String ADDRESS_SPACE_CLASS = AddressSpaceImpl.class.getName();
-    protected static final String HW_CLASS = ClassUtil.innerClassName(AddressSpaceImpl.class, "Hardware");
+    protected final String ADDRESS_SPACE_CLASS = addressSpace.getMainStaticInterfaceClassName();
+    protected final String HW_CLASS = addressSpace.getHardwareStaticInterfaceClassName();
 
     protected static final String EXECUTABLE_CLASS = Executable.class.getName();
     protected static final String CODEUNIT_CLASS = CodeUnit.class.getName();

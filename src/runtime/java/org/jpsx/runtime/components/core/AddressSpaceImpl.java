@@ -1771,4 +1771,17 @@ public final class AddressSpaceImpl extends SingletonJPSXComponent implements Cl
     public int[] getMainRAM() {
         return ram;
     }
+
+    @Override
+    public String getMainStaticInterfaceClassName() {
+        // Defaults to name of us, so override to push static methods to subclass
+        return AddressSpaceImpl.class.getName();
+    }
+
+    @Override
+    public String getHardwareStaticInterfaceClassName() {
+        // Defaults to name of us, so override to push static methods to subclass
+        // Note we don't dereference the class since it is generated (potentially later)
+        return HARDWARE_CLASS;
+    }
 }

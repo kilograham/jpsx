@@ -112,6 +112,23 @@ public interface AddressSpace {
 
     void tagClearPollCounters();
 
+    /**
+     * Private interface of static methods for use by compiler are on this class... this is not a full level
+     * abstraction, but makes it easier to replace the AddressSpaceImpl with a subclass
+     *
+     * This can return null if none is provided, though the MultiStageCompiler currently requires it
+     */
+    public String getMainStaticInterfaceClassName();
+
+
+    /**
+     * Private interface of static methods for use by compiler are on this class... this is not a full level
+     * abstraction, but makes it easier to replace the AddressSpaceImpl with a subclass
+     *
+     * This can return null if none is provided, though the MultiStageCompiler currently requires it
+     */
+    public String getHardwareStaticInterfaceClassName();
+
     static class ResolveResult {
         public int address;        // the original address
         public int[] mem;
