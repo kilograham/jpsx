@@ -127,8 +127,8 @@ public final class DebugAddressSpaceImpl  extends SingletonJPSXComponent impleme
     }
 
     @Override
-    public void resolve(int address, int size, ResolveResult result) {
-        realAddressSpace.resolve(address, size, result);
+    public void resolve(int address, int size, boolean write, ResolveResult result) {
+        realAddressSpace.resolve(address, size, write, result);
     }
 
     @Override

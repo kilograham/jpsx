@@ -8568,7 +8568,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 int size = blocks * blockSize; // in dwords
                 if (debugTransfers) System.out.println("*** LINEAR GPU DMA FROM VRAM *** size=" + (size * 4));
                 try {
-                    addressSpace.resolve(base, base + size * 4 - 4, m_resolveResult);
+                    addressSpace.resolve(base, size * 4, true, m_resolveResult);
                     if (m_resolveResult.mem != null) {
                         videoRAM = display.acquireDisplayBuffer();
                         try {
@@ -8608,7 +8608,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     //    m_gpu->handleGPUData( addr, size);
                     //}
                     int size = blocks * blockSize;
-                    addressSpace.resolve(base, m_resolveResult);
+                    addressSpace.resolve(base, size, false, m_resolveResult);
                     if (m_resolveResult.mem != null) {
                         videoRAM = display.acquireDisplayBuffer();
                         try {

@@ -94,12 +94,17 @@ public interface AddressSpace {
      * Return the array and index in a ResolveResult based on a given address,
      * ensuring that both the address & address + size fall within the same memory
      * region
-     *
-     * @param address
+     * @param address base address
+     * @param size size in bytes
+     * @param write true if this is for write access, false for read
      * @param result the resolved address information or null if the full address range is not backed
      */
-    void resolve(int address, int size, ResolveResult result);
+    void resolve(int address, int size, boolean write, ResolveResult result);
 
+    /**
+     * todo we should allow the address space to return null here if it doesn't want to allow direct access
+     * @return the main RAM array to allow for direct access by other components
+     */
     int[] getMainRAM();
 
     void tagAddressAccessWrite(int pc, int address);
