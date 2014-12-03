@@ -8504,8 +8504,15 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
         // The poll detection code does not always work, so as a temporary workaround, add another backstop here to catch
         // vsync timeouts that never end
         if  (0 != (displayMode & 0x0040)) {
-            if (++pollHackStatusReadCount == 1000) {
+            if (++pollHackStatusReadCount >= 1000) {
                 _poll(ADDR_GPU_CTRLSTATUS,4);
+            }
+        } else {
+            if (++pollHackStatusReadCount >= 1000000) {
+                // TonyHawk is still rarely (possibly race) waiting for this to change even in non interlace mode.
+                // If something is waiting forever, this will at least wake it up
+                manager.toggleInterlaceField();
+                pollHackStatusReadCount = 0;
             }
         }
 
