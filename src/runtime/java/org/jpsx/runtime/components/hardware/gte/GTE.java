@@ -172,6 +172,16 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         public int m11, m12, m13, m21, m22, m23, m31, m32, m33;
     }
 
+    /**
+     * Note with respect to internal registers that aren't signed 32 bit values on the playstation:
+     *
+     * All internal registers here are kept as signed 32 bit values. If the actual register on PSX is say a 16 bit signed value
+     * it is sign extended to 32 bits as part of the register write. If it is a 16 bit unsigned value, it is zero extended to 32 bits as
+     * part of the register write.
+     *
+     * Equally the reverse is done when reading GTE regs (i.e. a signed 32 bit internal value may only have 16 bits exposed)
+     */
+
     public static Vector reg_v0 = new Vector();
     public static Vector reg_v1 = new Vector();
     public static Vector reg_v2 = new Vector();
@@ -583,6 +593,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                     il.append(new GETSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_ofy", "I")));
                     break;
                 case R_H:
+                    // this is according to docs that it is accidentally sign extended
+                    il.append(new PUSH(cp, 16));
+                    il.append(new ISHL());
+                    il.append(new PUSH(cp, 16));
+                    il.append(new ISHR());
                     il.append(new GETSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_h", "I")));
                     break;
                 case R_DQA:
@@ -1070,18 +1085,32 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                     il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_ofy", "I")));
                     break;
                 case R_H:
+                    il.append(new PUSH(cp, 0xffff));
+                    il.append(new IAND());
                     il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_h", "I")));
                     break;
                 case R_DQA:
+                    il.append(new PUSH(cp, 16));
+                    il.append(new ISHL());
+                    il.append(new PUSH(cp, 16));
+                    il.append(new ISHR());
                     il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_dqa", "I")));
                     break;
                 case R_DQB:
                     il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_dqb", "I")));
                     break;
                 case R_ZSF3:
+                    il.append(new PUSH(cp, 16));
+                    il.append(new ISHL());
+                    il.append(new PUSH(cp, 16));
+                    il.append(new ISHR());
                     il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_zsf3", "I")));
                     break;
                 case R_ZSF4:
+                    il.append(new PUSH(cp, 16));
+                    il.append(new ISHL());
+                    il.append(new PUSH(cp, 16));
+                    il.append(new ISHR());
                     il.append(new PUTSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_zsf4", "I")));
                     break;
                 case R_FLAG:
@@ -1506,7 +1535,8 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                 value = reg_ofy;
                 break;
             case R_H:
-                value = reg_h;
+                // this is according to docs that it is accidentally sign extended
+                value = (reg_h << 16) >> 16;
                 break;
             case R_DQA:
                 value = reg_dqa;
@@ -1776,10 +1806,10 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                 reg_ofy = value;
                 break;
             case R_H:
-                reg_h = value;
+                reg_h = value & 0xffff;
                 break;
             case R_DQA:
-                reg_dqa = value;
+                reg_dqa = (value << 16) >> 16;
                 break;
             case R_DQB:
                 reg_dqb = value;
@@ -1923,46 +1953,31 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     }
 
     public static void interpret_rtpt(final int ci) {
-        // UNTESTED
         reg_flag = 0;
 
-        reg_szx = reg_sz2;
+        // todo is no SF bit allowed?
+        if (0 == (ci & GTE_SF_MASK)) {
+            log.warn("RTPS with SF field!");
+        }
 
         long vx = reg_v0.x;
         long vy = reg_v0.y;
         long vz = reg_v0.z;
 
-        long ssx = reg_rot.m11 * vx + reg_rot.m12 * vy + reg_rot.m13 * vz + (((long) reg_trx) << 12);
-        long ssy = reg_rot.m21 * vx + reg_rot.m22 * vy + reg_rot.m23 * vz + (((long) reg_try) << 12);
-        long ssz = reg_rot.m31 * vx + reg_rot.m32 * vy + reg_rot.m33 * vz + (((long) reg_trz) << 12);
-
-        reg_mac1 = A1(ssx);
-        reg_mac2 = A2(ssy);
-        reg_mac3 = A3(ssz);
+        reg_mac1 = A1(reg_rot.m11 * vx + reg_rot.m12 * vy + reg_rot.m13 * vz + (((long) reg_trx) << 12));
+        reg_mac2 = A2(reg_rot.m21 * vx + reg_rot.m22 * vy + reg_rot.m23 * vz + (((long) reg_try) << 12));
+        reg_mac3 = A3(reg_rot.m31 * vx + reg_rot.m32 * vy + reg_rot.m33 * vz + (((long) reg_trz) << 12));
 
         reg_ir1 = LiB1_0(reg_mac1);
         reg_ir2 = LiB2_0(reg_mac2);
+        reg_ir3 = LiB3_0(reg_mac3);
 
         reg_sz0 = LiD(reg_mac3);
 
-        if (reg_sz0 != 0) {
-            long hsz = ((long) (reg_h & 0xffff)) << 16;
-            hsz /= reg_sz0;
-            hsz = LiE((int) hsz);
-            // [1,15,0] SX2= LG1[F[OFX + IR1*(H/SZ)]]                       [1,27,16]
-            reg_sx0 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
-            // [1,15,0] SY2= LG2[F[OFY + IR2*(H/SZ)]]                       [1,27,16]
-            reg_sy0 = LiG2(LiF(reg_ofy + reg_ir2 * hsz));
-            // [1,31,0] MAC0= F[DQB + DQA * (H/SZ)]                           [1,19,24]
-            reg_mac0 = LiF(reg_dqb + ((reg_dqa * hsz) >> 16));
-        } else {
-            LiE(0x7fffffff);
-            reg_sx0 = LiG1(LiF(reg_ofx + SIGNED_BIG(reg_ir1)));
-            reg_sy0 = LiG2(LiF(reg_ofy + SIGNED_BIG(reg_ir2)));
-            reg_mac0 = LiF(reg_dqb + SIGNED_BIG(reg_dqa));
-        }
-
-        // [1,15,0] IR0= LH[MAC0]                                       [1,31,0]
+        long hsz = LiE(reg_sz0 == 0 ? Integer.MAX_VALUE : ((1+(int)((((long)reg_h)<<17)/reg_sz0))>>1));
+        reg_sx0 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
+        reg_sy0 = LiG2(LiF(reg_ofy + reg_ir2 * hsz));
+        reg_mac0 = LiF(reg_dqb + reg_dqa * hsz);
         reg_ir0 = LiH(reg_mac0);
 
         // ---------------------------------------------------
@@ -1971,37 +1986,20 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         vy = reg_v1.y;
         vz = reg_v1.z;
 
-        ssx = reg_rot.m11 * vx + reg_rot.m12 * vy + reg_rot.m13 * vz + (((long) reg_trx) << 12);
-        ssy = reg_rot.m21 * vx + reg_rot.m22 * vy + reg_rot.m23 * vz + (((long) reg_try) << 12);
-        ssz = reg_rot.m31 * vx + reg_rot.m32 * vy + reg_rot.m33 * vz + (((long) reg_trz) << 12);
-
-        reg_mac1 = A1(ssx);
-        reg_mac2 = A2(ssy);
-        reg_mac3 = A3(ssz);
+        reg_mac1 = A1(reg_rot.m11 * vx + reg_rot.m12 * vy + reg_rot.m13 * vz + (((long) reg_trx) << 12));
+        reg_mac2 = A2(reg_rot.m21 * vx + reg_rot.m22 * vy + reg_rot.m23 * vz + (((long) reg_try) << 12));
+        reg_mac3 = A3(reg_rot.m31 * vx + reg_rot.m32 * vy + reg_rot.m33 * vz + (((long) reg_trz) << 12));
 
         reg_ir1 = LiB1_0(reg_mac1);
         reg_ir2 = LiB2_0(reg_mac2);
+        reg_ir3 = LiB3_0(reg_mac3);
 
         reg_sz1 = LiD(reg_mac3);
 
-        if (reg_sz1 != 0) {
-            long hsz = ((long) (reg_h & 0xffff)) << 16;
-            hsz /= reg_sz1;
-            hsz = LiE((int) hsz);
-            // [1,15,0] SX2= LG1[F[OFX + IR1*(H/SZ)]]                       [1,27,16]
-            reg_sx1 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
-            // [1,15,0] SY2= LG2[F[OFY + IR2*(H/SZ)]]                       [1,27,16]
-            reg_sy1 = LiG2(LiF(reg_ofy + reg_ir2 * hsz));
-            // [1,31,0] MAC0= F[DQB + DQA * (H/SZ)]                           [1,19,24]
-            reg_mac0 = LiF(reg_dqb + ((reg_dqa * hsz) >> 16));
-        } else {
-            LiE(0x7fffffff);
-            reg_sx1 = LiG1(LiF(reg_ofx + SIGNED_BIG(reg_ir1)));
-            reg_sy1 = LiG2(LiF(reg_ofy + SIGNED_BIG(reg_ir2)));
-            reg_mac0 = LiF(reg_dqb + SIGNED_BIG(reg_dqa));
-        }
-
-        // [1,15,0] IR0= LH[MAC0]                                       [1,31,0]
+        hsz = LiE(reg_sz1 == 0 ? Integer.MAX_VALUE : ((1+(int)((((long)reg_h)<<17)/reg_sz1))>>1));
+        reg_sx1 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
+        reg_sy1 = LiG2(LiF(reg_ofy + reg_ir2 * hsz));
+        reg_mac0 = LiF(reg_dqb + reg_dqa * hsz);
         reg_ir0 = LiH(reg_mac0);
 
         // ---------------------------------------------------
@@ -2010,13 +2008,9 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         vy = reg_v2.y;
         vz = reg_v2.z;
 
-        ssx = reg_rot.m11 * vx + reg_rot.m12 * vy + reg_rot.m13 * vz + (((long) reg_trx) << 12);
-        ssy = reg_rot.m21 * vx + reg_rot.m22 * vy + reg_rot.m23 * vz + (((long) reg_try) << 12);
-        ssz = reg_rot.m31 * vx + reg_rot.m32 * vy + reg_rot.m33 * vz + (((long) reg_trz) << 12);
-
-        reg_mac1 = A1(ssx);
-        reg_mac2 = A2(ssy);
-        reg_mac3 = A3(ssz);
+        reg_mac1 = A1(reg_rot.m11 * vx + reg_rot.m12 * vy + reg_rot.m13 * vz + (((long) reg_trx) << 12));
+        reg_mac2 = A2(reg_rot.m21 * vx + reg_rot.m22 * vy + reg_rot.m23 * vz + (((long) reg_try) << 12));
+        reg_mac3 = A3(reg_rot.m31 * vx + reg_rot.m32 * vy + reg_rot.m33 * vz + (((long) reg_trz) << 12));
 
         reg_ir1 = LiB1_0(reg_mac1);
         reg_ir2 = LiB2_0(reg_mac2);
@@ -2024,42 +2018,69 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
 
         reg_sz2 = LiD(reg_mac3);
 
-        if (reg_sz2 != 0) {
-            long hsz = ((long) (reg_h & 0xffff)) << 16;
-            hsz /= reg_sz2;
-            hsz = LiE((int) hsz);
-            // [1,15,0] SX2= LG1[F[OFX + IR1*(H/SZ)]]                       [1,27,16]
-            reg_sx2 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
-            // [1,15,0] SY2= LG2[F[OFY + IR2*(H/SZ)]]                       [1,27,16]
-            reg_sy2 = LiG2(LiF(reg_ofy + reg_ir2 * hsz));
-            // [1,31,0] MAC0= F[DQB + DQA * (H/SZ)]                           [1,19,24]
-            reg_mac0 = LiF(reg_dqb + ((reg_dqa * hsz) >> 16));
-        } else {
-            LiE(0x7fffffff);
-            reg_sx2 = LiG1(LiF(reg_ofx + SIGNED_BIG(reg_ir1)));
-            reg_sy2 = LiG2(LiF(reg_ofy + SIGNED_BIG(reg_ir2)));
-            reg_mac0 = LiF(reg_dqb + SIGNED_BIG(reg_dqa));
-        }
-
-        // [1,15,0] IR0= LH[MAC0]                                       [1,31,0]
+        hsz = LiE(reg_sz2 == 0 ? Integer.MAX_VALUE : ((1 + (int) ((((long) reg_h) << 17) / reg_sz2)) >> 1));
+        reg_sx2 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
+        reg_sy2 = LiG2(LiF(reg_ofy + reg_ir2 * hsz));
+        reg_mac0 = LiF(reg_dqb + reg_dqa * hsz);
         reg_ir0 = LiH(reg_mac0);
-        //if (true) throw new IllegalStateException("pah");
     }
 
     public static void interpret_rtps(final int ci) {
+//        In: V0 Vector to transform. [1,15,0]
+//        R Rotation matrix [1,3,12]
+//        TR Translation vector [1,31,0]
+//        H View plane distance [0,16,0]
+//        DQA Depth que interpolation values. [1,7,8]
+//        DQB [1,7,8]OFX Screen offset values. [1,15,16]
+//        OFY [1,15,16]
+//        Out: SXY fifo Screen XY coordinates.(short) [1,15,0]
+//        SZ fifo Screen Z coordinate.(short) [0,16,0]
+//        IR0 Interpolation value for depth queing. [1,3,12]
+//        IR1 Screen X (short) [1,15,0]
+//        IR2 Screen Y (short) [1,15,0]
+//        IR3 Screen Z (short) [1,15,0]
+//        MAC1 Screen X (long) [1,31,0]
+//        MAC2 Screen Y (long) [1,31,0]
+//        MAC3 Screen Z (long) [1,31,0]
+//        Calculation:
+//        [1,31,0] MAC1=A1[TRX + R11*VX0 + R12*VY0 + R13*VZ0] [1,31,12]
+//        [1,31,0] MAC2=A2[TRY + R21*VX0 + R22*VY0 + R23*VZ0] [1,31,12]
+//        [1,31,0] MAC3=A3[TRZ + R31*VX0 + R32*VY0 + R33*VZ0] [1,31,12]
+//        [1,15,0] IR1= Lm_B1[MAC1] [1,31,0]
+//        [1,15,0] IR2= Lm_B2[MAC2] [1,31,0]
+//        [1,15,0] IR3= Lm_B3[MAC3] [1,31,0]
+//        SZ0<-SZ1<-SZ2<-SZ3
+//                [0,16,0] SZ3= Lm_D(MAC3) [1,31,0]
+//        SX0<-SX1<-SX2, SY0<-SY1<-SY2
+//                [1,15,0] SX2= Lm_G1[F[OFX + IR1*(H/SZ)]] [1,27,16]
+//        [1,15,0] SY2= Lm_G2[F[OFY + IR2*(H/SZ)]] [1,27,16]
+//        [1,31,0] MAC0= F[DQB + DQA * (H/SZ)] [1,19,24]
+//        [1,15,0] IR0= Lm_H[MAC0] [1,31,0]
+
+        // or
+
+
+//        IR1 = MAC1 = (TRX*1000h + RT11*VX0 + RT12*VY0 + RT13*VZ0) SAR (sf*12)
+//        IR2 = MAC2 = (TRY*1000h + RT21*VX0 + RT22*VY0 + RT23*VZ0) SAR (sf*12)
+//        IR3 = MAC3 = (TRZ*1000h + RT31*VX0 + RT32*VY0 + RT33*VZ0) SAR (sf*12)
+//        SZ3 = MAC3 SAR ((1-sf)*12)                           ;ScreenZ FIFO 0..+FFFFh
+//        MAC0=(((H*20000h/SZ3)+1)/2)*IR1+OFX, SX2=MAC0/10000h ;ScrX FIFO -400h..+3FFh
+//        MAC0=(((H*20000h/SZ3)+1)/2)*IR2+OFY, SY2=MAC0/10000h ;ScrY FIFO -400h..+3FFh
+//        MAC0=(((H*20000h/SZ3)+1)/2)*DQA+DQB, IR0=MAC0/1000h  ;Depth cueing 0..+1000h
+
         reg_flag = 0;
 
         long vx = reg_v0.x;
         long vy = reg_v0.y;
         long vz = reg_v0.z;
 
-        long ssx = reg_rot.m11 * vx + reg_rot.m12 * vy + reg_rot.m13 * vz + (((long) reg_trx) << 12);
-        long ssy = reg_rot.m21 * vx + reg_rot.m22 * vy + reg_rot.m23 * vz + (((long) reg_try) << 12);
-        long ssz = reg_rot.m31 * vx + reg_rot.m32 * vy + reg_rot.m33 * vz + (((long) reg_trz) << 12);
-
-        reg_mac1 = A1(ssx);
-        reg_mac2 = A2(ssy);
-        reg_mac3 = A3(ssz);
+        // todo is no SF bit allowed?
+        if (0 == (ci & GTE_SF_MASK)) {
+            log.warn("RTPS with SF field!");
+        }
+        reg_mac1 = A1(reg_rot.m11 * vx + reg_rot.m12 * vy + reg_rot.m13 * vz + (((long) reg_trx) << 12));
+        reg_mac2 = A2(reg_rot.m21 * vx + reg_rot.m22 * vy + reg_rot.m23 * vz + (((long) reg_try) << 12));
+        reg_mac3 = A3(reg_rot.m31 * vx + reg_rot.m32 * vy + reg_rot.m33 * vz + (((long) reg_trz) << 12));
 
         reg_ir1 = LiB1_0(reg_mac1);
         reg_ir2 = LiB2_0(reg_mac2);
@@ -2068,7 +2089,6 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         reg_szx = reg_sz0;
         reg_sz0 = reg_sz1;
         reg_sz1 = reg_sz2;
-
         reg_sz2 = LiD(reg_mac3);
 
         reg_sx0 = reg_sx1;
@@ -2076,22 +2096,13 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         reg_sx1 = reg_sx2;
         reg_sy1 = reg_sy2;
 
-        if (reg_sz2 != 0) {
-            long hsz = ((long) (reg_h & 0xffff)) << 16;
-            hsz /= reg_sz2;
-            hsz = LiE((int) hsz);
-            // [1,15,0] SX2= LG1[F[OFX + IR1*(H/SZ)]]                       [1,27,16]
-            reg_sx2 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
-            // [1,15,0] SY2= LG2[F[OFY + IR2*(H/SZ)]]                       [1,27,16]
-            reg_sy2 = LiG2(LiF(reg_ofy + reg_ir2 * hsz));
-            // [1,31,0] MAC0= F[DQB + DQA * (H/SZ)]                           [1,19,24]
-            reg_mac0 = LiF(reg_dqb + ((reg_dqa * hsz) >> 16));
-        } else {
-            LiE(0x7fffffff);
-            reg_sx2 = LiG1(LiF(reg_ofx + SIGNED_BIG(reg_ir1)));
-            reg_sy2 = LiG2(LiF(reg_ofy + SIGNED_BIG(reg_ir2)));
-            reg_mac0 = LiF(reg_dqb + SIGNED_BIG(reg_dqa));
-        }
+        long hsz = LiE(reg_sz2 == 0 ? Integer.MAX_VALUE : ((1+(int)((((long)reg_h)<<17)/reg_sz2))>>1));
+        // [1,15,0] SX2= LG1[F[OFX + IR1*(H/SZ)]]                       [1,27,16]
+        reg_sx2 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
+        // [1,15,0] SY2= LG2[F[OFY + IR2*(H/SZ)]]                       [1,27,16]
+        reg_sy2 = LiG2(LiF(reg_ofy + reg_ir2 * hsz));
+        // [1,31,0] MAC0= F[DQB + DQA * (H/SZ)]                           [1,19,24]
+        reg_mac0 = LiF(reg_dqb + reg_dqa * hsz);
 
         // [1,15,0] IR0= LH[MAC0]                                       [1,31,0]
         reg_ir0 = LiH(reg_mac0);
@@ -2313,6 +2324,7 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     private static int LiE(int src) {
         if (src >= 0x20000) {
             reg_flag |= FLAG_E;
+            src = 0x1ffff;
         }
         return src;
     }
@@ -2328,25 +2340,24 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         return (int) (src >> 16);
     }
 
-    // not sure if this is 15 bit or 9 bit limit
     public static int LiG1(int src) {
-        if (src >= 0x800) {
+        if (src >= 0x400) {
             reg_flag |= FLAG_G1;
-            return 0x7ff;
-        } else if (src < -0x800) {
+            return 0x3ff;
+        } else if (src < -0x400) {
             reg_flag |= FLAG_G1;
-            return -0x800;
+            return -0x400;
         }
         return src;
     }
 
     public static int LiG2(int src) {
-        if (src >= 0x800) {
+        if (src >= 0x400) {
             reg_flag |= FLAG_G2;
-            return 0x7ff;
-        } else if (src < -0x800) {
+            return 0x3ff;
+        } else if (src < -0x400) {
             reg_flag |= FLAG_G2;
-            return -0x800;
+            return -0x400;
         }
         return src;
     }
