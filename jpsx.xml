@@ -43,6 +43,11 @@
         <include refid="named-image-no-console"/>
     </machine>
 
+    <!-- default machine with debugging enabled -->
+    <machine id="debug">
+        <include refid="debug-named-image"/>
+    </machine>
+
     <!-- GAME/CD specific machines -->
 
     <machine id="ff7">
@@ -80,7 +85,7 @@
         <component classname="org.jpsx.runtime.components.core.DefaultQuartz"/>
         <component classname="org.jpsx.runtime.components.core.MTScheduler"/>
         <component classname="org.jpsx.runtime.components.core.R3000Impl"/>
-        <component classname="org.jpsx.runtime.components.core.AddressSpaceImpl"/>
+        <component id="addressspace" classname="org.jpsx.runtime.components.core.AddressSpaceImpl"/>
         <component classname="org.jpsx.runtime.components.core.SCPImpl"/>
         <component classname="org.jpsx.runtime.components.core.IRQControllerImpl"/>
         <component classname="org.jpsx.runtime.components.core.DMAControllerImpl"/>
@@ -117,6 +122,18 @@
         </component>
     </components>
 
+    <!-- debug bits -->
+    <components id="debug-bits">
+        <include refid="common-bits"/>
+        <component id="addressspace" classname="org.jpsx.runtime.components.core.DebugAddressSpaceImpl"/>
+        <component id="compiler" classname="org.jpsx.runtime.components.emulator.compiler.MultiStageCompiler">
+            <property name="printCode" value="${printCode}"/>
+            <property name="saveClasses" value="${saveClasses}"/>
+            <property name="stage2" value="false"/>
+        </component>
+        <include refid="console-bits"/>
+    </components>
+
     <components id="common-and-console-bits">
         <include refid="common-bits"/>
         <include refid="console-bits"/>
@@ -149,4 +166,13 @@
             <property name="cdAudio" value="true"/>
         </component>
     </components>
+
+    <!-- enables extra debugging features -->
+    <components id="debug-named-image">
+        <include refid="debug-bits" />
+        <component id="media" classname="org.jpsx.runtime.components.hardware.media.CueBinImageDrive">
+            <property name="image" value="${image}"/>
+        </component>
+    </components>
+
 </jpsx>

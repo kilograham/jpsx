@@ -30,7 +30,6 @@ import org.jpsx.api.components.core.cpu.CPUInstruction;
 import org.jpsx.api.components.core.cpu.CompilationContext;
 import org.jpsx.api.components.core.cpu.R3000;
 import org.jpsx.bootstrap.util.CollectionsFactory;
-import org.jpsx.runtime.components.core.AddressSpaceImpl;
 import org.jpsx.runtime.components.core.CoreComponentConnections;
 import org.jpsx.runtime.components.core.R3000Impl;
 import org.jpsx.runtime.util.ClassUtil;
