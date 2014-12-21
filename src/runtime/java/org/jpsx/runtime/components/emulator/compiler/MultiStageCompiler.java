@@ -21,6 +21,7 @@ package org.jpsx.runtime.components.emulator.compiler;
 import org.apache.bcel.classfile.JavaClass;
 import org.apache.log4j.Logger;
 import org.jpsx.api.components.core.ContinueExecutionException;
+import org.jpsx.api.components.core.ImmediateBreakoutException;
 import org.jpsx.api.components.core.ReturnFromExceptionException;
 import org.jpsx.api.components.core.addressspace.AddressSpace;
 import org.jpsx.api.components.core.cpu.CPUInstruction;
@@ -39,15 +40,15 @@ import java.util.Map;
 
 // todo set addressSpace.tagAddressAccess based on whether we're doing 2 stage compile
 
-// todo, cope with compilation erros caused by data being overwitten in another thread
+// todo, cope with compilation errors caused by data being overwritten in another thread
 
-// todo consider caching bytecode for instruction cache flush
+// todo consider caching byte code for instruction cache flush
+
+// todo look for and follow "switch tables"
 
 public class MultiStageCompiler extends SingletonJPSXComponent implements NativeCompiler {
     public static final String CATEGORY = "Compiler";
     private static final Logger log = Logger.getLogger(CATEGORY);
-
-    protected static String CLASS = MultiStageCompiler.class.getName();
 
     protected static Stage1Generator immediateGenerator;
     // for use if we need to figure out what the real stage2 generator
@@ -60,14 +61,14 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
     protected static CompilerClassLoader romLoader;
     protected static int ramLoaderCount = 0;
 
-    protected static Map<Integer, CodeUnit> romUnits = CollectionsFactory.newHashMap();
-    protected static Map<Integer, CodeUnit> ramUnits = CollectionsFactory.newHashMap();
+    protected static final Map<Integer, CodeUnit> romUnits = CollectionsFactory.newHashMap();
+    protected static final Map<Integer, CodeUnit> ramUnits = CollectionsFactory.newHashMap();
 
     protected static CompilationBroker broker;
 
     private static final int MAX_BREAKPOINTS = 64;
 
-    private static int[] breakpoints = new int[MAX_BREAKPOINTS];
+    private static final int[] breakpoints = new int[MAX_BREAKPOINTS];
     private static int breakpointLimit;
 
     private static class Refs extends FinalResolvedConnectionCache {
@@ -146,8 +147,8 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
         protected static final boolean debugPC = false;
         protected static final boolean profiling = false;
         protected static final boolean megaTrace = false;
-        protected static final boolean printRare = false;
-        protected static final boolean statistics = false;
+        protected static final boolean printRare = getComponent().getBooleanProperty("printRare", false);
+        protected static final boolean statistics = getComponent().getBooleanProperty("statistics", false);
     }
 
     @Override
@@ -226,7 +227,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
     }
 
     public void clearCache() {
-        synchronized (getClass()) {
+        synchronized (MultiStageCompiler.class) {
             broker.reset();
             ramLoaderCount++;
             // we delegate to the rom loader for bios functions
@@ -244,7 +245,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
     }
 
     public boolean exceptionInCompiler(Throwable t) {
-        //System.out.println("Exception in compiler depth="+contextDepth+" "+t.getClass().getName());
+//        System.out.println("Exception in compiler depth="+contextDepth+" "+t.getClass().getName());
         assert contextDepth >= 1;
         context = contexts[--contextDepth];
         compilerToInterpreter();
@@ -303,6 +304,8 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
                     }
                 }
             }
+            // This exception is allowed anywhere
+            return t instanceof ImmediateBreakoutException;
         } else {
             log.warn("PC could not be calculated from stack trace, maybe you need -XX:-OmitStackTraceInFastThrow?");
         }
@@ -358,7 +361,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
                 return;
             }
         }
-        assert false : "attempt to remove non-existant breakpoint " + MiscUtil.toHex(address, 8);
+        assert false : "attempt to remove non-existent breakpoint " + MiscUtil.toHex(address, 8);
     }
 
     public static void enumerateBreakpoints(CodeUnit unit) {
@@ -417,7 +420,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
         Map<Integer, CodeUnit> map = AddressSpace.Util.isBIOS(address) ? romUnits : ramUnits;
         Integer key = address;
         synchronized (map) {
-            CodeUnit rc = (CodeUnit) map.get(key);
+            CodeUnit rc = map.get(key);
             if (rc == null) {
                 rc = new CodeUnit(address);
                 map.put(key, rc);
@@ -518,7 +521,17 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
                     } else if (c1Unit != null) {
                         // simply get the java class
                         //System.out.println("Spec compile "+MiscUtil.toHex( c1Unit.getBase(), 8));
-                        JavaClass jclass = c1Unit.getStage1JavaClass(stage1Generator, false);
+                        // todo graham 12/21/14, I put this synchronized block in before I went on vacation 2 weeks
+                        // todo and can't remember what it is for - seems like it would have like a comment
+                        // todo anyway the only thing that it shares synchronization with is instruction cache clear
+                        // todo so there must have been some issues with compilation during the clearing of other data
+                        // todo structures. anyways, I'm leaving it as is for now since it is not time critical
+                        // todo you'd expect this would affect the stage2 compiler too.
+                        // todo in any case we need better exception handling here anyway, since we may be compiling
+                        // todo R3000 code that is being overwritten prior to an instruction cache clear
+                        synchronized (MultiStageCompiler.class) {
+                            JavaClass jclass = c1Unit.getStage1JavaClass(stage1Generator, false);
+                        }
                     } else if (c2Unit != null) {
                         //System.out.println("background stage2 compile "+MiscUtil.toHex( c2Unit.getBase(), 8));
                         JavaClass jclass = c2Unit.getStage2JavaClass(stage2Generator);
@@ -772,9 +785,11 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
         if (exec == null) {
             exec = makeExecutable(unit);
             if (exec == null) {
+                // this unconditionally throws exception
                 returnToInterpreter(address);
             }
         }
+        assert exec != null;
         int rc = exec.e(returnAddress, false);
         assert (rc == returnAddress) : "call to unit should always return to the right spot";
         context.nativeDepth--;

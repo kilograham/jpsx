@@ -64,7 +64,17 @@ public interface R3000 {
      */
     boolean isExecutionThread();
 
-    void setBreakout();
+    /**
+     * Called from a non execution thread to request a controlled break out to the main interpreter/control loop as soon as possible.
+     * Currently used for R3000 interrupt handling and external pausing/stepping etc. of the CPU
+     */
+    void requestBreakout();
+
+    /**
+     * Called from the execution thread to request an immediate return to the interpreter/control loop - this can be called mid
+     * instruction and may have undesirable side effects (i.e. half executed instruction)
+     */
+    void immediateBreakout();
 
     void restoreInterpreterState();
 

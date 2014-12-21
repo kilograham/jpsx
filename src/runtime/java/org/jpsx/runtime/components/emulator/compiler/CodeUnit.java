@@ -65,7 +65,7 @@ public class CodeUnit {
 
     private Executable executable;
     protected boolean linksFollowed; // todo accessor
-    private boolean stage1Ready;
+    private volatile boolean stage1Ready;
     //private boolean stage2Ready;
 
     // todo accessor
@@ -105,7 +105,7 @@ public class CodeUnit {
     }
 
     /**
-     * unsynchronzied, since alternate threads should
+     * unsynchronzied, since different threads should
      * use different flow analyzers.
      */
     public FlowAnalyzer.FlowInfo getFlowInfo(FlowAnalyzer flowAnalyzer) {

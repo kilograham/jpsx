@@ -30,6 +30,7 @@ import org.jpsx.api.components.core.cpu.CPUInstruction;
 import org.jpsx.api.components.core.cpu.CompilationContext;
 import org.jpsx.api.components.core.cpu.R3000;
 import org.jpsx.bootstrap.util.CollectionsFactory;
+import org.jpsx.runtime.RuntimeConnections;
 import org.jpsx.runtime.components.core.CoreComponentConnections;
 import org.jpsx.runtime.components.core.R3000Impl;
 import org.jpsx.runtime.util.ClassUtil;
@@ -299,6 +300,10 @@ public class Stage1Generator implements CompilationContext {
             contextMethodGen = mg;
             for (FlowAnalyzer.BasicBlock block = flowInfo.root; block != null; block = block.next) {
                 contextBlock = block;
+                if (contextBlock == null) {
+                    System.out.println("WTF");
+                    RuntimeConnections.CPU_CONTROL.resolve().pause();
+                }
                 if (MultiStageCompiler.Settings.printRare && block.branchOut != null && !block.includesDelaySlot) {
                     System.out.println(block);
                 }
@@ -419,7 +424,7 @@ public class Stage1Generator implements CompilationContext {
 
         emitConstructor();
         long t0 = 0;
-        StringBuilder perf;
+        StringBuilder perf = null;
         if (MultiStageCompiler.Settings.statistics) {
             perf = new StringBuilder();
             t0 = Timing.nanos();
@@ -785,7 +790,7 @@ public class Stage1Generator implements CompilationContext {
     }
 
     public InstructionHandle getBranchTarget(int address) {
-        assert contextBlock.branchOut != null;
+        assert contextBlock.branchOut != null : "null branch target - wanted " + MiscUtil.toHex(address, 8) + " base = " +  MiscUtil.toHex(contextBlock.base, 8);
         assert contextBase + (contextBlock.branchOut.offset << 2) == address :
                 contextBlock + ": Expected branch target " + MiscUtil.toHex(contextBase + (contextBlock.branchOut.offset << 2), 8) + " != actual " + MiscUtil.toHex(address, 8);
 

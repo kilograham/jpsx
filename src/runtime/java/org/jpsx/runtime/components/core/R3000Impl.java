@@ -25,6 +25,7 @@ import org.jpsx.api.CPUControl;
 import org.jpsx.api.CPUListener;
 import org.jpsx.api.InvalidConfigurationException;
 import org.jpsx.api.components.core.ContinueExecutionException;
+import org.jpsx.api.components.core.ImmediateBreakoutException;
 import org.jpsx.api.components.core.ReturnFromExceptionException;
 import org.jpsx.api.components.core.addressspace.AddressSpace;
 import org.jpsx.api.components.core.addressspace.AddressSpaceListener;
@@ -128,7 +129,7 @@ public final class R3000Impl extends SingletonJPSXComponent implements ClassModi
         });
         CoreComponentConnections.ADDRESS_SPACE_LISTENERS.add(new AddressSpaceListener() {
             public void cacheCleared() {
-                R3000Impl.this.cacheCleared();
+                R3000Impl.cacheCleared();
             }
         });
     }
@@ -264,37 +265,51 @@ public final class R3000Impl extends SingletonJPSXComponent implements ClassModi
         //}
     }
 
+    /**
+     * If not called from the execution thread, then this blocks until the execution is paused;
+     * otherwise it
+     */
     public void pause() {
-        if (isExecutionThread()) {
-            // If we're in the execution thread, then we can't send a command because we'll deadlock.
-            // Return to the interpreter through a convenient exception.
-            // TODO: We're taking advantage of the fact that JPSX will pause execution on an unrecognized
-            // exception, and correctly preserve state.
-            throw new Error("RAM breakpoint!");
-        } else {
-            sendCmd(CMD_NOP);
-        }
+        sendCmd(CMD_NOP);
     }
 
+    /**
+     * Sends a command to the execution thread. Generally this is synchronous, and waits for the command to be acknowledged;
+     * however if called from the execution thread itself, then this method will throw an exception to return to safely
+     * return control to the command handling code. PC will be at the currently executing instruction, but side effects
+     * may already have happened.
+     *
+     * @param cmd
+     */
     private static void sendCmd(int cmd) {
         //System.out.println("main: sendCmd "+cmd);
         synchronized (cpuControlSemaphore) {
             cpuCmdPending = true;
-            CoreComponentConnections.R3000.resolve().setBreakout();
-            if (!cpuReadyForCommand) {
-                //System.out.println("main: waiting for cpu to be ready");
+            if (Thread.currentThread() != executionThread) {
+                // normally fine just to have the execution thread make itself ready for a command as soon as possible
+                CoreComponentConnections.R3000.resolve().requestBreakout();
+                if (!cpuReadyForCommand) {
+                    //System.out.println("main: waiting for cpu to be ready");
+                    try {
+                        cpuControlSemaphore.wait();
+                    } catch (InterruptedException e) {
+                    }
+                }
+                cpuCmd = cmd;
+                //System.out.println("main: informing cpu of cmd");
+                cpuControlSemaphore.notify();
+                //System.out.println("main: waiting for cpu to acknowledge cmd");
                 try {
                     cpuControlSemaphore.wait();
                 } catch (InterruptedException e) {
                 }
-            }
-            cpuCmd = cmd;
-            //System.out.println("main: informing cpu of cmd");
-            cpuControlSemaphore.notify();
-            //System.out.println("main: waiting for cpu to acknowledge cmd");
-            try {
-                cpuControlSemaphore.wait();
-            } catch (InterruptedException e) {
+            } else {
+                // by definition the execution thread is not ready for a command
+                assert !cpuReadyForCommand;
+                cpuCmd = cmd;
+                // This won't return, as we are the execution thread, and this must throw
+                // an exception to achieve its goals
+                CoreComponentConnections.R3000.resolve().immediateBreakout();
             }
         }
     }
@@ -414,14 +429,15 @@ public final class R3000Impl extends SingletonJPSXComponent implements ClassModi
     // should ready this only
     public static boolean breakout;
 
-    public void setBreakout() {
+    public void requestBreakout() {
         breakout = true;
         if (compiler != null) {
             compiler.interrupt();
         }
     }
 
-    private final void handleInterpreterBreakout() {
+    private void handleInterpreterBreakout() {
+        assert isExecutionThread();
         // all breakouts should cause another breakout if they wish to have another one
         breakout = false;
         if (Refs.scp.shouldInterrupt()) {
@@ -433,9 +449,16 @@ public final class R3000Impl extends SingletonJPSXComponent implements ClassModi
     public final void compilerInterrupted() {
         handleInterpreterBreakout();
         if (cpuCmdPending) {
-            // need to return to CPU
-            throw ContinueExecutionException.DONT_SKIP_CURRENT;
+            // need to return to CPU loop
+            immediateBreakout();
         }
+    }
+
+    @Override
+    public final void immediateBreakout() {
+        assert isExecutionThread();
+        restoreInterpreterState();
+        throw new ImmediateBreakoutException();
     }
 
     public final void interpreterLoop() {

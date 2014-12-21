@@ -18,6 +18,9 @@
  */
 package org.jpsx.runtime.util;
 
+import org.jpsx.runtime.RuntimeConnections;
+import org.jpsx.runtime.components.core.CoreComponentConnections;
+
 public class MiscUtil {
     public static String toHex(int val, int digits) {
         String rc = Integer.toHexString(val);
@@ -43,4 +46,19 @@ public class MiscUtil {
         return rc;
     }
 
+    private static int assertionCounter;
+
+    /**
+     * Note the intention is not to pass a boolean flag here, since the check cannot be elided by the compiler
+     * if it is known to be false at the call site
+     *
+     * @param message
+     */
+    public static void assertionMessage(String message) {
+        int pc = CoreComponentConnections.R3000.resolve().getPC();
+        System.out.println(toHex(assertionCounter++, 8) + " " + toHex(pc, 8) + ": " + message);
+
+        // we may want to have a version that pauses - note this now works correctly from execution thread.
+        //RuntimeConnections.CPU_CONTROL.resolve().pause();
+    }
 }

@@ -100,7 +100,12 @@ public class IRQControllerImpl extends SingletonJPSXComponent implements MemoryM
         return irqMask;
     }
 
-    public synchronized void raiseIRQ(int irq) {
+    @Override
+    public void raiseIRQ(int irq) {
+        _raiseIRQ(irq);
+    }
+
+    public static synchronized void _raiseIRQ(int irq) {
         irqRequest |= (1 << irq);
         updateInterruptLine();
     }

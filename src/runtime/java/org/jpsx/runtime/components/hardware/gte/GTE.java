@@ -23,12 +23,15 @@ import org.apache.log4j.Logger;
 import org.jpsx.api.components.core.addressspace.AddressSpace;
 import org.jpsx.api.components.core.cpu.*;
 import org.jpsx.runtime.JPSXComponent;
+import org.jpsx.runtime.RuntimeConnections;
 import org.jpsx.runtime.components.core.CoreComponentConnections;
 import org.jpsx.runtime.util.ClassUtil;
+import org.jpsx.runtime.util.MiscUtil;
 
 // TODO should vz be 16 bits only when read?
 
 public final class GTE extends JPSXComponent implements InstructionProvider {
+    private static final boolean debugLimit = false;
     private static final Logger log = Logger.getLogger("GTE");
     private static final String CLASS = GTE.class.getName();
     private static final String VECTOR_CLASS = Vector.class.getName();
@@ -1973,6 +1976,10 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         reg_ir3 = LiB3_0(reg_mac3);
 
         reg_sz0 = LiD(reg_mac3);
+        if (debugLimit && reg_sz0 == 0) {
+            MiscUtil.assertionMessage("rtpt overflow 0");
+        }
+
 
         long hsz = LiE(reg_sz0 == 0 ? Integer.MAX_VALUE : ((1+(int)((((long)reg_h)<<17)/reg_sz0))>>1));
         reg_sx0 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
@@ -1996,6 +2003,10 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
 
         reg_sz1 = LiD(reg_mac3);
 
+        if (debugLimit && reg_sz1 == 0) {
+            MiscUtil.assertionMessage("rtpt overflow 1");
+        }
+
         hsz = LiE(reg_sz1 == 0 ? Integer.MAX_VALUE : ((1+(int)((((long)reg_h)<<17)/reg_sz1))>>1));
         reg_sx1 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
         reg_sy1 = LiG2(LiF(reg_ofy + reg_ir2 * hsz));
@@ -2017,6 +2028,10 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         reg_ir3 = LiB3_0(reg_mac3);
 
         reg_sz2 = LiD(reg_mac3);
+
+        if (debugLimit && reg_sz2 == 0) {
+            MiscUtil.assertionMessage("rtpt overflow 2");
+        }
 
         hsz = LiE(reg_sz2 == 0 ? Integer.MAX_VALUE : ((1 + (int) ((((long) reg_h) << 17) / reg_sz2)) >> 1));
         reg_sx2 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
@@ -2096,6 +2111,10 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         reg_sx1 = reg_sx2;
         reg_sy1 = reg_sy2;
 
+        if (debugLimit && reg_sz2 == 0) {
+            MiscUtil.assertionMessage("rtps overflow");
+        }
+
         long hsz = LiE(reg_sz2 == 0 ? Integer.MAX_VALUE : ((1+(int)((((long)reg_h)<<17)/reg_sz2))>>1));
         // [1,15,0] SX2= LG1[F[OFX + IR1*(H/SZ)]]                       [1,27,16]
         reg_sx2 = LiG1(LiF(reg_ofx + reg_ir1 * hsz));
@@ -2117,6 +2136,23 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     }
 
     public static void interpret_mvmva(final int ci) {
+//        Fields: sf, cv, lm
+//        R/LLM/LCM Rotation, light or color matrix. [1,3,12]
+//        TR/BK Translation or background color vector.
+//                out: [IR1,IR2,IR3] Short vector
+//        [MAC1,MAC2,MAC3] Long vector
+//        Calculation:
+//        MAC1=A1[CV1 + MX11*V1 + MX12*V2 + MX13*V3]
+//        MAC2=A2[CV2 + MX21*V1 + MX22*V2 + MX23*V3]
+//        MAC3=A3[CV3 + MX31*V1 + MX32*V2 + MX33*V3]
+//        IR1=Lm_B1[MAC1]
+//        IR2=Lm_B2[MAC2]
+//        IR3=Lm_B3[MAC3]
+//        Notes:
+//        The cv field allows selection of the far color vector, but this vector
+//        is not added correctly by the GTE.
+
+
 // NOTE: int64/A1,A2,A3 can only happen with IR I think
 
         reg_flag = 0;
@@ -2139,11 +2175,9 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
         long vz;
         switch (ci & GTE_V_MASK) {
             case GTE_V_IR:
-                // is this sign correct?
                 vx = reg_ir1;
                 vy = reg_ir2;
                 vz = reg_ir3;
-                //System.out.println("Unsure mvma with IR input!");
                 break;
             case GTE_V_V2:
                 vx = reg_v2.x;
@@ -2213,9 +2247,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int LiB1_0(int src) {
         if (src >= 0x8000) {
             reg_flag |= FLAG_B1;
+            if (debugLimit) log.info("B1_0 "+src);
             return 0x7fff;
         } else if (src < -0x8000) {
             reg_flag |= FLAG_B1;
+            if (debugLimit) log.info("B1_0 "+src);
             return -0x8000;
         }
         return src;
@@ -2225,9 +2261,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int LiB1_1(int src) {
         if (src >= 0x8000) {
             reg_flag |= FLAG_B1;
+            if (debugLimit) log.info("B1_1 "+src);
             return 0x7fff;
         } else if (src < 0) {
             reg_flag |= FLAG_B1;
+            if (debugLimit) log.info("B1_1 "+src);
             return 0;
         }
         return src;
@@ -2236,9 +2274,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int LiB2_0(int src) {
         if (src >= 0x8000) {
             reg_flag |= FLAG_B2;
+            if (debugLimit) log.info("B2_0 "+src);
             return 0x7fff;
         } else if (src < -0x8000) {
             reg_flag |= FLAG_B2;
+            if (debugLimit) log.info("B2_0 "+src);
             return -0x8000;
         }
         return src;
@@ -2247,9 +2287,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int LiB2_1(int src) {
         if (src >= 0x8000) {
             reg_flag |= FLAG_B2;
+            if (debugLimit) log.info("B2_1 "+src);
             return 0x7fff;
         } else if (src < 0) {
             reg_flag |= FLAG_B2;
+            if (debugLimit) log.info("B2_1 "+src);
             return 0;
         }
         return src;
@@ -2258,9 +2300,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int LiB3_0(int src) {
         if (src >= 0x8000) {
             reg_flag |= FLAG_B3;
+            if (debugLimit) log.info("B3_0 "+src);
             return 0x7fff;
         } else if (src < -0x8000) {
             reg_flag |= FLAG_B3;
+            if (debugLimit) log.info("B3_0 "+src);
             return -0x8000;
         }
         return src;
@@ -2269,9 +2313,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int LiB3_1(int src) {
         if (src >= 0x8000) {
             reg_flag |= FLAG_B3;
+            if (debugLimit) log.info("B3_1 "+src);
             return 0x7fff;
         } else if (src < 0) {
             reg_flag |= FLAG_B3;
+            if (debugLimit) log.info("B3_1 "+src);
             return 0;
         }
         return src;
@@ -2313,9 +2359,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int LiD(int src) {
         if (src < 0) {
             reg_flag |= FLAG_D;
+            if (debugLimit) log.info("D "+src);
             return 0;
         } else if (src >= 0x10000) {
             reg_flag |= FLAG_D;
+            if (debugLimit) log.info("D "+src);
             return 0xffff;
         }
         return src;
@@ -2332,9 +2380,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     private static int LiF(long src) {
         if (src >= BIT47) {
             reg_flag |= FLAG_FP;
+            if (debugLimit) log.info("F "+src);
             return 0x7fffffff;
         } else if (src <= -BIT47) {
             reg_flag |= FLAG_FN;
+            if (debugLimit) log.info("F "+src);
             return 0x80000000;
         }
         return (int) (src >> 16);
@@ -2343,9 +2393,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int LiG1(int src) {
         if (src >= 0x400) {
             reg_flag |= FLAG_G1;
+            if (debugLimit) log.info("G1 "+src);
             return 0x3ff;
         } else if (src < -0x400) {
             reg_flag |= FLAG_G1;
+            if (debugLimit) log.info("G1 "+src);
             return -0x400;
         }
         return src;
@@ -2354,9 +2406,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int LiG2(int src) {
         if (src >= 0x400) {
             reg_flag |= FLAG_G2;
+            if (debugLimit) log.info("G2 "+src);
             return 0x3ff;
         } else if (src < -0x400) {
             reg_flag |= FLAG_G2;
+            if (debugLimit) log.info("G2 "+src);
             return -0x400;
         }
         return src;
@@ -2365,9 +2419,11 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
     public static int LiH(int src) {
         if (src >= 0x1000) {
             reg_flag |= FLAG_H;
+//            if (debugLimit) log.info("H "+src);
             return 0xfff;
         } else if (src < 0) {
             reg_flag |= FLAG_H;
+//            if (debugLimit) log.info("H "+src);
             return 0;
         }
         return src;

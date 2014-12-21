@@ -359,7 +359,7 @@ public class SCPImpl extends SingletonJPSXComponent implements SCP, InstructionP
     protected static void checkBreakout() {
         if (_shouldInterrupt()) {
             // need to cause an interrupt
-            r3000.setBreakout();
+            r3000.requestBreakout();
         }
     }
 
@@ -438,7 +438,7 @@ public class SCPImpl extends SingletonJPSXComponent implements SCP, InstructionP
         }
     }
 
-    public static final void returnFromException() {
+    public static void returnFromException() {
         status = (status & 0xffffffc0) | ((status >> 2) & 0xf);
         //System.out.println("return from execption to pc "+MiscUtil.toHex( pc, 8));
         // todo cope with delay slot!

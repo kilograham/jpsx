@@ -8190,6 +8190,12 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
 
                 // TODO this is woefully inefficient :-)
                 if (rgb24conversion && rgb24 && (m_dmaW % 6) == 0) {
+                    // todo graham 12/21/14 - I realized while debugging the intro screen of spyro
+                    // that I actually thought the B and the R were the other way around on the PSX
+                    // curiously that works for other things. Frankly at this point I don't think
+                    // the work of doing the conversion to a separate 24 bit display buffer at display time
+                    // is that bad and will gain us some simplification - probably worth a fork of the GPU/Display though
+
                     // we convert dwords from:
                     //    B1R0G0B0            G2B2R1G1  R3G3B3R2
                     // to
@@ -8209,22 +8215,22 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                         int dword = data[offset++];
                         switch (m_dmaRGB24Index) {
                             case 0:
-                                m_dmaRGB24LastPixel = (dword & 0xffffff); // r0g0b0
+                                m_dmaRGB24LastPixel = (dword & 0xffffff);
                                 ram[m_dmaX + m_dmaY * 1024] = GPU_RGB24_A | m_dmaRGB24LastPixel;
                                 m_dmaRGB24LastDWord = dword;
                                 m_dmaX++;
                                 m_dmaRGB24Index = 1;
                                 break;
                             case 1:
-                                ram[m_dmaX + m_dmaY * 1024] = GPU_RGB24_B | (m_dmaRGB24LastPixel & 0xffff00) | ((m_dmaRGB24LastDWord >> 24) & 0xff);
+                                ram[m_dmaX + m_dmaY * 1024] = GPU_RGB24_B | (m_dmaRGB24LastPixel & 0xffff00) | (m_dmaRGB24LastDWord >>> 24);
                                 m_dmaX++;
-                                ram[m_dmaX + m_dmaY * 1024] = GPU_RGB24_C | (((m_dmaRGB24LastDWord >> 24) & 0xff) | ((dword << 8)) & 0xffffff);
+                                ram[m_dmaX + m_dmaY * 1024] = GPU_RGB24_C | (m_dmaRGB24LastDWord >>> 24) | ((dword << 8) & 0xffff00);
                                 m_dmaRGB24LastDWord = dword;
                                 m_dmaX++;
                                 m_dmaRGB24Index = 2;
                                 break;
                             case 2:
-                                m_dmaRGB24LastPixel = (((m_dmaRGB24LastDWord >> 16) & 0xffff) | ((dword << 16)) & 0xffffff);
+                                m_dmaRGB24LastPixel = (m_dmaRGB24LastDWord >>> 16) | ((dword & 0xff) << 16);
                                 ram[m_dmaX + m_dmaY * 1024] = GPU_RGB24_A | m_dmaRGB24LastPixel;
                                 m_dmaX++;
                                 ram[m_dmaX + m_dmaY * 1024] = GPU_RGB24_B | (m_dmaRGB24LastPixel & 0xffff00) | ((dword >> 8) & 0xff);
@@ -8248,7 +8254,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                     // 16 bit
                     while (size > 0) {
                         int dword = data[offset++];
-                        int val = (dword >> 16) & 0xffff;
+                        int val = dword >>> 16;
                         ram[m_dmaX + m_dmaY * 1024] = dma16flags[m_dmaRGB24Index] | makePixel((dword & 0x1f) << 3, (dword & 0x3e0) >> 2, (dword & 0x7c00) >> 7, (dword & 0x8000) >> 15);
                         m_dmaX++;
                         m_dmaRGB24Index++;
@@ -8748,7 +8754,7 @@ public class GPU extends SingletonJPSXComponent implements ClassGenerator, Memor
                 break;
         }
         if (dumpGPUD) {
-            System.out.println("begin set display mode");
+            System.out.println("begin set display mode: div="+divider+" depth="+((rgb24)?24:16)+" intl="+interlace+" dbly="+doubleY+" pal="+pal);
         }
         manager.setPixelDivider(divider);
         manager.setRGB24(rgb24);
