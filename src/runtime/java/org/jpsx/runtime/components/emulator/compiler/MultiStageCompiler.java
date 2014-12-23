@@ -157,6 +157,9 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
         protected static final boolean printRare = getComponent().getBooleanProperty("printRare", false);
         protected static final boolean statistics = getComponent().getBooleanProperty("statistics", false);
         protected static final boolean dumpMemoryMisPredictions = false;
+        // todo printCode here just because the print code stuff doesn't work properly with basic blocks that have been split into separate methods
+        // todo the larger number can cause some branches to become too large
+        protected static final int maxMethodInstructionCount = printCode?8000:800; // todo justify this choice of number
     }
 
     @Override
@@ -235,6 +238,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
     }
 
     public void clearCache() {
+        log.debug("clearCache");
         synchronized (MultiStageCompiler.class) {
             broker.reset();
             ramLoaderCount++;
@@ -425,7 +429,9 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
      * called by the class loader when a referenced
      * but not yet generated class is executed
      */
-    public static Class generateClass(String classname) {
+    public static Class generateClass(String classname) throws ClassNotFoundException {
+        // Note we only expect C1 classes, as those are the only ones defined on demand
+        // C2 classes are generated in the background, and other classes should exist
         if (classname.startsWith(Stage1Generator.CLASS_NAME_PREFIX)) {
             int address = MiscUtil.parseHex(classname.substring(2));
             CodeUnit unit = getCodeUnit(address);
@@ -775,7 +781,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
      * called by compiled code when it executes
      * an instruction whose side effects are unknown
      */
-    public static final String SAEF_RETURN_METHOD = "c_safe_return";
+    public static final String SAFE_RETURN_METHOD = "c_safe_return";
 
     public static void c_safe_return() {
         if (!ownRegs) {

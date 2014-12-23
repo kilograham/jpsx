@@ -24,7 +24,7 @@ import org.apache.log4j.Logger;
 
 public class CompilerClassLoader extends ClassLoader {
     private static final Logger logger = Logger.getLogger(MultiStageCompiler.CATEGORY);
-    private String description;
+    private final String description;
 
     public CompilerClassLoader(String description, ClassLoader parent) {
         super(parent);
@@ -36,8 +36,11 @@ public class CompilerClassLoader extends ClassLoader {
         Class c = findLoadedClass(name);
         if (c == null) {
             if (logger.isDebugEnabled()) {
-                logger.debug(description + ": createClass " + name);
+                logger.debug(description + ": findClass " + name);
             }
+            // Note it is a bit confusing, that because of the delegation model, it is generally
+            // the rom loader that gets to generate the class here; however this call actually
+            // generates the class using the rom or current ram loader as appropriate
             c = MultiStageCompiler.generateClass(name);
         }
         return c;
@@ -45,7 +48,7 @@ public class CompilerClassLoader extends ClassLoader {
 
     public Class createClass(final String name, byte[] classData) {
         if (logger.isDebugEnabled()) {
-            logger.debug(description + ": createClass " + name);
+            logger.debug(description + ": defineClass " + name);
         }
         return defineClass(name, classData, 0, classData.length, null);
     }

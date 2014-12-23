@@ -99,8 +99,7 @@ public class Stage1Generator implements CompilationContext {
     protected static final int LOCAL_TEMP0 = 3;
     protected static final int LOCAL_LAST = 8;
 
-    protected static final int MAX_METHOD_INSTRUCTION_COUNT = 800; // todo justify this choice of number
-    protected static final int MINIMUM_INSRUCTIONS_PER_METHOD = 4;
+    protected static final int MINIMUM_INSTRUCTIONS_PER_METHOD = 4;
 
     protected static final int ALL_REGS = 0xffffffff;
     protected static final int WRITABLE_REGS = 0xfffffffe;
@@ -110,7 +109,7 @@ public class Stage1Generator implements CompilationContext {
     }
 
     protected int getMaxMethodInstructionCount() {
-        return MAX_METHOD_INSTRUCTION_COUNT;
+        return MultiStageCompiler.Settings.maxMethodInstructionCount;
     }
 
     protected boolean shouldPrintCode() {
@@ -289,7 +288,7 @@ public class Stage1Generator implements CompilationContext {
                 int instructionCount = flowInfo.instructionCount;
                 for (int i = 0; i < sizedBlocks.length && instructionCount > maxCount; i++) {
                     int size = getSizeWithoutBranch(sizedBlocks[i]);
-                    if (size < MINIMUM_INSRUCTIONS_PER_METHOD) {
+                    if (size < MINIMUM_INSTRUCTIONS_PER_METHOD) {
                         break;
                     }
                     //System.out.println("collapsing block "+(i+1)+"/"+sizedBlocks.length+" size "+sizedBlocks[i].size);
