@@ -596,12 +596,12 @@ public final class GTE extends JPSXComponent implements InstructionProvider {
                     il.append(new GETSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_ofy", "I")));
                     break;
                 case R_H:
+                    il.append(new GETSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_h", "I")));
                     // this is according to docs that it is accidentally sign extended
                     il.append(new PUSH(cp, 16));
                     il.append(new ISHL());
                     il.append(new PUSH(cp, 16));
                     il.append(new ISHR());
-                    il.append(new GETSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_h", "I")));
                     break;
                 case R_DQA:
                     il.append(new GETSTATIC(context.getConstantPoolGen().addFieldref(CLASS, "reg_dqa", "I")));
