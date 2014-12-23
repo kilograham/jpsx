@@ -69,7 +69,7 @@ public class FlowAnalyzer {
      * <p/>
      * BasicBlocks are constructed for all reachable code paths
      * starting at the base address, subject to the limit
-     * {@link MultiStageCompiler.Settings.maxR3000InstructionsPerUnit}.<br>
+     * {@link MultiStageCompiler.Settings#maxR3000InstructionsPerUnit}.<br>
      * <p/>
      * In the case that this limit is exceeded,
      * special blocks will be emitted to handle branching
@@ -102,10 +102,13 @@ public class FlowAnalyzer {
 
         int max = 0;
         while (!pendingPaths.isEmpty()) {
-            int offset = ((Integer) pendingPaths.pop()).intValue();
+            int offset = pendingPaths.pop();
 
             if (timeStamps[offset] == currentTimeStamp && 0 != (flags[offset] & VISITED)) {
                 if (0 != (flags[offset] & DELAY_SLOT)) {
+                    // todo graham 12/23/14 - this doesn't make much sense...
+                    // todo it seems like we should be caring if it was already a BLOCK_START
+
                     // nasty case of branching to delay slot which has already been
                     // visited; however the flow might previously have stopped exactly
                     // at the delay slot. since the delay slot may not be a branch instruction

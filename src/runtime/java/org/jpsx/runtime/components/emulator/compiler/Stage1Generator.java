@@ -30,7 +30,6 @@ import org.jpsx.api.components.core.cpu.CPUInstruction;
 import org.jpsx.api.components.core.cpu.CompilationContext;
 import org.jpsx.api.components.core.cpu.R3000;
 import org.jpsx.bootstrap.util.CollectionsFactory;
-import org.jpsx.runtime.RuntimeConnections;
 import org.jpsx.runtime.components.core.CoreComponentConnections;
 import org.jpsx.runtime.components.core.R3000Impl;
 import org.jpsx.runtime.util.ClassUtil;
@@ -100,7 +99,7 @@ public class Stage1Generator implements CompilationContext {
     protected static final int LOCAL_TEMP0 = 3;
     protected static final int LOCAL_LAST = 8;
 
-    protected static final int MAX_METHOD_INSTRUCTION_COUNT = 800;
+    protected static final int MAX_METHOD_INSTRUCTION_COUNT = 800; // todo justify this choice of number
     protected static final int MINIMUM_INSRUCTIONS_PER_METHOD = 4;
 
     protected static final int ALL_REGS = 0xffffffff;
@@ -270,6 +269,9 @@ public class Stage1Generator implements CompilationContext {
 
             int maxCount = getMaxMethodInstructionCount();
             if (flowInfo.instructionCount > maxCount) {
+                if (log.isDebugEnabled()) {
+                    log.debug("Too many instructions in " + Integer.toHexString(flowInfo.base));
+                }
                 // too many instructions, we want to sort basic blocks
                 // by size, and choose to inline the code up to the branch
                 // from each one
@@ -293,6 +295,9 @@ public class Stage1Generator implements CompilationContext {
                     //System.out.println("collapsing block "+(i+1)+"/"+sizedBlocks.length+" size "+sizedBlocks[i].size);
                     instructionCount -= size;
                     methodBlocks.add(sizedBlocks[i]);
+                    if (log.isDebugEnabled()) {
+                        log.debug("  must call to "+sizedBlocks[i]+" size "+getSizeWithoutBranch(sizedBlocks[i]));
+                    }
                 }
                 //System.out.println("final instruction count "+instructionCount);
             }
@@ -300,10 +305,6 @@ public class Stage1Generator implements CompilationContext {
             contextMethodGen = mg;
             for (FlowAnalyzer.BasicBlock block = flowInfo.root; block != null; block = block.next) {
                 contextBlock = block;
-                if (contextBlock == null) {
-                    System.out.println("WTF");
-                    RuntimeConnections.CPU_CONTROL.resolve().pause();
-                }
                 if (MultiStageCompiler.Settings.printRare && block.branchOut != null && !block.includesDelaySlot) {
                     System.out.println(block);
                 }
@@ -381,6 +382,11 @@ public class Stage1Generator implements CompilationContext {
     protected void disassemble(int index) {
         int address = contextBase + (index << 2);
         String prefix = "";
+        if (0 != (addressSpace.getTag(address) & MultiStageCompiler.TAG_DELAY_SLOT)) {
+            prefix += "D";
+        } else {
+            prefix += " ";
+        }
         String prefix1 = "";
         String suffix = "";
         int ci = opCodes[index];
@@ -615,11 +621,18 @@ public class Stage1Generator implements CompilationContext {
             // no point if we didn't add any code
             if (endHandle != il.getEnd()) {
                 InstructionHandle first = endHandle == null ? il.getStart() : endHandle.getNext();
-                // TODO worry about line numbers for delay slot... note we may be OK,
-                // because we can't have an exception in the branch instruction part.
-                // line number is dword index
+                // note the TAG_DELAY_SLOT will allow the exception handling code that uses the line numbers
+                // to know to re-execute from the previous instruction, however that doesn't take care of the
+                // case of code that branches directly to a delay slot.
+                // todo we don't handle that well today, but should be making separate basic blocks, and
+                // todo we could mark the code for that case with a special line number (e.g. very big)
+                // todo to tell the exception handling code not to step back
                 contextMethodGen.addLineNumber(first, contextOffset);
             }
+        }
+
+        if (contextIsDelaySlot) {
+            addressSpace.orTag(contextAddress, MultiStageCompiler.TAG_DELAY_SLOT);
         }
 
         if (MultiStageCompiler.Settings.printCode && shouldPrintCode()) {
@@ -914,7 +927,7 @@ public class Stage1Generator implements CompilationContext {
             il.append(new PUSH(contextCP, offset));
             il.append(new IADD());
         }
-        if (0 == (MultiStageCompiler.Settings.alwaysRAMRegs & (1 << reg))) {
+        if (0 == (MultiStageCompiler.Settings.usuallyRAMRegs & (1 << reg))) {
             il.append(new ISTORE(LOCAL_PRIVATE_TEMP));
             il.append(new PUSH(contextCP, contextAddress));
             il.append(new ILOAD(LOCAL_PRIVATE_TEMP));
@@ -975,7 +988,7 @@ public class Stage1Generator implements CompilationContext {
             il.append(new PUSH(contextCP, offset));
             il.append(new IADD());
         }
-        if (0 == (MultiStageCompiler.Settings.alwaysRAMRegs & (1 << reg))) {
+        if (0 == (MultiStageCompiler.Settings.usuallyRAMRegs & (1 << reg))) {
             il.append(new ISTORE(LOCAL_PRIVATE_TEMP));
             il.append(new PUSH(contextCP, contextAddress));
             il.append(new ILOAD(LOCAL_PRIVATE_TEMP));
@@ -1027,7 +1040,7 @@ public class Stage1Generator implements CompilationContext {
             il.append(new PUSH(contextCP, 0xfffffffc));
             il.append(new IAND());
         }
-        if (0 == (MultiStageCompiler.Settings.alwaysRAMRegs & (1 << reg))) {
+        if (0 == (MultiStageCompiler.Settings.usuallyRAMRegs & (1 << reg))) {
             il.append(new ISTORE(LOCAL_PRIVATE_TEMP));
             il.append(new PUSH(contextCP, contextAddress));
             il.append(new ILOAD(LOCAL_PRIVATE_TEMP));
@@ -1087,7 +1100,7 @@ public class Stage1Generator implements CompilationContext {
             il.append(new PUSH(contextCP, offset));
             il.append(new IADD());
         }
-        if (0 == (MultiStageCompiler.Settings.alwaysRAMRegs & (1 << reg))) {
+        if (0 == (MultiStageCompiler.Settings.usuallyRAMRegs & (1 << reg))) {
             il.append(new ISTORE(LOCAL_PRIVATE_TEMP));
             il.append(new PUSH(contextCP, contextAddress));
             il.append(new ILOAD(LOCAL_PRIVATE_TEMP));
@@ -1141,7 +1154,7 @@ public class Stage1Generator implements CompilationContext {
             il.append(new PUSH(contextCP, offset));
             il.append(new IADD());
         }
-        if (0 == (MultiStageCompiler.Settings.alwaysRAMRegs & (1 << reg))) {
+        if (0 == (MultiStageCompiler.Settings.usuallyRAMRegs & (1 << reg))) {
             il.append(new ISTORE(LOCAL_PRIVATE_TEMP));
             il.append(new PUSH(contextCP, contextAddress));
             il.append(new ILOAD(LOCAL_PRIVATE_TEMP));
@@ -1201,7 +1214,7 @@ public class Stage1Generator implements CompilationContext {
             il.append(new PUSH(contextCP, 0xfffffffc));
             il.append(new IAND());
         }
-        if (0 == (MultiStageCompiler.Settings.alwaysRAMRegs & (1 << reg))) {
+        if (0 == (MultiStageCompiler.Settings.usuallyRAMRegs & (1 << reg))) {
             il.append(new ISTORE(LOCAL_PRIVATE_TEMP));
             il.append(new PUSH(contextCP, contextAddress));
             il.append(new ILOAD(LOCAL_PRIVATE_TEMP));

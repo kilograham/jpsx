@@ -358,7 +358,7 @@ public class Stage2Generator extends Stage1Generator {
             writeBackRegs(il, regsRead[contextOffset]);
             if (contextUnwrittenRegs != 0) {
                 // record the fact that we have unwritten regs
-                addressSpace.orTag(contextAddress, AddressSpace.TAG_RESERVED_FOR_COMPILER);
+                addressSpace.orTag(contextAddress, MultiStageCompiler.TAG_UNWRITTEN_REGS);
             }
             instructions[contextOffset].compile(this, contextAddress, opCodes[contextOffset], il);
             contextUnwrittenRegs &= ~regsWritten[contextOffset];
@@ -405,13 +405,19 @@ public class Stage2Generator extends Stage1Generator {
         } else {
             prefix = " ";
         }
-        if (regsRead[index] == (contextCR & regsRead[index])) {
-            prefix += "C";
+        // graham 12/23/14 commented this out as it makes no sense contextCR is not necessarily the constant registers for this instruction
+//        if (regsRead[index] == (contextCR & regsRead[index])) {
+//            prefix += "C";
+//        } else {
+//            prefix += " ";
+//        }
+        if (0 != (addressSpace.getTag(address) & MultiStageCompiler.TAG_UNWRITTEN_REGS)) {
+            prefix += ">";
         } else {
             prefix += " ";
         }
-        if (0 != (addressSpace.getTag(address) & AddressSpace.TAG_RESERVED_FOR_COMPILER)) {
-            prefix += ">";
+        if (0 != (addressSpace.getTag(address) & MultiStageCompiler.TAG_DELAY_SLOT)) {
+            prefix += "D";
         } else {
             prefix += " ";
         }
@@ -520,7 +526,11 @@ public class Stage2Generator extends Stage1Generator {
     }
 
     public void emitReadMem8(InstructionList il, int reg, int offset) {
-        int tag = (0 != ((1 << reg) & MultiStageCompiler.Settings.alwaysRAMRegs)) ? AddressSpace.TAG_RAM : (addressSpace.getTag(contextAddress) & READ_TAG_MASK);
+        int tag = addressSpace.getTag(contextAddress) & READ_TAG_MASK;
+        // todo note that right now we don't tag usuallyRAMRegs, but we could in the future so this tag == 0 check is there for that
+        if (tag == 0 && (0 != ((1 << reg) & MultiStageCompiler.Settings.usuallyRAMRegs))) {
+            tag = AddressSpace.TAG_RAM;
+        }
         if (0 == tag || 0 != (tag & AddressSpace.TAG_POLL)) {
             emitGetReg(il, reg);
             if (offset != 0) {
@@ -627,7 +637,11 @@ public class Stage2Generator extends Stage1Generator {
     }
 
     public void emitReadMem16(InstructionList il, int reg, int offset) {
-        int tag = (0 != ((1 << reg) & MultiStageCompiler.Settings.alwaysRAMRegs)) ? AddressSpace.TAG_RAM : (addressSpace.getTag(contextAddress) & READ_TAG_MASK);
+        int tag = addressSpace.getTag(contextAddress) & READ_TAG_MASK;
+        // todo note that right now we don't tag usuallyRAMRegs, but we could in the future so this tag == 0 check is there for that
+        if (tag == 0 && (0 != ((1 << reg) & MultiStageCompiler.Settings.usuallyRAMRegs))) {
+            tag = AddressSpace.TAG_RAM;
+        }
         if (0 == tag || 0 != (tag & AddressSpace.TAG_POLL)) {
             emitGetReg(il, reg);
             if (offset != 0) {
@@ -726,7 +740,11 @@ public class Stage2Generator extends Stage1Generator {
     }
 
     public void emitReadMem32(InstructionList il, int reg, int offset, boolean forceAlign) {
-        int tag = (0 != ((1 << reg) & MultiStageCompiler.Settings.alwaysRAMRegs)) ? AddressSpace.TAG_RAM : (addressSpace.getTag(contextAddress) & READ_TAG_MASK);
+        int tag = addressSpace.getTag(contextAddress) & READ_TAG_MASK;
+        // todo note that right now we don't tag usuallyRAMRegs, but we could in the future so this tag == 0 check is there for that
+        if (tag == 0 && (0 != ((1 << reg) & MultiStageCompiler.Settings.usuallyRAMRegs))) {
+            tag = AddressSpace.TAG_RAM;
+        }
         // we must do tag==0 since this means we haven't executed this statement yet
         if (tag == 0) {
             il.append(new PUSH(contextCP, contextAddress));
@@ -858,7 +876,11 @@ public class Stage2Generator extends Stage1Generator {
     }
 
     public void emitWriteMem8(InstructionList il, int reg, int offset) {
-        int tag = (0 != ((1 << reg) & MultiStageCompiler.Settings.alwaysRAMRegs)) ? AddressSpace.TAG_RAM : (addressSpace.getTag(contextAddress) & READ_TAG_MASK);
+        int tag = addressSpace.getTag(contextAddress) & READ_TAG_MASK;
+        // todo note that right now we don't tag usuallyRAMRegs, but we could in the future so this tag == 0 check is there for that
+        if (tag == 0 && (0 != ((1 << reg) & MultiStageCompiler.Settings.usuallyRAMRegs))) {
+            tag = AddressSpace.TAG_RAM;
+        }
         switch (tag) {
             case AddressSpace.TAG_RAM:
                 emitGetReg(il, reg);
@@ -945,7 +967,11 @@ public class Stage2Generator extends Stage1Generator {
     }
 
     public void emitWriteMem16(InstructionList il, int reg, int offset) {
-        int tag = (0 != ((1 << reg) & MultiStageCompiler.Settings.alwaysRAMRegs)) ? AddressSpace.TAG_RAM : (addressSpace.getTag(contextAddress) & READ_TAG_MASK);
+        int tag = addressSpace.getTag(contextAddress) & READ_TAG_MASK;
+        // todo note that right now we don't tag usuallyRAMRegs, but we could in the future so this tag == 0 check is there for that
+        if (tag == 0 && (0 != ((1 << reg) & MultiStageCompiler.Settings.usuallyRAMRegs))) {
+            tag = AddressSpace.TAG_RAM;
+        }
         switch (tag) {
             case AddressSpace.TAG_RAM:
                 emitGetReg(il, reg);
@@ -1035,7 +1061,11 @@ public class Stage2Generator extends Stage1Generator {
     }
 
     public void emitWriteMem32(InstructionList il, int reg, int offset, InstructionList il2, boolean forceAlign) {
-        int tag = (0 != ((1 << reg) & MultiStageCompiler.Settings.alwaysRAMRegs)) ? AddressSpace.TAG_RAM : (addressSpace.getTag(contextAddress) & READ_TAG_MASK);
+        int tag = addressSpace.getTag(contextAddress) & READ_TAG_MASK;
+        // todo note that right now we don't tag usuallyRAMRegs, but we could in the future so this tag == 0 check is there for that
+        if (tag == 0 && (0 != ((1 << reg) & MultiStageCompiler.Settings.usuallyRAMRegs))) {
+            tag = AddressSpace.TAG_RAM;
+        }
         switch (tag) {
             case AddressSpace.TAG_RAM:
                 il.append(new GETSTATIC(contextCP.addFieldref(ADDRESS_SPACE_CLASS, "ramD", "[I")));

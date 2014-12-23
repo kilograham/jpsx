@@ -46,9 +46,15 @@ import java.util.Map;
 
 // todo look for and follow "switch tables"
 
+// todo handle usuallyRAMRegs better - we could detect methods which obviously set SP to weird values for example
+
 public class MultiStageCompiler extends SingletonJPSXComponent implements NativeCompiler {
     public static final String CATEGORY = "Compiler";
     private static final Logger log = Logger.getLogger(CATEGORY);
+
+    public static final byte TAG_UNWRITTEN_REGS = AddressSpace.TAG_RESERVED_FOR_COMPILER;
+    public static final byte TAG_DELAY_SLOT = AddressSpace.TAG_RESERVED_FOR_COMPILER_2;
+
 
     protected static Stage1Generator immediateGenerator;
     // for use if we need to figure out what the real stage2 generator
@@ -139,7 +145,8 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
         //                  pointer
         //31       ra       Return address
         public static final int savedOnCallRegs = 0x30ff0001;
-        public static final int alwaysRAMRegs = 0x20000000;
+        // We assume these are RAM at first (in this case just SP)
+        public static final int usuallyRAMRegs = 0x20000000;
         public static final boolean saveClasses = getComponent().getBooleanProperty("saveClasses", false);
         public static final boolean biosInterruptWorkaround = true;
         public static final boolean printCode = getComponent().getBooleanProperty("printCode", false);
@@ -149,6 +156,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
         protected static final boolean megaTrace = false;
         protected static final boolean printRare = getComponent().getBooleanProperty("printRare", false);
         protected static final boolean statistics = getComponent().getBooleanProperty("statistics", false);
+        protected static final boolean dumpMemoryMisPredictions = false;
     }
 
     @Override
@@ -255,7 +263,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
         }
 
         StackTraceElement trace[] = t.getStackTrace();
-        int pc = -1;
+        int exceptionPC = -1;
         int base = 0;
         String className = null;
         for (int i = 0; i < trace.length; i++) {
@@ -263,10 +271,10 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
             if (className.length() == 10 && className.startsWith("_")) {
                 String methodName = trace[i].getMethodName();
                 if (methodName.equals(Stage1Generator.STATIC_METHOD) || methodName.startsWith(Stage1Generator.UNINLINED_METHOD_PREFIX)) {
-                    pc = base = MiscUtil.parseHex(className.substring(2));
+                    exceptionPC = base = MiscUtil.parseHex(className.substring(2));
                     int ln = trace[i].getLineNumber();
                     if (ln >= 0) {
-                        pc += ln * 4;
+                        exceptionPC += ln * 4;
                     }
                     break;
                     // todo constant
@@ -276,27 +284,59 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
                 }
             }
         }
-        if (pc != -1) {
-            r3000.setPC(pc);
+        if (exceptionPC != -1) {
+            int restartPC;
+            if (0 != (addressSpace.getTag(exceptionPC) & TAG_DELAY_SLOT)) {
+                // todo we don't currently cope with a mis-prediction in a direct jump to a delay slot instruction
+                // todo we need the compiler to make separate code for both cases; hopefully this is a pathological case anyway
+                restartPC = exceptionPC - 4;
+                if (log.isDebugEnabled()) {
+                    int ci = addressSpace.internalRead32(restartPC);
+                    log.debug("Java exception was in delay slot at " + MiscUtil.toHex(exceptionPC, 8) +
+                            " rewinding to branch instruction " + MiscUtil.toHex(restartPC, 8) + ": " + r3000.disassemble(restartPC, ci));
+                }
+            } else {
+                restartPC = exceptionPC;
+            }
+            r3000.setPC(restartPC);
             if (!className.startsWith(Stage1Generator.CLASS_NAME_PREFIX)) {
-                if (0 != (addressSpace.getTag(pc) & AddressSpace.TAG_RESERVED_FOR_COMPILER)) {
-                    // if we get here it is because we have had a memory mispredict, but we cannot safely
+                // Note using exceptionPC seems to make sense, since the code for that instruction actually happens
+                // before the preceding branch (which itself can't have changed any constant registers anyway)
+                if (0 != (addressSpace.getTag(exceptionPC) & TAG_UNWRITTEN_REGS)) {
+                    // if we get here it is because we have had a memory mis-predict, but we cannot safely
                     // restart, because we omitted code to update actual register values during this basic block.
                     // what we need to do here, is to re-examine the code unit, and figure out what the register values must have been (i.e.
                     // for any CR at this location, and update those).
                     if (log.isDebugEnabled()) {
-                        log.debug("NEED REG WRITEBACK AT " + MiscUtil.toHex(pc, 8));
+                        log.debug("NEED REG WRITEBACK AT " + MiscUtil.toHex(exceptionPC, 8));
                     }
-                    fixupUnwrittenCompilerRegs(base, pc);
+                    // we gave regs to interpreter above so we must claim them back
+                    interpreterToCompiler();
+                    fixupUnwrittenCompilerRegs(base, exceptionPC);
+                    compilerToInterpreter();
                 }
                 if (t.getClass() == ArrayIndexOutOfBoundsException.class) {
                     // could be due to mis-predicted memory access
-                    int ci = addressSpace.internalRead32(pc);
+                    int ci = addressSpace.internalRead32(exceptionPC);
                     CPUInstruction inst = r3000.decodeInstruction(ci);
                     if (0 != (inst.getFlags() & CPUInstruction.FLAG_MEM)) {
                         if (log.isDebugEnabled()) {
-                            log.debug("***** Mispredicted memory access at " + MiscUtil.toHex(pc, 8));
+                            log.debug("***** Mispredicted memory access at " + MiscUtil.toHex(exceptionPC, 8));
                         }
+                        if (Settings.dumpMemoryMisPredictions) {
+                            String dis = r3000.disassemble(exceptionPC, ci);
+                            System.out.println("MemoryFail at " + MiscUtil.toHex(exceptionPC, 8) + ": " + MiscUtil.toHex(ci, 8) + " " + dis);
+                            t.printStackTrace();
+                            System.out.println("r0  " + MiscUtil.toHex(Refs.interpreterRegs[0], 8) + " r1  " + MiscUtil.toHex(Refs.interpreterRegs[1], 8) + " r2  " + MiscUtil.toHex(Refs.interpreterRegs[2], 8) + " r3  " + MiscUtil.toHex(Refs.interpreterRegs[3], 8) + " pc  " + MiscUtil.toHex(r3000.getPC(), 8));
+                            System.out.println("r4  " + MiscUtil.toHex(Refs.interpreterRegs[4], 8) + " r5  " + MiscUtil.toHex(Refs.interpreterRegs[5], 8) + " r6  " + MiscUtil.toHex(Refs.interpreterRegs[6], 8) + " r7  " + MiscUtil.toHex(Refs.interpreterRegs[7], 8) + " lo  " + MiscUtil.toHex(r3000.getLO(), 8));
+                            System.out.println("r8  " + MiscUtil.toHex(Refs.interpreterRegs[8], 8) + " r9  " + MiscUtil.toHex(Refs.interpreterRegs[9], 8) + " r10 " + MiscUtil.toHex(Refs.interpreterRegs[10], 8) + " r11 " + MiscUtil.toHex(Refs.interpreterRegs[11], 8) + " hi  " + MiscUtil.toHex(r3000.getHI(), 8));
+                            System.out.println("r12 " + MiscUtil.toHex(Refs.interpreterRegs[12], 8) + " r13 " + MiscUtil.toHex(Refs.interpreterRegs[13], 8) + " r14 " + MiscUtil.toHex(Refs.interpreterRegs[14], 8) + " r15 " + MiscUtil.toHex(Refs.interpreterRegs[15], 8));
+                            System.out.println("r16 " + MiscUtil.toHex(Refs.interpreterRegs[16], 8) + " r17 " + MiscUtil.toHex(Refs.interpreterRegs[17], 8) + " r18 " + MiscUtil.toHex(Refs.interpreterRegs[18], 8) + " r19 " + MiscUtil.toHex(Refs.interpreterRegs[19], 8));
+                            System.out.println("r20 " + MiscUtil.toHex(Refs.interpreterRegs[20], 8) + " r21 " + MiscUtil.toHex(Refs.interpreterRegs[21], 8) + " r22 " + MiscUtil.toHex(Refs.interpreterRegs[22], 8) + " r23 " + MiscUtil.toHex(Refs.interpreterRegs[23], 8));
+                            System.out.println("r24 " + MiscUtil.toHex(Refs.interpreterRegs[24], 8) + " r25 " + MiscUtil.toHex(Refs.interpreterRegs[25], 8) + " r26 " + MiscUtil.toHex(Refs.interpreterRegs[26], 8) + " r27 " + MiscUtil.toHex(Refs.interpreterRegs[27], 8));
+                            System.out.println("r28 " + MiscUtil.toHex(Refs.interpreterRegs[28], 8) + " r29 " + MiscUtil.toHex(Refs.interpreterRegs[29], 8) + " r30 " + MiscUtil.toHex(Refs.interpreterRegs[30], 8) + " r31 " + MiscUtil.toHex(Refs.interpreterRegs[31], 8));
+                        }
+
                         CodeUnit unit = getCodeUnit(base);
                         assert unit.useStage2;
                         unit.stage2ClassBroken();

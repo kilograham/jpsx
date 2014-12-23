@@ -22,29 +22,29 @@ package org.jpsx.api.components.core.addressspace;
 public interface AddressSpace {
     // we use this when determining addresses as the offset from the prefix (top 16 bits)...
     // this is because the 2M of ram should be repeated 4 times... since no other offsets are close to 2M big, this should be AOK
-    public static final int OFFSET_MASK = 0x0f9fffff;
-    public static final int RAM_AND = 0x5fffffff & OFFSET_MASK; // value to and main ram address with to make it map to array index*4 (or invalid)
+    int OFFSET_MASK = 0x0f9fffff;
+    int RAM_AND = 0x5fffffff & OFFSET_MASK; // value to and main ram address with to make it map to array index*4 (or invalid)
 
-    public static final int SCRATCH_XOR = 0x1f800000; // value to xor scratch address with to make it map to array index*4 (or invalid)
-    public static final int BIOS_XOR = 0xbfc00000; // value to xor bios address with to make it map to array index*4 (or invalid)
+    int SCRATCH_XOR = 0x1f800000; // value to xor scratch address with to make it map to array index*4 (or invalid)
+    int BIOS_XOR = 0xbfc00000; // value to xor bios address with to make it map to array index*4 (or invalid)
 
-    public static final int RAM_SIZE = 2 * 1024 * 1024;
+    int RAM_SIZE = 2 * 1024 * 1024;
 
-    public static final int SCRATCH_BASE = 0x1f800000;
-    public static final int SCRATCH_SIZE = 0x1000;
-    public static final int SCRATCH_END = SCRATCH_BASE + SCRATCH_SIZE;
+    int SCRATCH_BASE = 0x1f800000;
+    int SCRATCH_SIZE = 0x1000;
+    int SCRATCH_END = SCRATCH_BASE + SCRATCH_SIZE;
 
-    public static final int PAR_BASE = 0x1f000000;
-    public static final int PAR_SIZE = 0x10000;
-    public static final int PAR_END = PAR_BASE + PAR_SIZE;
+    int PAR_BASE = 0x1f000000;
+    int PAR_SIZE = 0x10000;
+    int PAR_END = PAR_BASE + PAR_SIZE;
 
-    public static final int HW_BASE = 0x1f801000;
-    public static final int HW_SIZE = 0x2000;
-    public static final int HW_END = HW_BASE + HW_SIZE;
+    int HW_BASE = 0x1f801000;
+    int HW_SIZE = 0x2000;
+    int HW_END = HW_BASE + HW_SIZE;
 
-    public static final int BIOS_BASE = 0xBFC00000;
-    public static final int BIOS_SIZE = 0x80000;
-    public static final int BIOS_END = BIOS_BASE + BIOS_SIZE;
+    int BIOS_BASE = 0xBFC00000;
+    int BIOS_SIZE = 0x80000;
+    int BIOS_END = BIOS_BASE + BIOS_SIZE;
 
     // Markers for the type of RAM access that an instruction at a particular addresses does
     byte TAG_RAM = 0x01;
@@ -54,6 +54,7 @@ public interface AddressSpace {
     byte TAG_PAR = 0x10;
     byte TAG_POLL = 0x20; // polling detected at this address
     byte TAG_RESERVED_FOR_COMPILER = 0x40; // our compiler happens to need a bit
+    byte TAG_RESERVED_FOR_COMPILER_2 = -0x80; // our compiler happens to need a bit
 
     public static class Util {
         public static boolean isBIOS(int address) {
