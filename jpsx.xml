@@ -119,6 +119,8 @@
             <!-- specify printCode=true on command line to print R3000/byte code to *.out -->
             <property name="printCode" value="${printCode}"/>
             <property name="saveClasses" value="${saveClasses}"/>
+            <property name="stage2" value="${stage2}"/>
+	    <property name="speculativeCompilation" value="${speculativeCompilation}"/>
         </component>
     </components>
 
@@ -130,6 +132,7 @@
             <property name="printCode" value="${printCode}"/>
             <property name="saveClasses" value="${saveClasses}"/>
             <property name="stage2" value="false"/>
+	    <property name="speculativeCompilation" value="${speculativeCompilation}"/>
         </component>
         <include refid="console-bits"/>
     </components>

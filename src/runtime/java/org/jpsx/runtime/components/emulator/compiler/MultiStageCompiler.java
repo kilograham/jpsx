@@ -125,7 +125,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
 
     protected static class Settings extends FinalComponentSettings {
         // todo, assert this happens late enough
-        public static final boolean enableSpeculativeCompilation = true;
+        public static final boolean enableSpeculativeCompilation = getComponent().getBooleanProperty("speculativeCompilation", true);
         public static final boolean enableSecondStage = getComponent().getBooleanProperty("stage2", true);
         public static final boolean secondStageInBackground = true;
         public static final int minSizeForSpeculativeCompile = 50;
@@ -172,6 +172,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
             public void run() {
                 Settings.setComponent(MultiStageCompiler.this);
                 log.info("printCode " + Settings.printCode);
+                log.info("Speculative compilation enabled = " + Settings.enableSpeculativeCompilation);
                 log.info("Second stage enabled = " + Settings.enableSecondStage);
             }
         });
@@ -800,7 +801,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
     public static int c_jump(int address, int returnAddress) {
         context.nativeDepth++;
         if (context.nativeDepth > Settings.maxNativeDepth) {
-            log.info("STACK OVERFLOW; COLLAPSING...");
+            log.debug("STACK OVERFLOW; COLLAPSING...");
             returnToInterpreter(address);
         }
         //if (Debug.traceExecutionFlow) {
@@ -825,7 +826,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
     public static void c_call(int address, int returnAddress) {
         context.nativeDepth++;
         if (context.nativeDepth > Settings.maxNativeDepth) {
-            log.info("STACK OVERFLOW; COLLAPSING...");
+            log.debug("STACK OVERFLOW; COLLAPSING...");
             returnToInterpreter(address);
         }
         //if (Debug.traceExecutionFlow) {
