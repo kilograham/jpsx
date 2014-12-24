@@ -100,6 +100,10 @@ public class FlowAnalyzer {
 
         pendingPaths.push(i0);
 
+
+        // We might be speculatively analyzing empty memory, so we OR all the instructions together
+        int ciOR = 0;
+
         int max = 0;
         while (!pendingPaths.isEmpty()) {
             int offset = pendingPaths.pop();
@@ -129,6 +133,8 @@ public class FlowAnalyzer {
             getBlock(offset);
 
             boolean flowOut = false;
+
+            // todo we don't actually handle the case where the method is bigger than this
             int end = MultiStageCompiler.Settings.maxR3000InstructionsPerUnit - 1; // -1 in case we need delay slot
             int blockLimit = offset + maxBlockSize;
             byte nextFlags = 0;
@@ -157,6 +163,7 @@ public class FlowAnalyzer {
                 nextFlags = 0;
                 int address = base + (offset << 2);
                 int ci = addressSpace.internalRead32(address);
+                ciOR |= ci;
                 CPUInstruction inst = r3000.decodeInstruction(ci);
 
                 int iFlags = inst.getFlags();
@@ -222,6 +229,11 @@ public class FlowAnalyzer {
                 // want to move straight on to next block
                 pendingPaths.push(offset);
             }
+        }
+        if (!executionThread && ciOR == 0) {
+            // all NOPs and then we fell off the end
+            System.out.println("Garbage empty-ness at "+MiscUtil.toHex(base, 8));
+            return null;
         }
 
         BasicBlock block = null;
