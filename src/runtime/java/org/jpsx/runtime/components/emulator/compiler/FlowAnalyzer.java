@@ -232,7 +232,9 @@ public class FlowAnalyzer {
         }
         if (!executionThread && ciOR == 0) {
             // all NOPs and then we fell off the end
-            System.out.println("Garbage empty-ness at "+MiscUtil.toHex(base, 8));
+            if (debugFlow) {
+                System.out.println("Garbage empty-ness at " + MiscUtil.toHex(base, 8));
+            }
             return null;
         }
 
