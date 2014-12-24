@@ -178,7 +178,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
     }
 
     public void begin() {
-        immediateGenerator = new Stage1Generator("c1gen.out");
+        immediateGenerator = new Stage1Generator("c1gen.out", true);
         romLoader = new CompilerClassLoader("ROM classloader", MultiStageCompiler.class.getClassLoader());
         broker = new CompilationBroker();
         broker.begin();
@@ -480,17 +480,17 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
         protected LinkedList<CodeUnit> unitsForStage1 = new LinkedList<CodeUnit>();
         protected LinkedList<CodeUnit> unitsForStage2 = new LinkedList<CodeUnit>();
 
-        protected FlowAnalyzer flowAnalyzer = new FlowAnalyzer();
+        protected FlowAnalyzer linkFlowAnalyzer = new FlowAnalyzer();
         protected Stage1Generator stage1Generator;
         protected Stage2Generator stage2Generator;
         protected int resetCount;
 
         public CompilationBroker() {
             if (Settings.enableSpeculativeCompilation) {
-                stage1Generator = new Stage1Generator("c1specgen.out");
+                stage1Generator = new Stage1Generator("c1specgen.out", false);
             }
             if (Settings.enableSecondStage) {
-                stage2Generator = new Stage2Generator("c2gen.out");
+                stage2Generator = new Stage2Generator("c2gen.out", !Settings.secondStageInBackground);
             }
         }
 
@@ -527,7 +527,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
                     notify();
                 } else {
                     //System.out.println( "foreground stage2 compile " + MiscUtil.toHex( unit.getBase(), 8 ) );
-                    JavaClass jclass = unit.getStage2JavaClass(stage2Generator);
+                    JavaClass jclass = unit.getStage2JavaClass(stage2Generator, true);
                     Class clazz = createClass(unit, jclass);
                     unit.stage2ClassReady(clazz);
                 }
@@ -563,7 +563,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
                     }
                     if (linkUnit != null && !linkUnit.linksFollowed) {
                         //System.out.println("Follow links "+MiscUtil.toHex( linkUnit.getBase(), 8));
-                        followLinks(linkUnit);
+                        followLinks(linkUnit, false);
                     } else if (c1Unit != null) {
                         // simply get the java class
                         //System.out.println("Spec compile "+MiscUtil.toHex( c1Unit.getBase(), 8));
@@ -580,17 +580,20 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
                         }
                     } else if (c2Unit != null) {
                         //System.out.println("background stage2 compile "+MiscUtil.toHex( c2Unit.getBase(), 8));
-                        JavaClass jclass = c2Unit.getStage2JavaClass(stage2Generator);
-                        // todo fix this;
-                        // a) resetCount is not protected;
-                        // b) don't want to delay
-//                        synchronized( this) {
-                        if (resetCount == priorResetCount) {
-                            // only create the class if we haven't been reset
-                            Class clazz = createClass(c2Unit, jclass);
-                            c2Unit.stage2ClassReady(clazz);
+                        JavaClass jclass = c2Unit.getStage2JavaClass(stage2Generator, false);
+                        // todo state machine handling here seems flaky
+                        if (jclass != null) {
+                            // todo fix this;
+                            // a) resetCount is not protected;
+                            // b) don't want to delay
+                            //                        synchronized( this) {
+                            if (resetCount == priorResetCount) {
+                                // only create the class if we haven't been reset
+                                Class clazz = createClass(c2Unit, jclass);
+                                c2Unit.stage2ClassReady(clazz);
+                            }
+                            //                        }
                         }
-//                        }
                     }
                 }
             } catch (Throwable t) {
@@ -607,32 +610,35 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
             resetCount++;
         }
 
-        protected void followLinks(CodeUnit unit) {
-            FlowAnalyzer.FlowInfo flowInfo = unit.getFlowInfo(flowAnalyzer);
-            if (!unit.stage1Ready() && flowInfo.instructionCount > Settings.minSizeForSpeculativeCompile) {
-                //System.out.println(">>>>>>>>>>>> should compile "+MiscUtil.toHex( unit.base, 8));
-                unitsForStage1.add(unit);
-            }
-            for (FlowAnalyzer.BasicBlock block = flowInfo.root; block != null; block = block.next) {
-                if (block.type == FlowAnalyzer.BasicBlock.NORMAL) {
-                    for (int offset = block.offset; offset < block.offset + block.size; offset++) {
-                        int address = flowInfo.base + offset * 4;
-                        int ci = addressSpace.internalRead32(address);
-                        CPUInstruction inst = r3000.decodeInstruction(ci);
-                        int iFlags = inst.getFlags();
-                        if (0 != (iFlags & CPUInstruction.FLAG_LINK)) {
-                            if (0 != (iFlags & CPUInstruction.FLAG_IMM_FAR_TARGET)) {
-                                int target = ((address + 4) & 0xf0000000) | ((ci & 0x3fffff) << 2);
-//                                System.out.println(MiscUtil.toHex( target, 8)+" called from "+MiscUtil.toHex( address, 8));
-                                if (!AddressSpace.Util.isBIOS(target)) {
-                                    registerLinkedFunctions(getCodeUnit(target), false);
+        protected void followLinks(CodeUnit unit, boolean executionThread) {
+            FlowAnalyzer.FlowInfo flowInfo = unit.getFlowInfo(linkFlowAnalyzer, executionThread);
+            if (flowInfo != null) {
+                if (!unit.stage1Ready() && flowInfo.instructionCount > Settings.minSizeForSpeculativeCompile) {
+                    //System.out.println(">>>>>>>>>>>> should compile "+MiscUtil.toHex( unit.base, 8));
+                    unitsForStage1.add(unit);
+                }
+                for (FlowAnalyzer.BasicBlock block = flowInfo.root; block != null; block = block.next) {
+                    if (block.type == FlowAnalyzer.BasicBlock.NORMAL) {
+                        for (int offset = block.offset; offset < block.offset + block.size; offset++) {
+                            int address = flowInfo.base + offset * 4;
+                            int ci = addressSpace.internalRead32(address);
+                            CPUInstruction inst = r3000.decodeInstruction(ci);
+                            int iFlags = inst.getFlags();
+                            if (0 != (iFlags & CPUInstruction.FLAG_LINK)) {
+                                if (0 != (iFlags & CPUInstruction.FLAG_IMM_FAR_TARGET)) {
+                                    int target = ((address + 4) & 0xf0000000) | ((ci & 0x3fffff) << 2);
+                                    //                                System.out.println(MiscUtil.toHex( target, 8)+" called from "+MiscUtil.toHex( address, 8));
+                                    if (!AddressSpace.Util.isBIOS(target)) {
+                                        registerLinkedFunctions(getCodeUnit(target), false);
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                // todo should we set this to true for flowInfo == null ?
+                unit.linksFollowed = true;
             }
-            unit.linksFollowed = true;
         }
     }
 
@@ -875,7 +881,7 @@ public class MultiStageCompiler extends SingletonJPSXComponent implements Native
      */
     private void fixupUnwrittenCompilerRegs(int base, int pc) {
         if (fixupStage2Generator == null) {
-            fixupStage2Generator = new Stage2Generator("c2fixup.out");
+            fixupStage2Generator = new Stage2Generator("c2fixup.out", true);
         }
         CodeUnit unit = getCodeUnit(base);
         assert unit.useStage2;

@@ -44,6 +44,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Set;
 
+// todo background generators need to save the state as atomically as possible (copying the instructions basically)
+// todo the FlowInfo needs to be in sync too - the fact that we share that though means that we can (in the future)
+// todo quickly detect differences between the actual code and the cached flow graph (without having to regen the
+// todo flow graph)... stage2 generators should probably take a hash of the code from stage 1 to make sure all is kosher
 public class Stage1Generator implements CompilationContext {
     public static final Logger log = Logger.getLogger("Stage1");
 
@@ -52,7 +56,7 @@ public class Stage1Generator implements CompilationContext {
     protected static final String NORMAL_METHOD = "e";
     protected static final String UNINLINED_METHOD_PREFIX = "_";
 
-    FlowAnalyzer analyzer = new FlowAnalyzer();
+    protected final FlowAnalyzer analyzer = new FlowAnalyzer();
 
     // state shared with sub-class
     protected final int[] opCodes = new int[MultiStageCompiler.Settings.maxR3000InstructionsPerUnit];
@@ -73,8 +77,15 @@ public class Stage1Generator implements CompilationContext {
     private final AddressSpace addressSpace = CoreComponentConnections.ADDRESS_SPACE.resolve();
     private final R3000 r3000 = CoreComponentConnections.R3000.resolve();
 
-    public Stage1Generator(String codeFilename) {
+    /**
+     * Generators are not thread safe, and they also can assert in pertinent places that they are being called from the correct
+     * thread, as this stuff gets a bit complicated/messy.
+     */
+    protected final boolean intendedForExecutionThread;
+
+    public Stage1Generator(String codeFilename, boolean intendedForExecutionThread) {
         this.codeFilename = codeFilename;
+        this.intendedForExecutionThread = intendedForExecutionThread;
         if (MultiStageCompiler.Settings.printCode) {
             try {
                 codeWriter = new PrintStream(new FileOutputStream(codeFilename));
@@ -416,11 +427,14 @@ public class Stage1Generator implements CompilationContext {
 
     // PERF:addr:blocks:instructions:flow:initBlock:emitMethods:getJavaClass:createClass
 
-    public JavaClass createJavaClass(CodeUnit unit) {
-        return createJavaClass(unit, getClassName(getClassNamePrefix(unit), unit.getBase()));
+    // can return null if not on execution thread for garbage looking code
+    public JavaClass createJavaClass(CodeUnit unit, boolean executionThread) {
+        return createJavaClass(unit, getClassName(getClassNamePrefix(unit), unit.getBase()), executionThread);
     }
 
-    public JavaClass createJavaClass(CodeUnit unit, String classname) {
+    // can return null if not on execution thread for garbage looking code
+    public JavaClass createJavaClass(CodeUnit unit, String classname, boolean executionThread) {
+        assert executionThread == this.intendedForExecutionThread;
         contextUnit = unit;
         contextBase = unit.getBase();
         contextClassGen = new ClassGen(classname, "java.lang.Object",
@@ -434,7 +448,11 @@ public class Stage1Generator implements CompilationContext {
             perf = new StringBuilder();
             t0 = Timing.nanos();
         }
-        FlowAnalyzer.FlowInfo flowInfo = unit.getFlowInfo(analyzer);//analyzer.buildFlowGraph( contextBase, getMaxMethodInstructionCount());
+        FlowAnalyzer.FlowInfo flowInfo = unit.getFlowInfo(analyzer, executionThread);//analyzer.buildFlowGraph( contextBase, getMaxMethodInstructionCount());
+        if (flowInfo == null) {
+            return null;
+        }
+        contextUnitIsGarbage = false;
         if (MultiStageCompiler.Settings.statistics) {
             long t1 = Timing.nanos() - t0;
             perf.append("PERF:");
@@ -455,6 +473,9 @@ public class Stage1Generator implements CompilationContext {
             t0 = Timing.nanos();
         }
         emitMethods(flowInfo);
+        if (contextUnitIsGarbage) {
+            return null;
+        }
         if (MultiStageCompiler.Settings.statistics) {
             long t1 = Timing.nanos() - t0;
             perf.append(':');
@@ -530,7 +551,7 @@ public class Stage1Generator implements CompilationContext {
     protected void emitCode(InstructionList il, int startOffset, int endOffset) {
         startOffset += contextBlock.offset;
         endOffset += contextBlock.offset;
-        for (contextOffset = startOffset; contextOffset < endOffset; contextOffset++) {
+        for (contextOffset = startOffset; contextOffset < endOffset && !contextUnitIsGarbage; contextOffset++) {
             // skip the instruction after an instruction which emitted a delay slot
             if (contextDelaySlotEmitted) {
                 contextDelaySlotEmitted = false;
@@ -694,6 +715,7 @@ public class Stage1Generator implements CompilationContext {
     protected boolean contextDelaySlotEmitted;
     protected boolean contextIsDelaySlot;
     protected CodeUnit contextUnit;
+    protected boolean contextUnitIsGarbage;
 
     protected void invokeStaticMethod(java.lang.reflect.Method method) {
 
@@ -802,6 +824,11 @@ public class Stage1Generator implements CompilationContext {
     }
 
     public InstructionHandle getBranchTarget(int address) {
+        if (!intendedForExecutionThread && contextBlock.branchOut == null) {
+            contextUnitIsGarbage = true;
+            // a branch to ourselves
+            return getStartHandle(contextBlock);
+        }
         assert contextBlock.branchOut != null : "null branch target - wanted " + MiscUtil.toHex(address, 8) + " base = " +  MiscUtil.toHex(contextBlock.base, 8);
         assert contextBase + (contextBlock.branchOut.offset << 2) == address :
                 contextBlock + ": Expected branch target " + MiscUtil.toHex(contextBase + (contextBlock.branchOut.offset << 2), 8) + " != actual " + MiscUtil.toHex(address, 8);

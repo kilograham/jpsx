@@ -80,6 +80,7 @@ public class CodeUnit {
     private static final int STATE_STAGE2 = 2;
     private static final int STATE_BREAKPOINT = 3;
 
+    // todo it is not clear this is safe to share in the presence of code modification
     private SoftReference flowInfoRef = new SoftReference(null);
     private SoftReference stage1JavaClassRef = new SoftReference(null);
 
@@ -107,13 +108,17 @@ public class CodeUnit {
     /**
      * unsynchronzied, since different threads should
      * use different flow analyzers.
+     *
+     * may return null for a garbage method if not called on the execution thread
      */
-    public FlowAnalyzer.FlowInfo getFlowInfo(FlowAnalyzer flowAnalyzer) {
+    public FlowAnalyzer.FlowInfo getFlowInfo(FlowAnalyzer flowAnalyzer, boolean executionThread) {
         FlowAnalyzer.FlowInfo rc = (FlowAnalyzer.FlowInfo) flowInfoRef.get();
         if (rc == null) {
-            rc = flowAnalyzer.buildFlowGraph(base);
-            end = rc.end;
-            flowInfoRef = new SoftReference(rc);
+            rc = flowAnalyzer.buildFlowGraph(base, executionThread);
+            if (rc != null) {
+                end = rc.end;
+                flowInfoRef = new SoftReference(rc);
+            }
         }
         return rc;
     }
@@ -125,6 +130,8 @@ public class CodeUnit {
      * compilation thread; in either case it is not synchronized,
      * since we don't want the execution thread to wait on the
      * background thread if they end up compiling the same class.
+     *
+     * this may return null if not on the execution thread for garbage code
      */
     public JavaClass getStage1JavaClass(Stage1Generator generator, boolean executionThread) {
         // note while not synchronized, once stage1Ready is set
@@ -135,7 +142,7 @@ public class CodeUnit {
 
         JavaClass rc = (JavaClass) stage1JavaClassRef.get();
         if (rc == null) {
-            rc = generator.createJavaClass(this);
+            rc = generator.createJavaClass(this, executionThread);
             if (!executionThread) {
                 stage1JavaClassRef = new SoftReference(rc);
             } else {
@@ -153,8 +160,9 @@ public class CodeUnit {
         MultiStageCompiler.enumerateBreakpoints(this);
     }
 
-    public JavaClass getStage2JavaClass(Stage2Generator generator) {
-        return generator.createJavaClass(this);
+    // This can return null on non java thread for garbage code
+    public JavaClass getStage2JavaClass(Stage2Generator generator, boolean executionThread) {
+        return generator.createJavaClass(this, executionThread);
     }
 
     public void stage2ClassReady(Class stage2Class) {

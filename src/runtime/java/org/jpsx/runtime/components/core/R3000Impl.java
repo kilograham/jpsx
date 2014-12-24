@@ -135,7 +135,7 @@ public final class R3000Impl extends SingletonJPSXComponent implements ClassModi
     }
 
     protected void addInstructions() {
-        i_invalid = new CPUInstruction("invalid", R3000Impl.class, 0, CPUInstruction.FLAG_MAY_SIGNAL_EXCEPTION);
+        i_invalid = new CPUInstruction("invalid", R3000Impl.class, 0, CPUInstruction.FLAG_MAY_SIGNAL_EXCEPTION | CPUInstruction.FLAG_INVALID);
         decoding = new CPUInstruction[64];
         for (int i = 0; i < 64; i++) {
             decoding[i] = i_invalid;

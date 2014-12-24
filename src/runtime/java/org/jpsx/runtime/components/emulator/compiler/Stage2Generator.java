@@ -63,8 +63,8 @@ public class Stage2Generator extends Stage1Generator {
     private final AddressSpace addressSpace = CoreComponentConnections.ADDRESS_SPACE.resolve();
     private final R3000 r3000 = CoreComponentConnections.R3000.resolve();
 
-    public Stage2Generator(String codeFilename) {
-        super(codeFilename);
+    public Stage2Generator(String codeFilename, boolean intendedForExecutionThread) {
+        super(codeFilename, intendedForExecutionThread);
     }
 
     protected String getClassNamePrefix(CodeUnit unit) {
@@ -114,7 +114,7 @@ public class Stage2Generator extends Stage1Generator {
      * output can be determined by simulation
      */
     protected boolean[] simulated = new boolean[MultiStageCompiler.Settings.maxR3000InstructionsPerUnit];
-    protected Stack dirtyBlocks = new Stack();
+    protected Stack<BlockInfo> dirtyBlocks = new Stack<BlockInfo>();
     protected int visitCount;
 
     protected class BlockInfo {
@@ -132,12 +132,12 @@ public class Stage2Generator extends Stage1Generator {
         int[] outgoingRegValues = new int[32];
 
         public String toString() {
-            return "ICR " + MiscUtil.toHex(ICR, 8) + " OCR " + MiscUtil.toHex(OCR, 8) + " " + bb;
+            return "visited " + visited + " dirty " + dirty + " ICR " + MiscUtil.toHex(ICR, 8) + " OCR " + MiscUtil.toHex(OCR, 8) + " " + bb;
         }
 
         public void updateIncoming(final int CR, final int[] regValues) {
-            // incoming constant regs are anded with what we knew before, unless we're
-            // not initted yet (ICR==0)
+            // incoming constant regs are ANDed with what we knew before, unless we're
+            // not initialized yet (ICR==0)
             int newICR = ICR == 0 ? CR : (CR & ICR);
 
             int stillConstant = ICR & newICR;
@@ -156,6 +156,7 @@ public class Stage2Generator extends Stage1Generator {
                 }
                 mask <<= 1;
             }
+            // note we will always be dirty at least once since ICR is initially zero
             if (newICR != ICR) {
                 ICR = newICR;
                 dirty = true;
@@ -324,8 +325,14 @@ public class Stage2Generator extends Stage1Generator {
 
     protected void emitBlockHeader(InstructionList il) {
         if (contextBlock.type == FlowAnalyzer.BasicBlock.NORMAL) {
-            contextRegValues = blockInfo[contextBlock.offset].incomingRegValues;
-            contextCR = blockInfo[contextBlock.offset].ICR;
+            BlockInfo blockInfo = this.blockInfo[contextBlock.offset];
+            contextRegValues = blockInfo.incomingRegValues;
+            contextCR = blockInfo.ICR;
+            // ICR is initialized to zero, so code that is never reached needs to have r0 set
+            if (contextCR == 0 && !blockInfo.visited) {
+                contextCR = 1;
+            }
+            assert 1 == (contextCR & 1);
             contextUnwrittenRegs = 0;
         }
         super.emitBlockHeader(il);
@@ -362,6 +369,7 @@ public class Stage2Generator extends Stage1Generator {
             }
             instructions[contextOffset].compile(this, contextAddress, opCodes[contextOffset], il);
             contextUnwrittenRegs &= ~regsWritten[contextOffset];
+            assert 0 == (regsWritten[contextOffset] & 1);
             contextCR &= ~regsWritten[contextOffset];
         }
         // write back registers before call/branch
@@ -1145,7 +1153,9 @@ public class Stage2Generator extends Stage1Generator {
 
     public void fixupUnwrittenRegs(CodeUnit unit, int pc) {
         // todo we could keep the info we needed here about in soft reference I guess; even so we need this code
-        FlowAnalyzer.FlowInfo flowInfo = unit.getFlowInfo(analyzer);
+        assert r3000.isExecutionThread();
+        assert intendedForExecutionThread;
+        FlowAnalyzer.FlowInfo flowInfo = unit.getFlowInfo(analyzer, true);
         getRegsOffset = (pc - unit.base) >> 2;
         initBlockStructures(flowInfo);
         if (0 != (CRAtOffset & 0x00000002)) {

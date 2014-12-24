@@ -61,11 +61,6 @@ public class CPUInstruction {
     public static final int FLAG_WRITES_RT = 0x00000400;
     public static final int FLAG_WRITES_RD = 0x00000800;
 
-    /**
-     * Applies only to the interpreted version of the function
-     */
-    public static final int FLAG_REQUIRES_COMPLETE_INTERPRETER_STATE = 0x00040000;
-
     // all addresses are assumed to be of the form rs[offset]
     public static final int FLAG_MEM8 = 0x00002000;
     public static final int FLAG_MEM16 = 0x00004000;
@@ -78,6 +73,13 @@ public class CPUInstruction {
     // implicitly references pc
     public static final int FLAG_MAY_RESTORE_INTERPRETER_STATE = 0x00020000;
     public static final int FLAG_MAY_SIGNAL_EXCEPTION = FLAG_MAY_RESTORE_INTERPRETER_STATE;
+
+    /**
+     * Applies only to the interpreted version of the function
+     */
+    public static final int FLAG_REQUIRES_COMPLETE_INTERPRETER_STATE = 0x00040000;
+
+    public static final int FLAG_INVALID = 0x00080000;
 
     public static final int BRANCH_NEVER = 0;
     public static final int BRANCH_SOMETIMES = 1;

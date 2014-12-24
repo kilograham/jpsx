@@ -79,13 +79,13 @@ public class FlowAnalyzer {
      * array members are populated for use by the caller
      *
      * @param base the entry point
-     * @return the entry-point {@link BasicBlock}
+     * @return the entry-point {@link BasicBlock} or null if the method appears to be garbage (only for intendedForExecutionThread flow analyzers)
      */
-    public FlowInfo buildFlowGraph(int base) {
-        return buildFlowGraph(base, 800);
+    public FlowInfo buildFlowGraph(int base, boolean executionThread) {
+        return buildFlowGraph(base, 800, executionThread);
     }
 
-    public FlowInfo buildFlowGraph(int base, int maxBlockSize) {
+    public FlowInfo buildFlowGraph(int base, int maxBlockSize, boolean executionThread) {
         int instructionCount = 0;
 
         currentBase = base;
@@ -159,53 +159,59 @@ public class FlowAnalyzer {
                 int ci = addressSpace.internalRead32(address);
                 CPUInstruction inst = r3000.decodeInstruction(ci);
 
-                if (inst != null) {
-                    int iFlags = inst.getFlags();
+                int iFlags = inst.getFlags();
 
-                    if (0 != (iFlags & CPUInstruction.FLAG_BRANCH)) {
-                        int branchType = inst.getBranchType(ci);
-                        if (0 == (iFlags & CPUInstruction.FLAG_LINK)) {
-                            // note we are a non-linking instruction, so there
-                            // we cannot have both conditional branch and
-                            // register target... which would be bad.
-                            if (0 != (iFlags & (CPUInstruction.FLAG_IMM_NEAR_TARGET | CPUInstruction.FLAG_IMM_FAR_TARGET))) {
-                                int target;
-                                if (0 != (iFlags & CPUInstruction.FLAG_IMM_NEAR_TARGET)) {
-                                    target = address + 4 + R3000.Util.signed_branch_delta(ci);
-                                } else {
-                                    // todo assert Far target
-                                    target = ((address + 4) & 0xf0000000) | ((ci & 0x3fffff) << 2);
-                                }
-                                int targetOffset = (target - base) >> 2;
-                                if (targetOffset < 0 || targetOffset >= MultiStageCompiler.Settings.maxR3000InstructionsPerUnit) {
-                                    branchTargets[offset] = new BasicBlock(currentBase, targetOffset, BasicBlock.JUMP_WRAPPER);
-                                    if (firstExtraBlock == null) {
-                                        firstExtraBlock = lastExtraBlock = branchTargets[offset];
-                                    } else {
-                                        lastExtraBlock.next = branchTargets[offset];
-                                        lastExtraBlock = branchTargets[offset];
-                                    }
-                                    blockCount++;
-                                } else {
-                                    branchTargets[offset] = getBlock(targetOffset);
-                                    //flags[targetOffset] |= BLOCK_START;
-                                    pendingPaths.push(targetOffset);
-                                }
+                if (!executionThread && 0 != (iFlags & CPUInstruction.FLAG_INVALID)) {
+                    // don't like invalid instructions when working in a background thread
+                    // because we might be analyzing garbage.
+                    if (debugFlow) {
+                        System.out.println("Probable garbage at " + MiscUtil.toHex(base, 8) + " because of invalid instruction");
+                    }
+                    return null;
+                }
+                if (0 != (iFlags & CPUInstruction.FLAG_BRANCH)) {
+                    int branchType = inst.getBranchType(ci);
+                    if (0 == (iFlags & CPUInstruction.FLAG_LINK)) {
+                        // note we are a non-linking instruction, so there
+                        // we cannot have both conditional branch and
+                        // register target... which would be bad.
+                        if (0 != (iFlags & (CPUInstruction.FLAG_IMM_NEAR_TARGET | CPUInstruction.FLAG_IMM_FAR_TARGET))) {
+                            int target;
+                            if (0 != (iFlags & CPUInstruction.FLAG_IMM_NEAR_TARGET)) {
+                                target = address + 4 + R3000.Util.signed_branch_delta(ci);
                             } else {
-                                branchTargets[offset] = UNKNOWN_BRANCH_TARGET;
+                                // todo assert Far target
+                                target = ((address + 4) & 0xf0000000) | ((ci & 0x3fffff) << 2);
                             }
-
-                            if (branchType == CPUInstruction.BRANCH_ALWAYS) {
-                                flags[offset] |= UNCONDITIONAL_BRANCH;
+                            int targetOffset = (target - base) >> 2;
+                            if (targetOffset < 0 || targetOffset >= MultiStageCompiler.Settings.maxR3000InstructionsPerUnit) {
+                                branchTargets[offset] = new BasicBlock(currentBase, targetOffset, BasicBlock.JUMP_WRAPPER);
+                                if (firstExtraBlock == null) {
+                                    firstExtraBlock = lastExtraBlock = branchTargets[offset];
+                                } else {
+                                    lastExtraBlock.next = branchTargets[offset];
+                                    lastExtraBlock = branchTargets[offset];
+                                }
+                                blockCount++;
                             } else {
-                                flags[offset] |= CONDITIONAL_BRANCH;
-                                flowOut = true;
+                                branchTargets[offset] = getBlock(targetOffset);
+                                //flags[targetOffset] |= BLOCK_START;
+                                pendingPaths.push(targetOffset);
                             }
-
-                            // done after the next instruction (delay slot)
-                            end = offset + 2;
-                            nextFlags = DELAY_SLOT;
+                        } else {
+                            branchTargets[offset] = UNKNOWN_BRANCH_TARGET;
                         }
+
+                        if (branchType == CPUInstruction.BRANCH_ALWAYS) {
+                            flags[offset] |= UNCONDITIONAL_BRANCH;
+                        } else {
+                            flags[offset] |= CONDITIONAL_BRANCH;
+                            flowOut = true;
+                        }
+
+                        // done after the next instruction (delay slot)
+                        end = offset + 2;
+                        nextFlags = DELAY_SLOT;
                     }
                 }
             }
