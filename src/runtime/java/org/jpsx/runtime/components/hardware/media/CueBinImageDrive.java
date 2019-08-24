@@ -39,7 +39,7 @@ public class CueBinImageDrive extends SingletonJPSXComponent implements CDDrive 
 
     private static final String CATEGORY = "CDImage";
     private static final Logger log = Logger.getLogger(CATEGORY);
-    private static final String DEFAULT_CUE_FILE = "/rips/wipeoutxl.cue";
+    private static final String DEFAULT_CUE_FILE = "rips/wipeoutxl.cue";
     private CDMedia currentMedia;
 
     private boolean refreshed = false;
