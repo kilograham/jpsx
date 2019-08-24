@@ -5,21 +5,19 @@ JPSX is a fast and efficient PlayStation emulator written entirely in Java. You 
 That said the code was written a long time ago, and I finally gave up trying to find time to get around to fixing a bunch of embarrassing or old things
 up and have just open sourced it as people frequently ask (albeit about 14 years later than planned).
 
-The rest of these instructions are old, but you get the idea;
+The rest of these instructions are old, but you get the idea...
  
-I just tried, and am able to run on my MacBook Pro with JDK8, and Ubuntu 18.04 with JDK8 and JDK11.
+I just tried, and am able to run on my MacBook Pro with JDK8, and Ubuntu 18.04 with JDK8 and JDK11, and pretty well without 
+sound on a Raspberry Pi 4 using JDK 11 (don't use JDK 8)
 
 `./unix.sh` (which launches you into console from where you have to press `g`)
-or `./unix.sh launch` which launches anyway; pass `image=foo.cue` to run a particular game.
+or `./unix.sh launch` which launches anyway; pass `image=foo.cue` to run a particular game. I haven't tried on Windows, but it used to work on XP :-)
 
-Usually the biggest problem nowadays is speed of blit via AWT path (which used to work fine years ago), however
-it looks like LWJGL path is currently broken (`./unix.sh lwjgl`) except perhaps for older OSes but the pure Java 
-blit on Mac seems just fine. Your mileage on other platforms may vary. (Update, Ubuntu seems fine, and Raspbian on
-Raspberry Pi 4 has proper copy up with openjdk-11-jre; with JDK 8 You get 30ms blit rather than about 0.2ms). Note that 
-for Raspberry Pi 4 you currently need to pass `no-sound` on the command line as the machine name, because there don't
-seem to be enough channels in JavaSound to use them the way the default SPU component does).
+The biggest problem nowadays can be the speed of blit via AWT (this used to work fine years ago, and seems good again in JDK11, or in general on a Mac), however
+for a while there I had to use `./unix.sh lwjgl` however this will probably not work on reent OSes - it is a very old version. For Raspberry Pi 4 pass `no-sound` on 
+the command line as the machine name, although there are a few long pauses where the emu seems to freeze atm.
 
-Now this is up here, I'll try to at least add some issues that need fixing or changes that I planned to make. Note that JPSX
+Now I have actually open sourced; I'll try to at least add some issues that need fixing or changes that I planned to make. Note that JPSX
 will certainly play quite a lot of games correctly, but may fail miserably on others. I recommend passing
 `speculativeExecution=false` on the command line if your game doesn't work (e.g. Final Fantasy VII); speculative execution
 should only really be needed on very slow machines, and breaks some code that uses overlays.
@@ -33,7 +31,7 @@ JPSX is very simple to build. Just run `ant`, and it will build `jar` files in t
 To run JPSX in its default configuration, run the following command:
 
 ```
-java -XX:-DontCompileHugeMethods -XX:-UseSplitVerifier -XX:-OmitStackTraceInFastThrow -jar ship/jpsx.jar image=path/to/game.cue
+java -XX:-DontCompileHugeMethods -XX:-OmitStackTraceInFastThrow -jar ship/jpsx.jar image=path/to/game.cue
 ```
 
 Note that JPSX does not have a GUI; you must launch it from the command line. Also, you need a PlayStation BIOS image named `bios.bin`.
@@ -45,10 +43,10 @@ Right now CUE/BIN CD image files are the only image format supported (though it 
 JPSX supports a bunch of configuration options in `jpsx.xml`. Configuration options are encapsulated within a *machine* XML tag. You can specify a machine to use on the command line like so:
 
 ```
-java -XX:-DontCompileHugeMethods -XX:-UseSplitVerifier -XX:-OmitStackTraceInFastThrow -jar ship/jpsx.jar [machine name] image=path/to/game.cue
+java -XX:-DontCompileHugeMethods -XX:-OmitStackTraceInFastThrow -jar ship/jpsx.jar [machine name] image=path/to/game.cue
 ```
 
-**Once you launch JPSX, you need to type `g` into the console to start the emulator.**
+**Once you launch JPSX, you need to type `g` into the console to start the emulator. unless you use the `launch` on the command line **
 
 By default, JPSX uses the "default" machine defined in `jpsx.xml`. Each machine lists the components that make it up, possible including (and optionally overriding) components from another machine definition. This makes it easy to tweak components; simply define a new machine with the properties you want.
 
@@ -74,7 +72,7 @@ The following are required command line options for HotSpot, or things won't wor
 <table>
   <tr><th>Option</th><th>Description</th></tr>
   <tr><td><pre>-XX:-DontCompileHugeMethods</pre></td><td>Needed on everything otherwise things may be slow. Otherwise, HotSpot will refuse to compile some of the byte code that JPSX generates.</td></tr>
-  <tr><td><pre>-XX:-UseSplitVerifier</pre></td><td>needed on JDK7+ (current BCEL code gen isnt' supported by JVM otherwise)</td></tr>
+  <tr><td><pre>-XX:-UseSplitVerifier</pre></td><td>needed on JDK7; invalid after JDK8 (BCEL code gen isnt' supported by JVM on JDK7 otherwise)</td></tr>
   <tr><td><pre>-XX:-OmitStackTraceInFastThrow</pre></td><td>needed on newer JVMs which otherwise break JPSX by removing required line number information</td></tr>
 </table>
 
@@ -99,7 +97,7 @@ These are the default mappings for controller 1 copied from `AWTKeyboardControll
 </table>
 
 
-The current displays also supports a few keys (don't forget <kbd>fn</kbd> on OS X).
+The current displays also support a few keys (don't forget <kbd>fn</kbd> on OS X).
 
 * **<kbd>F12</kbd>**: Change window size (picks from a preset list of resolutions).
 * **<kbd>F9</kbd>**: Toggle display of all VRAM - this is kinda cool.
@@ -109,8 +107,7 @@ The current displays also supports a few keys (don't forget <kbd>fn</kbd> on OS 
 I wrote it back in 2003 basically just because it was exactly the sort of thing people were saying Java was too slow for. I had written a C/C++ emu in the late 1990s
 that I never made publicly available (though some of the code found a home), so I had already done a bunch of the reverse engineering work.
 
-I have actually done very little to it over time, other than periodically trying it on new JVMs (it should work on anything JDK1.4+, though JDK5 is now probably a sensible minimum).
-I also gave a [talk on it at JavaOne in 2006](http://docs.huihoo.com/javaone/2006/cool-stuff/ts-5547.pdf), and have been meaning to open source it ever since (though it had so many little things wrong with it that annoyed me, which I had never gotten around to fixing, so it never happened until now). Thanks to [John Vilk](https://github.com/jvilk) for catching me at the right time and convincing me to open source it in all its warty glory.
+I have actually done very little to it over time, other than periodically trying it on new JVMs (it should work on anything JDK1.4+
 
 ### Philosophy
 
