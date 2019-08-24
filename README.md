@@ -2,6 +2,22 @@
 
 JPSX is a fast and efficient PlayStation emulator written entirely in Java. You can view an old demo of its abilities and performance [on YouTube](https://www.youtube.com/watch?v=_8oyzLJHhS0). If it doesn't work at least that well on your computer for those games, there might be an issue with your runtime environment!
 
+That said the code was written a long time ago, and I finally gave up trying to find time to get around to fixing a bunch of embarrassing or old things
+up and have just open sourced it as people frequently ask (albeit about 14 years later than planned).
+
+The rest of these instructions are old, but you get the idea;
+ 
+I just tried, and am able to run on my MacBook Pro with JDK8:
+
+`./osx.sh` (which launches you into console from where you have to press `g`)
+or `./osx.sh launch` which launches anyway; pass `image=foo.cue` to run a particular game.
+Usually the biggest problem nowadays is speed of blit via AWT path, however
+it looks like LWJGL path is currently broken ('./osx.sh lwjgl`) but the blit on Mac seems just fine. Your
+mileage on other platforms may vary
+
+Now this is up here, I'll try to at least add some issues that need fixing or changes that I planned to make. Note that JPSX
+will certainly play quite a lot of games correctly, but may fail miserably on others.
+
 ## Building the Emulator
 
 JPSX is very simple to build. Just run `ant`, and it will build `jar` files in the `ship` folder.
@@ -85,7 +101,7 @@ The current displays also supports a few keys (don't forget <kbd>fn</kbd> on OS 
 
 ## History
 
-I (Graham) wrote it back in 2003 basically just because it was exactly the sort of thing people were saying Java was too slow for. I had written a C/C++ emu in the late 1990s
+I wrote it back in 2003 basically just because it was exactly the sort of thing people were saying Java was too slow for. I had written a C/C++ emu in the late 1990s
 that I never made publicly available (though some of the code found a home), so I had already done a bunch of the reverse engineering work.
 
 I have actually done very little to it over time, other than periodically trying it on new JVMs (it should work on anything JDK1.4+, though JDK5 is now probably a sensible minimum).
@@ -103,7 +119,7 @@ Those which are stupid on a modern JVM will probably be removed, though equally 
 
 ### PSX a different platform; JPSX a different style of emulator
 
-At least at the time (I don't really follow the emu scene)... there seemed to be a lot of focus in emulators about cycle counting. This certainly makes
+At least at the time... there seemed to be a lot of focus in emulators about cycle counting. This certainly makes
 sense in a lot of cases especially on older platforms where, for example, the program needed to know where the CRT electron beam was when a cycle executed,
 or it needed to write a sound sample out at an exact moment.
 
@@ -140,10 +156,8 @@ Similarly there are some abstractions for serial ports and devices, CD sector pr
 
 ## Documentation
 
-Please see the wiki for details on the following subjects:
+todo
 
-* [JVM Compatibility](https://github.com/jvilk/jpsx/wiki/Platform-Compatibility)
-* [Game/Demo Compatibility](https://github.com/jvilk/jpsx/wiki/Software-Compatibility)
-* [PSX Hardware Components](https://github.com/jvilk/jpsx/wiki/Hardware-Components)
-* [Developer Documentation](https://github.com/jvilk/jpsx/wiki/Development-Documentation)
+## Thanks
 
+Thanks to John Vilk https://github.com/jvilk for his help in getting me closer to open sourcing a few years back!
