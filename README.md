@@ -11,12 +11,13 @@ I just tried, and am able to run on my MacBook Pro with JDK8:
 
 `./osx.sh` (which launches you into console from where you have to press `g`)
 or `./osx.sh launch` which launches anyway; pass `image=foo.cue` to run a particular game.
-Usually the biggest problem nowadays is speed of blit via AWT path, however
+Usually the biggest problem nowadays is speed of blit via AWT path (which used to work fine years ago), however
 it looks like LWJGL path is currently broken ('./osx.sh lwjgl`) but the blit on Mac seems just fine. Your
 mileage on other platforms may vary
 
 Now this is up here, I'll try to at least add some issues that need fixing or changes that I planned to make. Note that JPSX
-will certainly play quite a lot of games correctly, but may fail miserably on others.
+will certainly play quite a lot of games correctly, but may fail miserably on others. I recommend passing
+speculativeExceution=false on the command line if your game doesn't work (e.g. Final Fantasy VII)
 
 ## Building the Emulator
 
