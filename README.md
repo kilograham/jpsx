@@ -158,6 +158,7 @@ Similarly there are some abstractions for serial ports and devices, CD sector pr
 
 todo
 
+Note here is a 2006 JavaOne talk I gave on JPSX: [JPSX JavaOne Talk](javaone.pdf)
 ## Thanks
 
 Thanks to John Vilk https://github.com/jvilk for his help in getting me closer to open sourcing a few years back!
