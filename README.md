@@ -7,17 +7,22 @@ up and have just open sourced it as people frequently ask (albeit about 14 years
 
 The rest of these instructions are old, but you get the idea;
  
-I just tried, and am able to run on my MacBook Pro with JDK8:
+I just tried, and am able to run on my MacBook Pro with JDK8, and Ubuntu 18.04 with JDK8 and JDK11.
 
-`./osx.sh` (which launches you into console from where you have to press `g`)
-or `./osx.sh launch` which launches anyway; pass `image=foo.cue` to run a particular game.
+`./unix.sh` (which launches you into console from where you have to press `g`)
+or `./unix.sh launch` which launches anyway; pass `image=foo.cue` to run a particular game.
+
 Usually the biggest problem nowadays is speed of blit via AWT path (which used to work fine years ago), however
-it looks like LWJGL path is currently broken ('./osx.sh lwjgl`) but the blit on Mac seems just fine. Your
-mileage on other platforms may vary
+it looks like LWJGL path is currently broken (`./unix.sh lwjgl`) except perhaps for older OSes but the pure Java 
+blit on Mac seems just fine. Your mileage on other platforms may vary. (Update, Ubuntu seems fine, and Raspbian on
+Raspberry Pi 4 has proper copy up with openjdk-11-jre; with JDK 8 You get 30ms blit rather than about 0.2ms). Note that 
+for Raspberry Pi 4 you currently need to pass `no-sound` on the command line as the machine name, because there don't
+seem to be enough channels in JavaSound to use them the way the default SPU component does).
 
 Now this is up here, I'll try to at least add some issues that need fixing or changes that I planned to make. Note that JPSX
 will certainly play quite a lot of games correctly, but may fail miserably on others. I recommend passing
-speculativeExceution=false on the command line if your game doesn't work (e.g. Final Fantasy VII)
+`speculativeExecution=false` on the command line if your game doesn't work (e.g. Final Fantasy VII); speculative execution
+should only really be needed on very slow machines, and breaks some code that uses overlays.
 
 ## Building the Emulator
 
@@ -47,21 +52,20 @@ java -XX:-DontCompileHugeMethods -XX:-UseSplitVerifier -XX:-OmitStackTraceInFast
 
 By default, JPSX uses the "default" machine defined in `jpsx.xml`. Each machine lists the components that make it up, possible including (and optionally overriding) components from another machine definition. This makes it easy to tweak components; simply define a new machine with the properties you want.
 
-For configuration options that use the `lwjgl` display class, you need to use the following command line instead:
+For configuration options that use the `lwjgl` display class, you need to use the following command line instead (note this probably no longer runs):
 
 ```
 java -XX:-DontCompileHugeMethods -XX:-UseSplitVerifier -XX:-OmitStackTraceInFastThrow -Djava.library.path=external/lwjgl-2.9.1/native/[platformname] -cp ship/jpsx.jar:ship/jpsx-lwjgl.jar [machine name] image=path/to/game.cue
 ```
 
-### OSX Frontend Script
+### UNIX Frontend Script
 
-`osx.sh` is provided as an example script for OS X
+`unix.sh` is provided as an example script for OS X and UNIX
 
-For example, `./osx.sh image=/rips/gt.cue` will 
+For example, `./unix.sh image=/rips/gt.cue` will 
 set the image property used by the CUE/BIN CD drive to a specific file (note I think right not that the CUE must specify an absolute path to the BIN file).
 
-For example, `./osx.sh lwjgl` will use the machine definition called *lwjgl* that uses `LWJGLDisplay` in place of `AWTDisplay`
-
+For example, `./unix.sh lwjgl` will use the machine definition called *lwjgl* that uses `LWJGLDisplay` in place of `AWTDisplay`
 
 ### What's With The -XX Command Line Arguments
 
