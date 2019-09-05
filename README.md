@@ -8,7 +8,7 @@ up and have just open sourced it as people frequently ask (albeit about 14 years
 The rest of these instructions are old, but you get the idea...
  
 I just tried, and am able to run on my MacBook Pro with JDK8, and Ubuntu 18.04 with JDK8 and JDK11, and pretty well without 
-sound on a Raspberry Pi 4 using JDK 11 (don't use JDK 8)
+sound on a Raspberry Pi 4 using JDK 11 (don't use JDK 8). Note I used OpenJDK 11
 
 `./unix.sh` (which launches you into console from where you have to press `g`)
 or `./unix.sh launch` which launches anyway; pass `image=foo.cue` to run a particular game. I haven't tried on Windows, but it used to work on XP :-)
