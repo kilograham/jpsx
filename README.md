@@ -24,7 +24,7 @@ should only really be needed on very slow machines, and breaks some code that us
 
 ## Building the Emulator
 
-JPSX is very simple to build. Just run `ant`, and it will build `jar` files in the `ship` folder.
+JPSX is very simple to build. Just run `mvn clean install` in the src folder, and it will build a `jar` file in the `src/target` folder.
 
 ## Running the Emulator
 
