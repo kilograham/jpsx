@@ -24,14 +24,14 @@ should only really be needed on very slow machines, and breaks some code that us
 
 ## Building the Emulator
 
-JPSX is very simple to build. Just run `mvn clean install` in the src folder, and it will build a `jar` file in the `src/target` folder.
+JPSX is very simple to build. Just run `mvn clean install` and it will build a `jar` file in the `target` folder.
 
 ## Running the Emulator
 
 To run JPSX in its default configuration, run the following command:
 
 ```
-java -XX:-DontCompileHugeMethods -XX:-OmitStackTraceInFastThrow -jar ship/jpsx.jar image=path/to/game.cue
+java -XX:-DontCompileHugeMethods -XX:-OmitStackTraceInFastThrow -jar target/jpsx-jar-with-dependencies.jar image=path/to/game.cue
 ```
 
 Note that JPSX does not have a GUI; you must launch it from the command line. Also, you need a PlayStation BIOS image named `bios.bin`.
